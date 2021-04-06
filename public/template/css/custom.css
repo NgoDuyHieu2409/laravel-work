@@ -1,0 +1,34 @@
+.container{
+    background-color: #f4f6f9 !important;
+}
+.content-wrapper{
+    margin: 0 auto !important;
+    margin-top: 65px !important;
+}
+.main-footer{
+    margin-left: 0 !important;
+}
+.profile .dropdown-toggle .profile-img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.dropdown.profile .dropdown-menu img.profile-img {
+    height: 45px;
+    width: 45px;
+    float: left;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.dropdown.profile .dropdown-menu .profile-body {
+    text-align: left;
+}
+.ul-list-item li{
+    list-style: circle !important;
+    margin-left: 20px;
+}
+.hr-custom{
+    border:none;
+    border-top:1px dotted #000;
+    height:1px;
+}
