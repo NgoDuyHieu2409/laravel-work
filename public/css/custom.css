@@ -1,0 +1,119 @@
+.container-fluid{
+    background-color: #ddd;
+    color: #000 !important;
+}
+.form-control{
+    color: #000 !important;
+}
+.page-content{
+    padding-top: 15px;
+}
+.card{
+    border-radius: 4px !important;
+}
+.card-header>.card-tools {
+    float: right;
+    margin-top: 5px!important;
+    padding-right: 10px;
+}
+.card .card-header .card-title{
+    padding: 10px 25px !important;
+}
+.custom-control {
+    position: relative;
+    display: block;
+    min-height: 1.25003rem;
+    padding-left: 1.875rem;
+    margin-bottom: .5rem;
+}
+.custom-control-input {
+    position: absolute;
+    left: 0;
+}
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+    cursor: pointer;
+}
+textarea {
+    resize: vertical;
+}
+.card .card-header:after{
+    content: unset !important;
+}
+
+/* select 2 */
+.select2-container--default .select2-selection--single{
+    border: 1px solid #f1f1f1;
+}
+.select2-container--open .select2-dropdown--below{
+    border: 1px solid rgba(0,0,0,.15);
+}
+
+/* Class margin */
+.mb-10{
+    margin-bottom: 10px !important;
+}
+.mb-5{
+    margin-bottom: 5px !important;
+}
+.mt-2{
+    margin-top: 2px !important;
+}
+.mb-0{
+    margin-bottom: 0px !important;
+}
+/* End Class margin */
+
+.align-items-center{
+    align-items: center!important;
+}
+#previews .lead{
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+#previews span>strong {
+    font-weight: 700 !important;
+    color: black;
+}
+.d-flex {
+    /* display: -ms-flexbox!important; */
+    display: flex!important;
+}
+
+.list_button_top{
+    float: right;
+    margin-bottom: 10px;
+}
+.bg-purple{
+    background-color: #673ab7;
+}
+.label-secondary{
+    background-color: #03B1A2;
+}
+.title-detail{
+    display: block;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: left;
+    color: #37474f;
+    margin: 0 auto;
+}
+.title-read{
+    display: block;
+    padding-bottom: 15px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
+}
+.boder-top-success{
+    border-top: 4px solid #00a65a !important;
+}
+.boder-top-primary{
+    border-top: 4px solid #0b5694 !important;
+}
+.boder-top-warning{
+    border-top: 4px solid #e08e0b !important;
+}
