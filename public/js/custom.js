@@ -10,12 +10,15 @@ class Cusstom {
     init() {
         // this._set_up_firebase();
         // this._count_message();
-        this._set_up_select2js();
+        this._set_up_defaut();
         this._set_up_tinymce();
     }
 
-    _set_up_select2js() {
+    _set_up_defaut() {
         $('.select-search').select2();
+
+        // inputmask phone
+        $(".phone-number").inputmask({"mask": "99-9999-9999"});
     }
 
     _set_up_tinymce() {

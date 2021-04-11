@@ -253,7 +253,7 @@
 
                                 <div class="form-group col-sm-6">
                                     <label>Số liên lạc</label>
-                                    <input type="text" class="form-control contact_tel" name="contact_tel" value="{{ old('contact_tel', $work->contact_tel) }}" placeholder="090-1234-5678">
+                                    <input type="text" class="form-control phone-number" name="contact_tel" value="{{ old('contact_tel', $work->contact_tel) }}" placeholder="090-1234-5678">
                                 </div>
                             </div>
 
@@ -475,96 +475,13 @@
                 @yield('submit-buttons')
             </div>
         </form>
-
-        <iframe id="form_target" name="form_target" style="display:none"></iframe>
-        <form id="my_form" action="{{ route('voyager.upload') }}" target="form_target" method="post"
-                enctype="multipart/form-data" style="width:0;height:0;overflow:hidden">
-            <input name="image" id="upload_file" type="file"
-                        onchange="$('#my_form').submit();this.value='';">
-            <input type="hidden" name="type_slug" id="type_slug" value="{{ $dataType->slug }}">
-            {{ csrf_field() }}
-        </form>
     </div>
 
-    <div class="modal fade modal-danger" id="confirm_delete_modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> {{ __('voyager::generic.are_you_sure_delete') }}</h4>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-                    <button type="button" class="btn btn-danger" id="confirm_delete">{{ __('voyager::generic.delete_confirm') }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Delete File Modal -->
 @stop
 
 @section('javascript')
     <script src="{{ asset('/template/plugins/dropzone/min/dropzone.min.js') }}"></script>
-    <script src="{{ asset('/template/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('/js/work/work.js') }}"></script>
-   
-
-    <script>
-        var params = {};
-        var $file;
-
-        function deleteHandler(tag, isMulti) {
-          return function() {
-            $file = $(this).siblings(tag);
-
-            params = {
-                slug:   '{{ $dataType->slug }}',
-                filename:  $file.data('file-name'),
-                id:     $file.data('id'),
-                field:  $file.parent().data('field-name'),
-                multi: isMulti,
-                _token: '{{ csrf_token() }}'
-            }
-
-            $('.confirm_delete_name').text(params.filename);
-            $('#confirm_delete_modal').modal('show');
-          };
-        }
-
-        $('document').ready(function () {
-            $('.toggleswitch').bootstrapToggle();
-
-            //Init datepicker for date fields if data-datepicker attribute defined
-            //or if browser does not handle date inputs
-            $('.form-group input[type=date]').each(function (idx, elt) {
-                if (elt.hasAttribute('data-datepicker')) {
-                    elt.type = 'text';
-                    $(elt).datetimepicker($(elt).data('datepicker'));
-                } else if (elt.type != 'date') {
-                    elt.type = 'text';
-                    $(elt).datetimepicker({
-                        format: 'L',
-                        extraFormats: [ 'YYYY-MM-DD' ]
-                    }).datetimepicker($(elt).data('datepicker'));
-                }
-            });
-
-            @if ($isModelTranslatable)
-                $('.side-body').multilingual({"editing": true});
-            @endif
-
-            $('.side-body input[data-slug-origin]').each(function(i, el) {
-                $(el).slugify();
-            });
-
-            $('.form-group').on('click', '.remove-multi-image', deleteHandler('img', true));
-            $('.form-group').on('click', '.remove-single-image', deleteHandler('img', false));
-            $('.form-group').on('click', '.remove-multi-file', deleteHandler('a', true));
-            $('.form-group').on('click', '.remove-single-file', deleteHandler('a', false));
-
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
 
     <script>
         @php
@@ -629,10 +546,5 @@
             myDropzone.removeAllFiles(true);
         };
         // DropzoneJS Demo Code End
-    </script>
-
-    <script>
-         // inputmask phone
-         $(".contact_tel").inputmask({"mask": "999-999-9999"});
     </script>
 @stop

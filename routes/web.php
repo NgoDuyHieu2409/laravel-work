@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WorksController;
+use App\Http\Controllers\DistrictController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,12 @@ use App\Http\Controllers\WorksController;
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
+    // Work
     Route::post('/work/upload-files', [WorksController::class, 'uploadFiles'])->name('dropzone.upload');
     Route::post('/work/remove-files', [WorksController::class, 'removeFiles'])->name('work.remove.file');
+
+    // City And District
+    Route::post('/get-districts', [DistrictController::class, 'getByCityId'])->name('company.district');
 });
 // End admin
 

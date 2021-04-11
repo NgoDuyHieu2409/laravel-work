@@ -16,12 +16,11 @@ class CreateCompaniesTable extends Migration {
 		{
 			$table->bigInteger('id', true)->unsigned();
 			$table->string('email');
-			$table->string('password');
 			$table->string('remember_token')->nullable();
 			$table->string('name');
-			$table->string('name_kana');
+			$table->string('name_english');
 			$table->string('contact_name');
-			$table->string('contact_name_kana');
+			$table->string('contact_name_english');
 			$table->string('tel');
 			$table->string('zipcode');
 			$table->integer('pref');

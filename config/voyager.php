@@ -200,6 +200,7 @@ return [
         '/js/custom.js',
         '/fontawesome/js/all.js',
         '/template/js/adminlte.min.js',
+        '/template/plugins/inputmask/jquery.inputmask.min.js',
     ],
 
     'googlemaps' => [

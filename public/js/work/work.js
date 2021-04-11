@@ -8,17 +8,12 @@
 
 class WorkJs {
     init() {
-        this._set_upload_dropzone();
         this._on_change_resttime_minutes();
         this._button_show_confirm_delete_file();
         this._button_confirm_delete_file();
         this._button_add_input_file_upload();
         this._set_default_value_work_start_time();
         this._set_min_value_work_end_time();
-    }
-
-    _set_upload_dropzone() {
-        
     }
 
     _on_change_resttime_minutes() {
