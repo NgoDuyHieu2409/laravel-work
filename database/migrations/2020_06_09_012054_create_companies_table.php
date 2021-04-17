@@ -25,15 +25,15 @@ class CreateCompaniesTable extends Migration {
 			$table->string('zipcode');
 			$table->integer('pref');
 			$table->string('city');
-			$table->string('address1');
-			$table->string('address2');
+			$table->string('address');
 			$table->integer('mf_approve_status')->nullable();
 			$table->text('website_url', 65535)->nullable();
 			$table->string('representative_name');
 			$table->string('corporate_number')->nullable();
-			$table->text('business_descriptiona', 65535)->nullable();
+			$table->text('description', 65535)->nullable();
 			$table->dateTime('admin_approval_at')->nullable();
 			$table->integer('credit_limit')->nullable();
+			$table->text('logo')->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 		});

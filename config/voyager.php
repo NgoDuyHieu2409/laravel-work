@@ -194,6 +194,7 @@ return [
         '/template/css/components.min.css',
         '/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css',
         '/global_assets/css/icons/icomoon/styles.min.css',
+        'template/plugins/toastr/toastr.min.css',
     ],
 
     'additional_js' => [
@@ -201,6 +202,8 @@ return [
         '/fontawesome/js/all.js',
         '/template/js/adminlte.min.js',
         '/template/plugins/inputmask/jquery.inputmask.min.js',
+        '/template/js/jqueryform.min.js',
+        'template/plugins/toastr/toastr.min.js',
     ],
 
     'googlemaps' => [

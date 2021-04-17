@@ -34,9 +34,6 @@
 
             @php
                 $work = $dataTypeContent;
-                if( isset($work->id) && !isset($copy)){
-                    $work_id = $work->id;
-                }
             @endphp
             <input type="hidden" name="work_id" value="{{ $work_id ?? '' }}">
 
@@ -502,7 +499,7 @@
 
         var uploadedDocumentMap = {}
         var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-            url: "{{ route('dropzone.upload')}}", // Set the url
+            url: "{{ route('dropzone.upload', ['folder' => 'Works'])}}", // Set the url
             thumbnailWidth: 50,
             thumbnailHeight: 50,
             parallelUploads: 20,

@@ -348,6 +348,15 @@ class WorksController extends VoyagerBaseController
         $this->authorize('add', app($dataType->model_name));
 
         // Validate fields with ajax
+        $val = $this->validateBread($request->all(), $dataType->addRows);
+        $val->after(function ($val) use ($request) {
+            $errors = $val->errors();
+            $this->workValidation($errors, $request);
+        });
+        if ($val->fails()) {
+            return back()->withErrors($val)->withInput();
+        }
+        
         $data = $this->saveData($request, $dataType, $slug, new $dataType->model_name());
 
         event(new BreadDataAdded($dataType, $data));
@@ -487,15 +496,6 @@ class WorksController extends VoyagerBaseController
 
     public function saveData($request, $dataType, $slug, $data)
     {
-        $val = $this->validateBread($request->all(), $dataType->addRows);
-        $val->after(function ($val) use ($request) {
-            $errors = $val->errors();
-            $this->workValidation($errors, $request);
-        });
-        if ($val->fails()) {
-            return back()->withErrors($val)->withInput();
-        }
-
         $data = $this->insertUpdateData($request, $slug, $dataType->addRows, $data);
         $this->workService->createWorkTag($data->id, $request->tags);
         $this->workService->createWorkQualification($data->id, $request->qualifications);
@@ -639,19 +639,6 @@ class WorksController extends VoyagerBaseController
         }
 
         return $data;
-    }
-    
-    public function uploadFiles(Request $request)
-    {
-        $file = $request->file('file');
-        $file_name = $file->getClientOriginalName();
-        $forder = 'public/Work/' . date('F') . date('Y'); 
-        $urls= [
-            'url' => Storage::putFile($forder, $file),
-            'file_name' => $file_name,
-        ];
-
-        return response()->json(json_encode($urls, true));
     }
 
     public function removeFiles(Request $request)

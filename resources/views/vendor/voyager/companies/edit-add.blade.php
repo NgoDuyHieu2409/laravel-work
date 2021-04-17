@@ -34,7 +34,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header header-elements-inline">
-                            <h4 class="card-title"><b><i class="far fa-edit"></i> Thông tin tuyển dụng</b></h4>
+                            <h4 class="card-title"><b><i class="far fa-edit"></i> Thông tin công ty</b></h4>
                             {{-- <div class="card-tools">
                                 <span class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -46,37 +46,14 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <label>Lĩnh vực kinh doanh<span class="text-danger ml-1">*</span></label>
-                                        <select class="form-control select-search @error('type') is-invalid @enderror" name="type">
-                                            <option value="">Vui lòng chọn lĩnh vực kinh doanh</option>
-                                            {{-- @foreach(Config::get('const.categorys') as $k => $v)
-                                            <option value="{{$k}}" @if(old('type') == $k) selected @endif>{{$v}}</option>
-                                            @endforeach --}}
-                                        </select>
-                                        @error('type')
-                                        <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror   
-                                    </div>
-                                </div>
-                            </div>
-            
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-6">
                                         <label>Tên công ty<span class="text-danger ml-1">*</span></label>
-                                        <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="" value="{{old('name')}}">
-                                        @error('name')
-                                        <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror
+                                        <input name="name" type="text" class="form-control" placeholder="" value="{{old('name', $dataTypeContent->name)}}">
+                                        <div class="validation-invalid-label name-error"></div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <label>Tên công ty <span class="text-muted small">(Tiếng anh)</span></label>
-                                        <input name="name_english" type="text" class="form-control" placeholder="" value="{{old('name_english')}}">
-                                        
-                                        @error('name_english')
-                                        <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror
+                                        <input name="name_english" type="text" class="form-control" placeholder="" value="{{old('name_english', $dataTypeContent->name_english)}}">
                                     </div>
                                 </div>
                             </div>
@@ -85,73 +62,51 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label>Email<span class="text-danger ml-1">*</span></label>
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="" name="email" value="{{old('email')}}">
-                                        
-                                        @error('email')
-                                        <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror
+                                        <input type="text" class="form-control" placeholder="" name="email" value="{{old('email', $dataTypeContent->email)}}">
+                                        <div class="validation-invalid-label email-error"></div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="tel">Số điện thoại<span class="text-danger ml-1">*</span></label>
-                                    <input type="text" class="form-control phone-number @error('tel') is-invalid @enderror" name="tel" id="tel" placeholder="00-0000-0000" value="{{old('tel')}}">
-                                    
-                                    @error('tel')
-                                        <div class="validation-invalid-label">{{$message}}</div>
-                                    @enderror
+                                    <input type="text" class="form-control phone-number" name="tel" id="tel" placeholder="00-0000-0000" value="{{old('tel', $dataTypeContent->tel)}}">
+                                    <div class="validation-invalid-label tel-error"></div>
                                 </div>
                             </div>
                     
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <label>Người phụ trách<span class="text-danger ml-1">*</span></label>
-                                        <input type="text" class="form-control @error('contact_name') is-invalid @enderror" name="contact_name" value="{{old('contact_name')}}">
-                                        
-                                        @error('contact_name')
-                                        <div class="validation-invalid-label">{{$errors->first('contact_name')}}</div>
-                                        @enderror
+                                        <label>Người đại diện<span class="text-danger ml-1">*</span></label>
+                                        <input type="text" class="form-control" name="contact_name" value="{{old('contact_name', $dataTypeContent->contact_name)}}">
+                                        <div class="validation-invalid-label contact_name-error"></div>
                                     </div>
 
                                     <div class="col-lg-6">
-                                        <label>Người phụ trách <span class="text-muted small">(Tiếng anh)</span></label>
-                                        <input type="text" class="form-control @error('contact_name_english') is-invalid @enderror" name="contact_name_english" value="{{old('contact_name_english')}}">
-                                        
-                                        @error('contact_name')
-                                        <div class="validation-invalid-label">{{$errors->first('contact_name')}}</div>
-                                        @enderror
+                                        <label>Người đại diện <span class="text-muted small">(Tiếng anh)</span></label>
+                                        <input type="text" class="form-control" name="contact_name_english" value="{{old('contact_name_english', $dataTypeContent->contact_name_english)}}">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group @if($errors->has('zipcode1') || $errors->has('zipcode2')) has-danger @endif">
+                            <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label>Tỉnh/ Thành phố<span class="text-danger ml-1">*</span></label>
-                                        <select id="city" name="city" class="form-control select-search  @error('city') is-invalid @enderror">
+                                        <select id="city" name="city" class="form-control select-search">
                                             <option value="">Vui lòng chọn tỉnh/ thành phố</option>
                                             @foreach($dataSelect['city'] as $key => $value)
-                                                <option value="{{$key}}" @if(old('city') == $key) selected @endif>{{$value}}</option>
+                                                <option value="{{$key}}" @if(old('city', $dataTypeContent->city) == $key) selected @endif>{{$value}}</option>
                                             @endforeach
                                         </select>
-
-                                        @error('city')
-                                            <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror
+                                        <div class="validation-invalid-label city-error"></div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <label for="pref">Quận huyện<span class="text-danger ml-1">*</span></label><br>
-                                        <select id="pref" name="pref" class="form-control select-search  @error('pref') is-invalid @enderror">
+                                        <select id="pref" name="pref" class="form-control select-search">
                                             <option value="">Vui lòng chọn quận huyện</option>
-                                            {{-- @foreach(Config::get('const.pref') as $key => $value)
-                                                <option value="{{$key}}" @if(old('pref') == $key) selected @endif>{{$value}}</option>
-                                            @endforeach --}}
                                         </select>
-
-                                        @error('pref')
-                                            <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror
+                                        <div class="validation-invalid-label pref-error"></div>
                                     </div>
                                 </div>
                             </div>
@@ -160,45 +115,20 @@
                                 <div class="row">
                                     <div class="col-lg-8">
                                         <label for="address">Địa chỉ chi tiết</label>
-                                        <textarea class="form-control" name="address" id="address" rows='1'>{{old('address')}}</textarea>
-
-                                        @error('address')
-                                            <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror
+                                        <textarea class="form-control" name="address" id="address" rows='1'>{{old('address', $dataTypeContent->address)}}</textarea>
                                     </div>
 
                                     <div class="col-lg-4">
-                                        <label for="zipcode1">Mã bưu điện<span class="text-danger ml-1">*</span></label>
-                                        <div class="form-inline">
-                                            <input type="text" class="form-control @error('zipcode1') is-invalid @enderror" name="zipcode1" id="zipcode1" placeholder="" size="5" 
-                                                value="{{old('zipcode1')}}"> -
-
-                                            <input type="text" class="form-control @error('zipcode2') is-invalid @enderror" name="zipcode2" id="zipcode2" placeholder="" size="7"
-                                                value="{{old('zipcode2')}}">
-                                            {{-- <button type="submit" class="btn-sm btn-light ml-3">住所検索</button> --}}
-                                        </div>
-                                        @error('zipcode1')
-                                            <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror
-                                        @error('zipcode2')
-                                            <div class="validation-invalid-label">{{$message}}</div>
-                                        @enderror
+                                        <label for="zipcode">Mã bưu điện<span class="text-danger ml-1">*</span></label>
+                                        <input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="" size="10" value="{{old('zipcode', $dataTypeContent->zipcode)}}">
+                                        <div class="validation-invalid-label zipcode-error"></div>
                                     </div>
                                 </div>
                             </div>
                     
-                            {{-- <div class="form-group">
-                                <label>アクセス<span class="text-danger ml-1">*</span></label>
-                                <textarea rows="15" cols="5" class="form-control @error('access') is-invalid @enderror" placeholder=""
-                                    name="access">{{old('access')}}</textarea>
-                                @if($errors->has('access'))
-                                    <label id="access" class="error mt-2 text-danger" for="access">{{$errors->first('access')}}</label>
-                                @endif
-                            </div> --}}
-                    
                             <div class="form-group">
                                 <label for="website_url">Trang web công ty <span class="text-muted small">(URL)</span></label>
-                                <input type="text" class="form-control @error('website_url') is-invalid @enderror" placeholder="" name="website_url" id="website_url" value="{{old('website_url')}}">
+                                <input type="text" class="form-control" placeholder="" name="website_url" id="website_url" value="{{old('website_url', $dataTypeContent->website_url)}}">
                             </div>
                     
                             <div class="form-group">
@@ -252,10 +182,15 @@
                                     </div>
                                 </div>
                             </div>
+                            @if(isset($dataTypeContent->logo))
+                            <div class="form-group">
+                                <img src="{{ Voyager::image($dataTypeContent->logo) }}" alt="Logo" width="100">
+                            </div>
+                            @endif
                     
                             <div class="form-group">
                                 <label>Giới thiệu về công ty</label>
-                                <textarea rows="15" cols="5" class="form-control richTextBox" placeholder="" name="description">{{old('description')}}</textarea>
+                                <textarea rows="15" cols="5" class="form-control" placeholder="" name="description">{!! old('description', $dataTypeContent->description) !!}</textarea>
                             </div>
                         </div>
 
@@ -279,25 +214,7 @@
     <script src="{{ asset('/js/company/company.js') }}"></script>
 
     <script>
-        $(function(){
-            $('#city').on('change', function () {
-                var data = {
-                    _token: "{{ csrf_token() }}",
-                    city_id: $(this).val()
-                };
-
-                $.ajax({
-                    type:'POST',
-                    dataType:'json',
-                    url:'/get-districts',
-                    data: data,
-                    success:function(response){
-                        console.log(response)
-                    }
-                });
-            });
-        });
-        
+        const COMPANY_PREF = @JSON($dataTypeContent['pref']);
     </script>
 
     <script>
@@ -311,10 +228,11 @@
 
         var uploadedDocumentMap = {}
         var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-            url: "{{ route('dropzone.upload')}}", // Set the url
+            url: '{{ route("dropzone.upload", ["folder" => "Companies"]) }}',
             thumbnailWidth: 50,
             thumbnailHeight: 50,
             parallelUploads: 20,
+            maxFiles: 1,
             previewTemplate: previewTemplate,
             autoQueue: false, // Make sure the files aren't queued until manually added
             previewsContainer: "#previews", // Define the container to display the previews
@@ -323,7 +241,7 @@
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             success: function (file, response) {
-                $('form').append("<input type='hidden' name='work_photo[]' value='" + response + "'>");
+                $('form').append("<input type='hidden' name='logo' value='" + response + "'>");
                 uploadedDocumentMap[file.name] = response
             },
         });
@@ -344,7 +262,6 @@
         myDropzone.on("sending", function (file) {
             document.querySelector("#total-progress").style.opacity = "1";
             file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
-            file.previewElement.querySelector(".delete").setAttribute("disabled", "disabled");
         });
 
         document.querySelector("#actions .start").onclick = function (e) {
@@ -353,6 +270,7 @@
         };
         document.querySelector("#actions .delete").onclick = function () {
             myDropzone.removeAllFiles(true);
+            $('form').find("input[name='logo']").remove();
         };
         // DropzoneJS Demo Code End
     </script>
