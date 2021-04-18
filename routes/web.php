@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\WorksController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\Controller;
@@ -35,4 +36,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/{id}/{slug?}', [HomeController::class, 'show'])->name('work.show');
     Route::post('/apply-work', [HomeController::class, 'applyWork'])->name('work.apply');
+
 });
+Route::get('/my-cv/{id?}', [MyProfileController::class, 'myProfile'])->name('mycv.add');

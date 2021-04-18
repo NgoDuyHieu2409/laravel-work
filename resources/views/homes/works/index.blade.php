@@ -60,7 +60,7 @@
                             @auth
                             <div class="card-footer">
                                 <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">Nộ hồ sơ</a>
+                                    <a href="{{ route('work.show', ['id' => $work->id]) }}" class="btn btn-sm btn-success">Nộ hồ sơ</a>
                                 </div>
                             </div>
                             @endauth

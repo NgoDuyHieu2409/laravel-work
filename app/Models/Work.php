@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
+use App\Models\WorkApplication;
 
 class Work extends Model
 {
@@ -82,7 +83,7 @@ class Work extends Model
 
     public function work_applications()
     {
-        return $this->hasMany(\App\Models\WorkApplication::class);
+        return $this->hasMany(WorkApplication::class);
     }
 
     public function modify_requests()

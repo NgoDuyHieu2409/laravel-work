@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
-use App\Work;
-use App\Worker;
-use App\WorkerReview;
+use App\Models\Work;
+use App\Models\User as Worker;
+use App\Models\WorkerReview;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;

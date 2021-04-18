@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Worrk;
+use App\Models\User;
+use App\Models\WorkRecord;
 
 class WorkApplication extends Model
 {
@@ -26,12 +29,12 @@ class WorkApplication extends Model
 
     public function work()
     {
-        return $this->belongsTo('App\Work');
+        return $this->belongsTo(Work::class);
     }
 
     public function worker()
     {
-        return $this->belongsTo('App\Worker');
+        return $this->belongsTo(User::class, 'worker_id', 'id');
     }
 
     public function work_record()

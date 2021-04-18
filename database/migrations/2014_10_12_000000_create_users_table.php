@@ -22,6 +22,12 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
+            $table->integer('sex', 2)->default(0)->comment("0 -> nam, 1 -> nữ");
+            $table->date('birthday', 2)->nullable();
+            $table->integer('city');
+            $table->integer('pref');
+            $table->text('address');
+            $table->text('distriction');
             $table->timestamps();
         });
     }
