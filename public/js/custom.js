@@ -11,7 +11,8 @@ class Cusstom {
         // this._set_up_firebase();
         // this._count_message();
         this._set_up_defaut();
-        this._set_up_tinymce();
+        this._on_change_city();
+        this._select_pref_when_edit();
     }
 
     _set_up_defaut() {
@@ -21,15 +22,39 @@ class Cusstom {
         $(".phone-number").inputmask({"mask": "99-9999-9999"});
     }
 
-    _set_up_tinymce() {
-        var additionalConfig = {
-            selector: 'textarea.richTextBox',
-            branding: false,
-            height: '100',
-        }
-        tinymce.init(window.voyagerTinyMCE.getConfig(additionalConfig));
+    _on_change_city() {
+        $('.city-js').on('change', function () {
+            var data = {
+                _token: $('input[name="_token"]').val(),
+                city_id: $(this).val()
+            };
+
+            $.ajax({
+                type:'POST',
+                dataType:'json',
+                url:'/get-districts',
+                data: data,
+                success:function(response){
+                    $('.pref-js').html("");
+                    $('.pref-js').append('<option value="">Vui lòng chọn quận huyện</option>')
+                    for (const key in response) {
+                        if (Object.hasOwnProperty.call(response, key)) {
+                            $('.pref-js').append('<option value="' + key + '">' + response[key] + '</option>')
+                        }
+                    }
+                }
+             });
+        });
     }
 
+    _select_pref_when_edit(){
+        if(COMPANY_PREF){
+            $('.city-js').change();
+            setTimeout(function(){
+                $('.pref-js').val(COMPANY_PREF).change();
+            }, 2000);
+        }
+    }
 
     // _set_up_firebase(){
     //     var firebaseConfig = {

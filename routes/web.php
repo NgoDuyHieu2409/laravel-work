@@ -26,16 +26,18 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/work/remove-files', [WorksController::class, 'removeFiles'])->name('work.remove.file');
 
     // City And District
-    Route::post('/get-districts', [DistrictController::class, 'getByCityId'])->name('company.district');
 });
 // End admin
 
 
 Route::get('/', [HomeController::class, 'index'])->name('homes.index');
+Route::post('/get-districts', [DistrictController::class, 'getByCityId'])->name('company.district');
+Route::get('/user/my-cv', [MyProfileController::class, 'myProfile'])->name('mycv.add');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/{id}/{slug?}', [HomeController::class, 'show'])->name('work.show');
     Route::post('/apply-work', [HomeController::class, 'applyWork'])->name('work.apply');
 
 });
-Route::get('/my-cv/{id?}', [MyProfileController::class, 'myProfile'])->name('mycv.add');

@@ -199,6 +199,7 @@ return [
 
     'additional_js' => [
         '/js/custom.js',
+        '/js/admin/custom.js',
         '/fontawesome/js/all.js',
         '/template/js/adminlte.min.js',
         '/template/plugins/inputmask/jquery.inputmask.min.js',

@@ -193,7 +193,7 @@
                                             {{ __('Profile') }}
                                         </x-jet-dropdown-link>
 
-                                        <x-jet-dropdown-link href="{{ route('mycv.add', ['id' => Auth::id()]) }}">
+                                        <x-jet-dropdown-link href="{{ route('mycv.add') }}">
                                             Update CV
                                         </x-jet-dropdown-link>
 
@@ -257,6 +257,10 @@
                                     <!-- Account Management -->
                                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                                         {{ __('Profile') }}
+                                    </x-jet-responsive-nav-link>
+
+                                    <x-jet-responsive-nav-link href="{{ route('mycv.add') }}" :active="request()->routeIs('mycv.add')">
+                                        Update CV
                                     </x-jet-responsive-nav-link>
 
                                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

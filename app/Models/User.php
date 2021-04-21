@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\UserContact;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -58,4 +59,9 @@ class User extends \TCG\Voyager\Models\User
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function contact()
+    {
+        return $this->hasOne(UserContact::class);
+    }
 }

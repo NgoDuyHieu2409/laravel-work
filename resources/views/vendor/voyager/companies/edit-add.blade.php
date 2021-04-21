@@ -92,7 +92,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label>Tỉnh/ Thành phố<span class="text-danger ml-1">*</span></label>
-                                        <select id="city" name="city" class="form-control select-search">
+                                        <select id="city" name="city" class="form-control select-search city-js">
                                             <option value="">Vui lòng chọn tỉnh/ thành phố</option>
                                             @foreach($dataSelect['city'] as $key => $value)
                                                 <option value="{{$key}}" @if(old('city', $dataTypeContent->city) == $key) selected @endif>{{$value}}</option>
@@ -103,7 +103,7 @@
 
                                     <div class="col-lg-6">
                                         <label for="pref">Quận huyện<span class="text-danger ml-1">*</span></label><br>
-                                        <select id="pref" name="pref" class="form-control select-search">
+                                        <select id="pref" name="pref" class="form-control select-search pref-js">
                                             <option value="">Vui lòng chọn quận huyện</option>
                                         </select>
                                         <div class="validation-invalid-label pref-error"></div>
