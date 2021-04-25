@@ -17,6 +17,7 @@ class CreateUserSkillsTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

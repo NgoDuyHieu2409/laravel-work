@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserContact extends Model
+class UserWorkHistory extends Model
 {
     use HasFactory;
 
-    protected $table = "user_contacts";
+    protected $table = "user_work_histories";
 }

@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="{{ asset('template/plugins/toastr/toastr.min.css') }}">
         <link rel="stylesheet" href="{{ asset('template/plugins/select2/css/select2.min.css') }}">
         <link rel="stylesheet" href="{{ asset('template/css/adminlte.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('template/plugins/summernote/summernote-bs4.min.css') }}">
+
         <link rel="stylesheet" href="{{ asset('template/css/custom.css') }}">
 
         <!-- Scripts -->
@@ -63,10 +66,11 @@
         <!-- Select2 -->
         <script src="{{ asset('template/plugins/select2/js/select2.full.min.js')}}"></script>
         <script src="{{ asset('/template/plugins/inputmask/jquery.inputmask.min.js')}}"></script>
-        {{-- tinymce --}}
-        {{-- <script src="{{ asset('/template/plugins/tinymce/tinymce.min.js') }}"></script> --}}
 
         <script src="{{ asset('template/dist/js/adminlte.js') }}"></script>
+
+        <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
+
         <script src="{{ asset('js/custom.js') }}"></script>
     </body>
 </html>

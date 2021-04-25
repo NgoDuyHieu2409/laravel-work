@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', [HomeController::class, 'index'])->name('homes.index');
 Route::post('/get-districts', [DistrictController::class, 'getByCityId'])->name('company.district');
 Route::get('/user/my-cv', [MyProfileController::class, 'myProfile'])->name('mycv.add');
+Route::post('/user/my-cv', [MyProfileController::class, 'saveProfile'])->name('mycv.store');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

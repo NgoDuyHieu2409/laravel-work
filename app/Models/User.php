@@ -10,6 +10,10 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\UserContact;
+use App\Models\UserWorkHistory;
+use App\Models\UserSkill;
+use App\Models\UserLanguage;
+use App\Models\UserCertification;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -63,5 +67,30 @@ class User extends \TCG\Voyager\Models\User
     public function contact()
     {
         return $this->hasOne(UserContact::class);
+    }
+
+    public function workHistories()
+    {
+        return $this->hasMany(UserWorkHistory::class);
+    }
+
+    public function skills()
+    {
+        return $this->hasMany(UserSkill::class);
+    }
+
+    public function educations()
+    {
+        return $this->hasMany(UserEducation::class);
+    }
+
+    public function languages()
+    {
+        return $this->hasMany(UserLanguage::class);
+    }
+
+    public function certifications()
+    {
+        return $this->hasMany(UserCertification::class);
     }
 }

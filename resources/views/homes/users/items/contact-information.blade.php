@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-sm-6">
       <div class="form-group">
         <label>Phone number</label>
         <input type="text" class="form-control phone-number" name="phone" value="{{ $user->contact->phone ?? '' }}">
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-sm-6">
       <div class="form-group">
         <label>Job Title</label>
         <input type="text" class="form-control" value="{{ $user->contact->job_ttle ?? '' }}">
@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-sm-6">
       <div class="form-group">
         <label>District</label>
         <select id="pref" name="pref" class="form-control select-search pref-js">
@@ -64,6 +64,17 @@
       <div class="form-group">
         <label>Address</label>
         <input type="text" name="address" class="form-control" value="{{ $user->contact->birthday ?? '' }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Summary</label>
+        <textarea name="summary" id="summary" class="form-control summernote_edit" cols="30" rows="10">
+          {{ $user->contact->summary ?? '' }}
+        </textarea>
       </div>
     </div>
   </div>

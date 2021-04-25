@@ -32,3 +32,16 @@
     border-top:1px dotted #000;
     height:1px;
 }
+/* summernote */
+.note-editable.card-block ol{
+    list-style-type: decimal !important;
+    padding-inline-start: 40px !important;
+}
+.note-editable.card-block ul{
+    list-style-type: disc !important;
+    padding-inline-start: 40px !important;
+}
+/* icheck */
+[class*=icheck-]>label, [class*=icheck-]>input {
+    cursor: pointer !important;
+}

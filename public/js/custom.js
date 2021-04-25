@@ -17,9 +17,11 @@ class Cusstom {
 
     _set_up_defaut() {
         $('.select-search').select2();
-
         // inputmask phone
         $(".phone-number").inputmask({"mask": "99-9999-9999"});
+
+        // editer
+        $('.summernote_edit').summernote();
     }
 
     _on_change_city() {
