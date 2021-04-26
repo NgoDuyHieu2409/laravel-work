@@ -30,6 +30,27 @@
 
     <div class="col-sm-6">
       <div class="form-group">
+        <label>Gender</label>
+        <div style="display: block; padding: .375rem 0;">
+          <div class="icheck-primary d-inline">
+              <input type="radio" id="sex-0"
+                  name="sex" value="0" @if (($user->contact->sex ?? 0) == 0) checked @endif>
+              <label for="sex-0">Nam</label>
+          </div>
+
+          <div class="icheck-primary d-inline ml-3">
+            <input type="radio" id="sex-1"
+                name="sex" value="1" @if (($user->contact->sex ?? 0) == 1) checked @endif>
+            <label for="sex-1">Nữ</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
         <label>Job Title</label>
         <input type="text" class="form-control" value="{{ $user->contact->job_ttle ?? '' }}">
       </div>
@@ -52,7 +73,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label>District</label>
-        <select id="pref" name="pref" class="form-control select-search pref-js">
+        <select id="pref" name="district" class="form-control select-search pref-js">
           <option value="">Vui lòng chọn quận huyện</option>
         </select>
       </div>

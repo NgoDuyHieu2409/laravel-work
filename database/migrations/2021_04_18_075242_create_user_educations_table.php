@@ -21,7 +21,7 @@ class CreateUserEducationsTable extends Migration
             $table->string('qualification')->comment('Bằng cấp');
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();
-            $table->text('descriptions')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

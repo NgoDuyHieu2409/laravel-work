@@ -101,7 +101,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label>Descriptions</label>
-                        <textarea name="certifications[{{ $index }}][descriptions]" id="descriptions"
+                        <textarea name="certifications[{{ $index }}][description]" id="description"
                             class="form-control summernote_edit" cols="30" rows="10">
                         </textarea>
                     </div>
