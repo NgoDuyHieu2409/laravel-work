@@ -11,6 +11,7 @@ use App\Models\UserEducation;
 use App\Models\UserSkill;
 use App\Models\UserLanguage;
 use App\Models\UserCertification;
+use App\Http\Requests\UpdateCvRequest;
 
 class MyProfileController extends Controller
 {
@@ -25,10 +26,8 @@ class MyProfileController extends Controller
         ]));
     }
 
-    public function saveProfile(Request $request)
+    public function saveProfile(UpdateCvRequest $request)
     {
-        dd($request->all());
-
         // Save user contact
         $contact = new UserContact;
         $contact->fill([

@@ -71,6 +71,8 @@
 
         <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
 
+        <script src="{{ asset('template/js/jqueryform.min.js') }}"></script>
+
         <script src="{{ asset('js/custom.js') }}"></script>
     </body>
 </html>

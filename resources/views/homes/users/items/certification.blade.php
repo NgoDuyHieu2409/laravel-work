@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>Certification Name</label>
+                                <label>Certification Name<span class="text-red ml-2">*</span></label>
                                 <input type="text" class="form-control" name="certifications[{{ $key }}][name]"
                                     value="{{ $item->name ?? '' }}">
                             </div>
@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Institution</label>
+                                <label>Institution<span class="text-red ml-2">*</span></label>
                                 <input type="text" class="form-control" name="certifications[{{ $key }}][institution]"
                                     value="{{ $item->institution ?? '' }}">
                             </div>
@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <label>Certification Name</label>
+                        <label>Certification Name<span class="text-red ml-2">*</span></label>
                         <input type="text" class="form-control" name="certifications[{{ $index }}][name]"
                             value="">
                     </div>
@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Institution</label>
+                        <label>Institution<span class="text-red ml-2">*</span></label>
                         <input type="text" class="form-control" name="certifications[{{ $index }}][institution]"
                             value="">
                     </div>
