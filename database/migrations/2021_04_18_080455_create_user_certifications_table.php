@@ -20,6 +20,8 @@ class CreateUserCertificationsTable extends Migration
             $table->string('institution')->nullable();
             $table->date('certification_date')->nullable();
             $table->string('certification_link')->nullable();
+            $table->text('file')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

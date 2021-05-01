@@ -54,7 +54,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label>Descriptions</label>
-                                <textarea name="educations[{{ $key }}][descriptions]" id="descriptions"
+                                <textarea name="educations[{{ $key }}][description]" id="description"
                                     class="form-control summernote_edit" cols="30" rows="10">
                                     {{ $education->descriptions ?? '' }}
                                 </textarea>
@@ -72,7 +72,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label>Subject</label>
-                        <input type="text" class="form-control" name="educations[{{ $index }}][position]"
+                        <input type="text" class="form-control" name="educations[{{ $index }}][subject]"
                             value="">
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label>Descriptions</label>
-                        <textarea name="educations[{{ $index }}][descriptions]" id="descriptions"
+                        <textarea name="educations[{{ $index }}][description]" id="description"
                             class="form-control summernote_edit" cols="30" rows="10">
                         </textarea>
                     </div>

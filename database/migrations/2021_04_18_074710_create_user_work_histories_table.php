@@ -20,8 +20,8 @@ class CreateUserWorkHistoriesTable extends Migration
             $table->string('company')->comment('Tên côn ty');
             $table->date('from_date')->nullable()->comment('ngày bắt đầu công việc');
             $table->date('to_date')->nullable()->comment('ngày kết thúc công việc');
-            $table->iteger('current_job')->default(0)->comment('có là công việc hiện tại: 0: không, 1: có');
-            $table->text('descriptions')->nullable();
+            $table->integer('current_job')->default(0)->comment('có là công việc hiện tại: 0: không, 1: có');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
