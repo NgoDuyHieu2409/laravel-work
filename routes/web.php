@@ -37,8 +37,7 @@ Route::post('/user/my-cv', [MyProfileController::class, 'saveProfile'])->name('m
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/{id}/{slug?}', [HomeController::class, 'show'])->name('work.show');
     Route::post('/apply-work', [HomeController::class, 'applyWork'])->name('work.apply');
-
 });

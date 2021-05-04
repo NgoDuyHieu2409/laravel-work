@@ -16,8 +16,7 @@
                                 class="fas fa-arrow-left"></i> Back to Dashboard</a>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save"></i> Save
-                            CV</button>
+                        <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save"></i> Save CV</button>
                     </div>
                 </div>
 
@@ -227,13 +226,19 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row mt-2 mb-3">
+                    <div class="col-sm-12 text-right">
+                        <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save"></i> Save CV</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 
     @push('scripts')
         <script>
-            const COMPANY_PREF = @JSON($user->congact->pref ?? 0);
+            const COMPANY_PREF = @JSON($user->contact->district ?? 0);
         </script>
 
         <script>
@@ -333,12 +338,19 @@
                         },
                         success: function () {
                             toastr.success('Cập nhật hồ sơ thành công.');
-                            setTimeout(function(){
-                                window.location.replace('/user/my-cv');
-                            }, 1000);
+                            // setTimeout(function(){
+                            //     window.location.replace('/user/my-cv');
+                            // }, 1000);
                         }
                     })
                 });
+
+                if(COMPANY_PREF){
+                    $('.city-js').change();
+                    setTimeout(function(){
+                        $('.pref-js').val(COMPANY_PREF).change();
+                    }, 2000);
+                }
             })
         </script>
     @endpush

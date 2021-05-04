@@ -1,8 +1,3 @@
-
-
-
-
-
 <?php $index = !empty($dataIndex) ? $dataIndex : 0; ?>
 
 @if (empty($isAdd))
@@ -15,6 +10,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" name="skills[{{ $key }}][name]"
                                     placeholder="Skill name" value="{{ $skill->name ?? '' }}">
+                                <span class="text-danger skills {{$index}} name-error error-message"></span>
                             </div>
                         </div>
 
@@ -37,6 +33,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control" name="skills[{{ $index }}][name]"
                             placeholder="Skill name" value="">
+                        <span class="text-danger skills {{$index}} name-error error-message"></span>
                     </div>
                 </div>
 

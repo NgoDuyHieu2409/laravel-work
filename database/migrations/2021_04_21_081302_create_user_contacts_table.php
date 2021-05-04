@@ -18,7 +18,7 @@ class CreateUserContactsTable extends Migration
             $table->bigInteger('user_id');
             $table->string('phone')->nullable();
             $table->date('birthday')->nullable();
-            $table->string('job_ttle')->nullable();
+            $table->string('job_title')->nullable();
             $table->integer('sex')->nullable();
             $table->integer('city')->nullable();
             $table->integer('district')->nullable();

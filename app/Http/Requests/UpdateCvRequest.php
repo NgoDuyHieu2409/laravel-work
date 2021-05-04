@@ -24,13 +24,13 @@ class UpdateCvRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required|numberic',
+            'phone' => 'required',
             'birthday' => 'required|date',
-            'job_ttle' => 'required',
+            'job_title' => 'required',
             'city' => 'required',
             'district' => 'required',
             'address' => 'required',
-            
+
             'workHistories' => 'array',
             'workHistories.*' => 'required_if:isWorkHistory,1',
             'workHistories.*.position' => 'required_if:isWorkHistory,1',
@@ -53,7 +53,37 @@ class UpdateCvRequest extends FormRequest
             'certifications' => 'array',
             'certifications.*' => 'required_if:isCertification,1',
             'certifications.*.name' => 'required_if:isCertification,1',
-            'certifications.*institution' => 'required_if:isCertification,1',
+            'certifications.*.institution' => 'required_if:isCertification,1',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'workHistories.*.position' => 'position',
+            'workHistories.*.company' => 'company',
+            'educations.*.subject' => 'subject',
+            'educations.*.school' => 'school',
+            'skills.*.name' => 'name',
+            'languages.*.language_id' => 'language',
+            'languages.*.proficiency' => 'proficiency',
+            'certifications.*.name' => 'name',
+            'certifications.*.institution' => 'institution',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'workHistories.*.position.required_if' => 'The :attributes field is required.',
+            'workHistories.*.company.required_if' => 'The :attributes field is required.',
+            'educations.*.subject.required_if' => 'The :attributes field is required.',
+            'educations.*.school.required_if' => 'The :attributes field is required.',
+            'skills.*.name.required_if' => 'The :attributes field is required.',
+            'languages.*.language_id.required_if' => 'The :attributes field is required.',
+            'languages.*.proficiency.required_if' => 'The :attributes field is required.',
+            'certifications.*.name.required_if' => 'The :attributes field is required.',
+            'certifications.*.institution.required_if' => 'The :attributes field is required.',
         ];
     }
 }

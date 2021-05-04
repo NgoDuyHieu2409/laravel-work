@@ -15,7 +15,7 @@
                                 <option value="{{$k}}" @if ($language->language_id == $k) selected @endif>{{ $item }}</option>
                                 @endforeach
                             </select>
-                            <span class="text-danger language_id-error error-message"></span>
+                            <span class="text-danger languages {{$index}} language_id-error error-message"></span>
                         </div>
                     </div>
 
@@ -47,7 +47,7 @@
                                     <label for="native-{{ $key }}" class="text-success">Native</label>
                                 </div>
                             </div>
-                            <span class="text-danger proficiency-error error-message"></span>
+                            <span class="text-danger languages {{$index}} proficiency-error error-message"></span>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         <option value="{{$k}}">{{ $item }}</option>
                         @endforeach
                     </select>
-                    <span class="text-danger language_id-error error-message"></span>
+                    <span class="text-danger languages {{$index}} language_id-error error-message"></span>
                 </div>
             </div>
 
@@ -100,7 +100,7 @@
                             <label for="native-{{ $index }}" class="text-success">Native</label>
                         </div>
                     </div>
-                    <span class="text-danger proficiency-error error-message"></span>
+                    <span class="text-danger languages {{$index}} proficiency-error error-message"></span>
                 </div>
             </div>
         </div>

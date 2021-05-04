@@ -12,7 +12,8 @@ class Cusstom {
         // this._count_message();
         this._set_up_defaut();
         this._on_change_city();
-        this._select_pref_when_edit();
+        this._btn_like();
+        this._btn_unlike();
     }
 
     _set_up_defaut() {
@@ -49,14 +50,41 @@ class Cusstom {
         });
     }
 
-    _select_pref_when_edit(){
-        if(COMPANY_PREF){
-            $('.city-js').change();
-            setTimeout(function(){
-                $('.pref-js').val(COMPANY_PREF).change();
-            }, 2000);
-        }
-    }
+    _btn_like() {
+        $('.js-btn-like').on('click', function(){
+            // Apply animation once per click
+            var animation = $(this).data('animation');
+            $(this).parents('.save_work').addClass('animated ' + animation).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                $(this).removeClass('animated ' + animation);
+            });
+
+            $(this).css('display', 'none');
+            $(this).parents('.save_work').find('.js-btn-dislike').css('display', 'unset');
+            $(this).find('.input-checker-like').trigger('click');
+        });
+
+        $('.input-checker-like').on('click', function (e) {
+            e.stopPropagation();
+        });
+    };
+
+    _btn_unlike() {
+        $('.js-btn-dislike').on('click', function(){
+            // Apply animation once per click
+            var animation = $(this).data('animation');
+            $(this).parents('.save_work').addClass('animated ' + animation).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                $(this).removeClass('animated ' + animation);
+            });
+
+            $(this).css('display', 'none');
+            $(this).parents('.save_work').find('.js-btn-like').css('display', 'unset');
+            $(this).find('.input-checker-dislike').trigger('click');
+        });
+
+        $('.input-checker-dislike').on('click', function (e) {
+            e.stopPropagation();
+        });
+    };
 
     // _set_up_firebase(){
     //     var firebaseConfig = {

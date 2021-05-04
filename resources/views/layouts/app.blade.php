@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{{ asset('template/css/adminlte.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('template/plugins/summernote/summernote-bs4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('template/plugins/animation/animate.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('template/css/custom.css') }}">
 
@@ -52,11 +53,15 @@
                     </div>
                 </div>
             </div>
+            <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+                <i class="fas fa-chevron-up"></i>
+            </a>
         </div>
         @include("homes.layouts.footer")
 
         @stack('modals')
 
+        @livewireScripts
         @stack('scripts')
         <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script>
         <!-- Bootstrap -->
@@ -66,13 +71,9 @@
         <!-- Select2 -->
         <script src="{{ asset('template/plugins/select2/js/select2.full.min.js')}}"></script>
         <script src="{{ asset('/template/plugins/inputmask/jquery.inputmask.min.js')}}"></script>
-
         <script src="{{ asset('template/dist/js/adminlte.js') }}"></script>
-
         <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
-
         <script src="{{ asset('template/js/jqueryform.min.js') }}"></script>
-
         <script src="{{ asset('js/custom.js') }}"></script>
     </body>
 </html>

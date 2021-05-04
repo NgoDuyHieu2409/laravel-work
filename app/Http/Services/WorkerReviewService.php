@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
-use App\HomeReview;
-use App\Work;
-use App\Worker;
 use Illuminate\Support\Facades\Auth;
-use App\WorkRecord;
-use App\WorkerReview;
-use App\WorkerSkill;
+use App\Models\HomeReview;
+use App\Models\Work;
+use App\Models\User;
+use App\Models\WorkRecord;
+use App\Models\WorkerReview;
+use App\Models\WorkerSkill;
 use Carbon\Carbon;
 
-class ReviewService
+class WorkerReviewService
 {
     protected $favoriteWorkrerService;
 
@@ -23,14 +23,14 @@ class ReviewService
     public function getWokerIdNotReview($work_id)
     {
         $user_id = Auth::id();
-        $woker_all = WorkRecord::where('home_id', $user_id)->where('work_id', $work_id)->pluck('worker_id')->toArray();
+        $woker_all = WorkRecord::where('user_id', $user_id)->where('work_id', $work_id)->pluck('worker_id')->toArray();
         $woker_all = array_unique($woker_all);
 
-        $woker_ids_review = WorkerReview::where('home_id', $user_id)->where('work_id', $work_id)->pluck('worker_id')->toArray();
+        $woker_ids_review = WorkerReview::where('user_id', $user_id)->where('work_id', $work_id)->pluck('worker_id')->toArray();
 
         $woker_ids = array_diff($woker_all, $woker_ids_review);
 
-        $workers = Worker::find($woker_ids);
+        $workers = User::find($woker_ids);
 
         $woker_favorite_ids = $this->favoriteWorkrerService->getAllWorkerId();
 
@@ -62,7 +62,7 @@ class ReviewService
 
             $review->fill([
                 'worker_id' => $id,
-                'home_id'   => Auth::id(),
+                'user_id'   => Auth::id(),
                 'work_id'   => $request->work_id,
                 'good_yn'   => $worker['good_yn'] ?? null,
                 'comment'   => $worker['comment'] ?? null,
@@ -94,7 +94,7 @@ class ReviewService
             $skill->fill([
                 'worker_id' => $worker_id,
                 'skill_id' => $value,
-                'home_id' => Auth::id(),
+                'user_id' => Auth::id(),
                 'work_id' => $work_id,
             ])->save();
         }
@@ -125,7 +125,7 @@ class ReviewService
     public function getAllWorkerId()
     {
         $user_id = Auth::id();
-        $woker_all = WorkRecord::where('home_id', $user_id)->get()->groupBy('work_id');
+        $woker_all = WorkRecord::where('user_id', $user_id)->get()->groupBy('work_id');
 
         $worker_ids = [];
         foreach($woker_all as $work_id => $workers){
@@ -144,7 +144,7 @@ class ReviewService
     public function getWorkerIdReviewed()
     {
         $user_id = Auth::id();
-        $woker_ids_review = WorkerReview::where('home_id', $user_id)->get()->groupBy('work_id');
+        $woker_ids_review = WorkerReview::where('user_id', $user_id)->get()->groupBy('work_id');
 
         $worker_ids = [];
         foreach($woker_ids_review as $work_id => $workers){
@@ -161,14 +161,14 @@ class ReviewService
 
     public function getTotalReviewHomeByWorker()
     {
-        $home_id = Auth::id();
-        $home_review_good_yn1 = HomeReview::where('home_id', $home_id)->whereNotNull('good_yn1')->pluck('good_yn1')->countBy();
+        $user_id = Auth::id();
+        $home_review_good_yn1 = HomeReview::where('user_id', $user_id)->whereNotNull('good_yn1')->pluck('good_yn1')->countBy();
         $home_review_good_yn1 = $this->changeToPercentage($home_review_good_yn1);
 
-        $home_review_good_yn2 = HomeReview::where('home_id', $home_id)->whereNotNull('good_yn2')->pluck('good_yn2')->countBy();
+        $home_review_good_yn2 = HomeReview::where('user_id', $user_id)->whereNotNull('good_yn2')->pluck('good_yn2')->countBy();
         $home_review_good_yn2 = $this->changeToPercentage($home_review_good_yn2);
 
-        $home_review_good_yn3 = HomeReview::where('home_id', $home_id)->whereNotNull('good_yn3')->pluck('good_yn3')->countBy();
+        $home_review_good_yn3 = HomeReview::where('user_id', $user_id)->whereNotNull('good_yn3')->pluck('good_yn3')->countBy();
         $home_review_good_yn3 = $this->changeToPercentage($home_review_good_yn3);
 
 
@@ -195,9 +195,9 @@ class ReviewService
 
     public function getAllComment()
     {
-        $home_id = Auth::id();
-        $comments = HomeReview::select('home_id', 'worker_id', 'work_id', 'comment', 'created_at')
-            ->where('home_id', $home_id)
+        $user_id = Auth::id();
+        $comments = HomeReview::select('user_id', 'worker_id', 'work_id', 'comment', 'created_at')
+            ->where('user_id', $user_id)
             ->with('worker')
             ->get();
 

@@ -9,18 +9,16 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Position<span class="text-red ml-2">*</span></label>
-                            <input type="text" class="form-control" name="workHistories[{{ $key }}][position]"
-                                value="{{ $item->position ?? '' }}">
-                            <span class="text-danger position-error error-message"></span>
+                            <input type="text" class="form-control" name="workHistories[{{ $key }}][position]" value="{{ $item->position ?? '' }}">
+                            <span class="text-danger workHistories {{$index}} position-error error-message"></span>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Company<span class="text-red ml-2">*</span></label>
-                            <input type="text" class="form-control" name="workHistories[{{ $key }}][company]"
-                                value="{{ $item->company ?? '' }}">
-                            <span class="text-danger company-error error-message"></span>
+                            <input type="text" class="form-control" name="workHistories[{{ $key }}][company]" value="{{ $item->company ?? '' }}">
+                            <span class="text-danger workHistories {{$index}} company-error error-message"></span>
                         </div>
                     </div>
                 </div>
@@ -61,7 +59,7 @@
                             <label>Descriptions</label>
                             <textarea name=" workHistories[{{$key}}][description]" id="description" class="form-control summernote_edit" 
                                 cols="30" rows="10">
-                                {{ $item->descriptions ?? '' }}
+                                {{ $item->description ?? '' }}
                             </textarea>
                         </div>
                     </div>
@@ -86,7 +84,7 @@
                 <div class="form-group">
                     <label>Company<span class="text-red ml-2">*</span></label>
                     <input type="text" class="form-control" name="workHistories[{{ $index }}][company]" value="">
-                    <span class="text-danger company-error error-message"></span>
+                    <span class="text-danger workHistories {{$index}} company-error error-message"></span>
                 </div>
             </div>
         </div>

@@ -54,8 +54,8 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label>Job Title<span class="text-red ml-2">*</span></label>
-            <input type="text" class="form-control" value="{{ $user->contact->job_ttle ?? '' }}" name="job_ttle">
-            <span class="text-danger job_ttle-error error-message"></span>
+            <input type="text" class="form-control" value="{{ $user->contact->job_title ?? '' }}" name="job_title">
+            <span class="text-danger job_title-error error-message"></span>
         </div>
     </div>
 </div>

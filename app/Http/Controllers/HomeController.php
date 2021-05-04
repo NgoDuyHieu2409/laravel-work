@@ -40,10 +40,14 @@ class HomeController extends Controller
         //             break;
         //     }
         // }
-        $works = Work::whereIn('status', [1, 2, 3])->get();
+        $works = Work::whereIn('status', [1, 2, 3])->orderBy('id', 'desc')->paginate(2);
         foreach ($works as $key => $work) {
             $work->work_type =  $work->occupation_id ? $this->getValueItemToArray(setting('admin.occupations'), $work->occupation_id) : null;
         }
+
+        $workTags = $this->getItemStringToArray(setting('admin.tags'));
+        $workSkills = $this->getItemStringToArray(setting('admin.skills'));
+
 
         // filter by recruitment_start_at
         // if ($request->worktime_start_at) {
@@ -82,7 +86,7 @@ class HomeController extends Controller
         // if ($request->base_wage) {
         //     $query->where('base_wage', '>=', $request->base_wage);
         // }
-        return view('homes.works.index')->with(compact('works'));
+        return view('homes.works.index')->with(compact('works', 'workTags', 'workSkills'));
     }
 
     /**
@@ -95,13 +99,15 @@ class HomeController extends Controller
     {
         $work = Work::findOrFail($id);
         $qualification_id = $work->work_qualifications->pluck('qualification_id')->toArray();
-        $skills_id = $work->work_skills->pluck('skill_id')->toArray();
+        $skill_ids = $work->work_skills->pluck('skill_id')->toArray();
+        $tag_ids = $work->work_tags->pluck('tag_id')->toArray();
 
         $work->work_type =  $work->occupation_id ? $this->getValueItemToArray(setting('admin.occupations'), $work->occupation_id) : null;
         $work->category_name =  $work->category_id ? $this->getValueItemToArray(setting('admin.categories'), $work->category_id) : null;
         $work->qualification_name =  $this->getItemToArray($this->getItemStringToArray(setting('admin.qualifications')), $qualification_id);
-        $work->skills =  explode( ', ', $this->getItemToArray($this->getItemStringToArray(setting('admin.skills')), $skills_id));
-        
+        $work->skills =  explode( ', ', $this->getItemToArray($this->getItemStringToArray(setting('admin.skills')), $skill_ids));
+        $work->tags =  $this->getItemToArray($this->getItemStringToArray(setting('admin.tags')), $tag_ids);
+
         return view('homes.works.show')->with(compact('work'));
     }
 
