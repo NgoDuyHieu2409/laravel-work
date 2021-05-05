@@ -243,6 +243,9 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
+                // editer
+                $('.summernote_edit').summernote();
+
                 $('.btn_add_item').on('click', function() {
                     var itemId = $(this).data('id');
                     switch (itemId) {

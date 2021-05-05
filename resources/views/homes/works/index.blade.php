@@ -19,7 +19,9 @@
                 <div class="row">
                     <div class="col-12 col-sm-12">
                         <div class="info-box">
-                            <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+                            <span class="info-box-icon border-r-2 border-red-500 pl-2 pr-2" style="width: 15%;">
+                                <img src="{{ Storage::url($work->company->logo)}}" alt="Logo Company">
+                            </span>
                             <div class="info-box-content">
                                 <div class="row ml-1 mb-2">
                                     <div class="col-12 col-sm-9">

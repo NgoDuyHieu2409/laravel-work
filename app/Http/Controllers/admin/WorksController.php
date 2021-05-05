@@ -599,8 +599,10 @@ class WorksController extends VoyagerBaseController
             }
         }
 
-        $data->user_id = Auth::id();
-        $data->status = $this->workService->setStatusApplication($data); 
+        $user = Auth::user();
+        $data->user_id = $user->id;
+        $data->company_id = $user->company_id;
+        $data->status = $this->workService->setStatusApplication($data);
 
         $data->save();
 

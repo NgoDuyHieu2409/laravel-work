@@ -1,10 +1,12 @@
 <?php
 
-namespace TCG\Voyager\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\Http\Controllers\VoyagerBaseController;
+use App\Models\Company;
 
 class VoyagerUserController extends VoyagerBaseController
 {

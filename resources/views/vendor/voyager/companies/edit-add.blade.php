@@ -215,13 +215,6 @@
 
     <script>
         const COMPANY_PREF = @JSON($dataTypeContent['pref']);
-
-        if(COMPANY_PREF){
-            $('.city-js').change();
-            setTimeout(function(){
-                $('.pref-js').val(COMPANY_PREF).change();
-            }, 2000);
-        }
     </script>
 
     <script>

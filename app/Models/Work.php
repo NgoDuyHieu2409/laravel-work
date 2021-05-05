@@ -101,6 +101,11 @@ class Work extends Model
         return $this->hasMany(\App\Models\FavoriteWork::class);
     }
 
+    public function company()
+    {
+        return $this->belongsTo(\App\Models\company::class);
+    }
+
     /**
      * FUNCTIONS
      */
