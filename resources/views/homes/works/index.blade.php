@@ -1,16 +1,58 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <form class="form-inline mr-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+    <x-slot name="header">
+        <form class="" method="post" action="">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group mb-0">
+                            <input type="search" class="form-control" placeholder="Tên công việc hoặc vị trí muốn ứng tuyển..." value="Develop">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group mb-0">
+                            <select class="select-search" style="width: 100%;">
+                                <option value="">Tất cả địa điểm</option>
+                                <option value="1">ASC</option>
+                                <option value="2">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group mb-0">
+                            <select class="select-search" style="width: 100%;">
+                                <option value="">Tất cả ngành nghề</option>
+                                <option value="1">ASC</option>
+                                <option value="2">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-success" style="width: 100%;">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+    
+                {{-- Tìm kiếm nâng cao --}}
+                <div class="col-xs-12">
+                    <div class="text-right" id="show_advanced" style="color: #fff; padding-top: 10px;font-size: 13px">
+                        <span id="btn-clear-filter" style="">
+                            <i class="fa fa-times"></i>&nbsp;Xóa tìm kiếm nâng cao
+                            &nbsp; &#124; &nbsp;
+                        </span>
+
+                        <span id="btn-show-advanced-search">
+                            <i class="fa fa-angle-down"></i>&nbsp;Chọn tìm kiếm nâng cao
+                        </span>
+                        <span id="btn-hidden-advanced-search" style="">
+                            &nbsp; &#124; &nbsp;
+                            <i class="fa fa-angle-up"></i>&nbsp;Ẩn tìm kiếm nâng cao
+                        </span>
+                    </div>
                 </div>
             </div>
         </form>
-    </x-slot> --}}
+    </x-slot>
 
     <div class="container">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -25,7 +67,7 @@
                             <div class="info-box-content">
                                 <div class="row ml-1 mb-2">
                                     <div class="col-12 col-sm-9">
-                                        <span class="info-box-text test-left">
+                                        <span class="info-box-text text-left text-uppercase text-bold">
                                             <a href="{{ route('work.show', ['id' => $work->id]) }}">{{ $work->title }}</a>
                                         </span>
                                     </div>
@@ -52,22 +94,33 @@
                                 <div class="row col-12">
                                     <span class="info-box-number">
                                         <ul class="ml-2 mb-0 fa-ul">
-                                            <li class="small">
-                                                <i class="fas fa-lg fa-building"></i>
-                                                Tên công ty
-                                            </li>
-                                            <li class="small">
-                                                <i class="fas fa-map-marker-alt"></i>
-                                                {{ $work->address}}
-                                            </li>
-                                            <li class="small">
-                                                <i class="fas fa-lg fa-user"></i>
-                                                {{ $work->contact_name}}
-                                            </li>
-                                            <li class="small">
-                                                <i class="fas fa-lg fa-phone"></i>
-                                                {{ $work->contact_tel}}
-                                            </li>
+                                            @if ($work->company->name)
+                                                <li class="small">
+                                                    <i class="fas fa-lg fa-building"></i>
+                                                    {{ $work->company->name}}
+                                                </li>
+                                            @endif
+
+                                            @if ($work->address)
+                                                <li class="small">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                    {{ $work->address}}
+                                                </li>
+                                            @endif
+
+                                            @if ($work->contact_name)
+                                                <li class="small">
+                                                    <i class="fas fa-lg fa-user"></i>
+                                                    {{ $work->contact_name}}
+                                                </li>
+                                            @endif
+
+                                            @if ($work->contact_tel)
+                                                <li class="small">
+                                                    <i class="fas fa-lg fa-phone"></i>
+                                                    {{ $work->contact_tel}}
+                                                </li>
+                                            @endif
                                         </ul>
                                     </span>
                                 </div>

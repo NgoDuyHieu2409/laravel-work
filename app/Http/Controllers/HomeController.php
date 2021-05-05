@@ -40,7 +40,7 @@ class HomeController extends Controller
         //             break;
         //     }
         // }
-        $works = Work::whereIn('status', [1, 2, 3])->orderBy('id', 'desc')->paginate(2);
+        $works = Work::whereIn('status', [1, 2, 3])->orderBy('id', 'desc')->paginate(10);
         foreach ($works as $key => $work) {
             $work->work_type =  $work->occupation_id ? $this->getValueItemToArray(setting('admin.occupations'), $work->occupation_id) : null;
         }

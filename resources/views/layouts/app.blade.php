@@ -35,10 +35,10 @@
 
             <!-- Page Heading -->
             <div class="content-wrapper">
-                <div class="content-header">
-                    <div class="container-fluid">
+                <div class="content-header p-0 mb-3">
+                    <div class="container-fluid pl-0 pr-0">
                         @if (isset($header))
-                            <header class="bg-white shadow">
+                            <header class="bg-cyan shadow">
                                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                                     {{ $header }}
                                 </div>
