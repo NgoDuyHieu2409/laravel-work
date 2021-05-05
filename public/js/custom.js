@@ -12,6 +12,7 @@ class Cusstom {
         // this._count_message();
         this._set_up_defaut();
         this._on_change_city();
+        this._select_pref_when_edit();
         this._btn_like();
         this._btn_unlike();
     }
@@ -48,6 +49,15 @@ class Cusstom {
                 }
              });
         });
+    }
+
+    _select_pref_when_edit(){
+        if(typeof(COMPANY_PREF) != "undefined" && COMPANY_PREF !== null){
+            $('.city-js').change();
+            setTimeout(function(){
+                $('.pref-js').val(COMPANY_PREF).change();
+            }, 2000);
+        }
     }
 
     _btn_like() {

@@ -17,7 +17,7 @@ class CreateUserLanguagesTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('language_id');
-            $table->integer(2, 'proficiency');
+            $table->tinyInteger('proficiency');
             $table->timestamps();
         });
     }

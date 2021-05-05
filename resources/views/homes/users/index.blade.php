@@ -344,13 +344,6 @@
                         }
                     })
                 });
-
-                if(COMPANY_PREF){
-                    $('.city-js').change();
-                    setTimeout(function(){
-                        $('.pref-js').val(COMPANY_PREF).change();
-                    }, 2000);
-                }
             })
         </script>
     @endpush

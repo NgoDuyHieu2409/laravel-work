@@ -129,7 +129,7 @@ class MyProfileController extends Controller
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollback();
-            return false;
+            return response()->json($th, 400);
         }
     }
 }

@@ -84,11 +84,11 @@
                                     @auth
                                     <div class="col-12 col-sm-3">
                                         <span class="info-box-text test-left save_work">
-                                            <span class="js-btn-like float-right text-warning text-3xl animation" data-animation="pulse">
+                                            <span class="js-btn-like float-right text-warning text-3xl animation" data-animation="pulse" style="cursor: pointer;">
                                                 <i class="far fa-heart"></i>
                                             </span>
 
-                                            <span class="js-btn-dislike float-right text-warning text-3xl animation" data-animation="pulse" style="display: none;">
+                                            <span class="js-btn-dislike float-right text-warning text-3xl animation" data-animation="pulse" style="cursor: pointer;display: none;">
                                                 <i class="fas fa-heart"></i>
                                             </span>
                                         </span>
