@@ -15,6 +15,7 @@ use App\Models\UserWorkHistory;
 use App\Models\UserSkill;
 use App\Models\UserLanguage;
 use App\Models\UserCertification;
+use App\Models\UserWorkTotal;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -94,5 +95,10 @@ class User extends \TCG\Voyager\Models\User
     public function certifications()
     {
         return $this->hasMany(UserCertification::class);
+    }
+
+    public function work()
+    {
+        return $this->hasOne(UserWorkTotal::class);
     }
 }

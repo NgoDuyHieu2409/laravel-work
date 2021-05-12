@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Timecard;
+use App\Models\Timecard;
+use App\Models\Work;
+use App\Models\User;
 
 class WorkRecord extends Model
 {
@@ -55,40 +57,41 @@ class WorkRecord extends Model
 
     public function work()
     {
-        return $this->belongsTo(\App\Work::class, 'work_id', 'id');
+        return $this->belongsTo(Work::class, 'work_id', 'id');
     }
 
     public function home()
     {
-        return $this->belongsTo(\App\Home::class, 'home_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }    
 
     public function worker()
     {
-        return $this->belongsTo(\App\Worker::class, 'worker_id', 'id');
+        return $this->belongsTo(User::class, 'worker_id', 'id');
     }
 
-    public function checkin() {
-
-	$checkin = '00:00';
-	$timecard =  Timecard::where('work_id', $this->work_id)->where('worker_id', $this->worker_id)->first();
-	if($timecard) {
-	    $checkin =  $timecard->checkin_at;
-	}
-	return $checkin;
-    }
-    public function checkout() {
-
-	$checkout = '00:00';
-	$timecard =  Timecard::where('work_id', $this->work_id)->where('worker_id', $this->worker_id)->first();
-	if($timecard) {
-	    $checkout =  $timecard->checkout_at;
-	}
-	return $checkout;
-    }
-    public function total_worktime() {
-	return $this->base_worktime + $this->overtime_worktime + $this->nighttime_worktime;
+    public function checkin()
+    {
+        $checkin = '00:00';
+        $timecard =  Timecard::where('work_id', $this->work_id)->where('worker_id', $this->worker_id)->first();
+        if($timecard) {
+            $checkin =  $timecard->checkin_at;
+        }
+        return $checkin;
     }
 
+    public function checkout()
+    {
+        $checkout = '00:00';
+        $timecard =  Timecard::where('work_id', $this->work_id)->where('worker_id', $this->worker_id)->first();
+        if($timecard) {
+            $checkout =  $timecard->checkout_at;
+        }
+        return $checkout;
+    }
 
+    public function total_worktime() 
+    {
+	    return $this->base_worktime + $this->overtime_worktime + $this->nighttime_worktime;
+    }
 }

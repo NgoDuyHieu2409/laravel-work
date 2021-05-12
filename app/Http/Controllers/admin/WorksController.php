@@ -416,19 +416,8 @@ class WorksController extends VoyagerBaseController
         ]);
     }
 
-    public function copy(Request $request, $copy = true)
-    {
-        $work = $this->workService->getDetail($request->work_id);
-        $tag_ids = $this->workService->getTagIds($work->id);
-        $qualification_ids = $this->workService->getQualificationIds($work->id);
-        $skill_ids = $this->workService->getSkillIds($work->id);
-
-        return view('home.works.create')->with(compact('work', 'tag_ids', 'qualification_ids', 'skill_ids', 'copy'));
-    }
-
     public function workValidation($errors, $request)
     {
-
         $date_now = Carbon::parse();
         $resttime_start_at = $request->resttime_start_at ? Carbon::parse($request->resttime_start_at) : '';
         $resttime_end_at = $request->resttime_end_at ? Carbon::parse($request->resttime_end_at) : '';

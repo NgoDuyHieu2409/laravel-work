@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 use App\Models\WorkApplication;
+use App\Traits\FullTextSearch;
 
 class Work extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use FullTextSearch;
 
     protected $table = 'works';
     
@@ -54,6 +56,11 @@ class Work extends Model
         // 'working_conditions_pdf_url',
         // 'canceled_at',
         // 'pref',
+    ];
+
+    protected $searchable = [
+        'title',
+        'content',
     ];
 
     public function work_photos()
@@ -128,5 +135,13 @@ class Work extends Model
     public function getWorkTypeText()
     {
         return Config("const.employments.{$this->work_type}");
+    }
+
+    public static function getOutstanding()
+    {
+        return Work::orderBy('hourly_wage', 'desc')
+        ->offset(0)
+        ->limit(5)
+        ->get(); 
     }
 }
