@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyProfileController;
-use App\Http\Controllers\WorksController;
+use App\Http\Controllers\Admin\WorksController;
+use App\Http\Controllers\Admin\WorkerReviewController;
+use App\Http\Controllers\Admin\FavoriteWorkersController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\Controller;
 
@@ -24,8 +26,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     // Work
     Route::post('/work/remove-files', [WorksController::class, 'removeFiles'])->name('work.remove.file');
-
+    
     // City And District
+    Route::get('/worker-reviews/detail/{work_id}', [WorkerReviewController::class, 'detail'])->name('worker-reviews.detail');
+    Route::post('/favorite-worker/add-favorite', [FavoriteWorkersController::class, 'addFavorite'])->name('favorite.add');
 });
 // End admin
 

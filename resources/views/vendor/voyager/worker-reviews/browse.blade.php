@@ -12,7 +12,8 @@
                     <h5 class="panel-title">Danh sách chưa đánh giá</h5>
                 </div>
                 <div class="panel-body">
-                    <p class="mb-2 font-weight-600">Lựa chọn và đánh giá các công việc mà việc đánh giá công nhân chưa được hoàn thành.</p>
+                    <p class="mb-2 font-weight-600">Lựa chọn và đánh giá các công việc mà việc đánh giá công nhân chưa
+                        được hoàn thành.</p>
                     <table class="table table-hover mb-3 border-bottom w-100 js-works-table">
                         <thead>
                             <tr>
@@ -21,22 +22,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($works as $work)
+                            @if($works->count())
+                                @foreach ($works as $work)
+                                <tr>
+                                    <td>
+                                        @php
+                                        $recruitment_start_at =
+                                        \Carbon\Carbon::parse($work->recruitment_start_at)->locale('ja');
+                                        $recruitment_start_at = $recruitment_start_at->isoFormat('LL (dddd)');
+                                        @endphp
+
+                                        {{ $recruitment_start_at }}
+                                    </td>
+                                    <td><a
+                                            href="{{ route('worker-reviews.detail',['work_id' => $work->id]) }}">{{ $work->title }}</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @else
                             <tr>
-                                <td>
-                                    @php
-                                    $recruitment_start_at = \Carbon\Carbon::parse($work->recruitment_start_at)->locale('ja');
-                                    $recruitment_start_at = $recruitment_start_at->isoFormat('LL (dddd)');
-                                    @endphp
-
-                                    {{ $recruitment_start_at }}
-                                </td>
-                                <td><a
-                                        href="{{ route('home.reviews.detail',['work_id' => $work->id]) }}">{{ $work->title }}</a>
-                                </td>
+                                <td colspan="2" class="text-center">Không có dữ liệu cần đánh giá.</td>
                             </tr>
-                            @endforeach
-
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -58,28 +65,29 @@
                             </thead>
                             <tbody>
                                 @foreach ($worker_reviews as $key => $worker_review)
-                                @php
-                                switch ($key) {
-                                case 'good_yn1':
-                                $good_name = '勤務時間は予定通りでしたか？';
-                                break;
-                                case 'good_yn2':
-                                $good_name = '掲載されていた業務内容通りでしたか？';
-                                break;
-                                case 'good_yn3':
-                                $good_name = 'またここで働きたいですか？';
-                                break;
-                                default:
-                                break;
-                                }
-                                @endphp
-                                <tr>
-                                    <td>{{ $good_name ?? '' }}</td>
-                                    <td>{{ $worker_review['y_crit'] ?? 0 }}&#37;</td>
-                                    <td><i class="icon-thumbs-up2"></i> {{ $worker_review['y'] ?? 0 }}
-                                        <i class="icon-thumbs-down2"></i> {{ $worker_review['n'] ?? 0 }}
-                                    </td>
-                                </tr>
+                                    @php
+                                    switch ($key) {
+                                        case 'good_yn1':
+                                            $good_name = 'Giờ làm việc của bạn có đáp ứng lịch trình của bạn không?';
+                                            break;
+                                        case 'good_yn2':
+                                            $good_name = 'Bạn có làm theo mô tả doanh nghiệp được đăng không?';
+                                            break;
+                                        case 'good_yn3':
+                                            $good_name = 'Bạn có muốn làm việc ở đây một lần nữa không?';
+                                            break;
+                                        default:
+                                        break;
+                                    }
+                                    @endphp
+                                    <tr>
+                                        <td>{{ $good_name ?? '' }}</td>
+                                        <td>{{ $worker_review['y_crit'] ?? 0 }}&#37;</td>
+                                        <td>
+                                            <i class="icon-thumbs-up2"></i> {{ $worker_review['y'] ?? 0 }}
+                                            <i class="icon-thumbs-down2"></i> {{ $worker_review['n'] ?? 0 }}
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -89,7 +97,7 @@
 
             <div class="panel panel-bordered">
                 <div class="panel-header header-elements-inline">
-                    <h5 class="panel-title">あなたの企業・店舗へのコメント一覧</h5>
+                    <h5 class="panel-title">Danh sách nhận xét cho công ty / cửa hàng của bạn</h5>
                 </div>
                 <div class="panel-body">
                     @foreach ($worker_comment as $item)
@@ -129,14 +137,14 @@
 @stop
 
 @section('css')
-    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-    <link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
-    @endif
+@if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
+<link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
+@endif
 @stop
 
 @section('javascript')
-    <!-- DataTables -->
-    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-    <script src="{{ voyager_asset('lib/js/dataTables.responsive.min.js') }}"></script>
-    @endif
+<!-- DataTables -->
+@if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
+<script src="{{ voyager_asset('lib/js/dataTables.responsive.min.js') }}"></script>
+@endif
 @stop

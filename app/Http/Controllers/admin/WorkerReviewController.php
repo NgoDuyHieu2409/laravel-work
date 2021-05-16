@@ -6,18 +6,14 @@ use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use App\Http\Services\WorkerReviewService;
 use App\Traits\AppUtility;
-use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use TCG\Voyager\Database\Schema\SchemaManager;
 use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Events\BreadDataAdded;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use TCG\Voyager\Events\BreadDataUpdated;
 
 class WorkerReviewController extends VoyagerBaseController
 {
+    use AppUtility;    
+
     protected $reviewService;
 
     public function __construct(WorkerReviewService $reviewService)
@@ -51,27 +47,44 @@ class WorkerReviewController extends VoyagerBaseController
     }
     
 
-    public function detail($work_id)
+    public function detail(Request $request, $work_id)
     {
+        $dataType = Voyager::model('DataType')->where('slug', '=', 'worker-reviews')->first();
+
         $workers = $this->reviewService->getWokerIdNotReview($work_id);
-        return view('home.reviews.detail')->with(compact('workers', 'work_id'));
+
+        $data = [
+            'skills' => $this->getItemStringToArray(setting('admin.skills')),
+        ];
+
+        return Voyager::view('voyager::worker-reviews.detail')->with(compact('workers', 'work_id', 'dataType', 'data'));
     }
 
     public function store(Request $request)
     {
+        $slug = $this->getSlug($request);
+
+        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
         try {
             DB::beginTransaction();
             $review = $this->reviewService->createReview($request);
             if($review){
                 DB::commit();
-                return redirect()->route('home.reviews.index')->with('flash_message', '評価が完了しました。');
+                return redirect()->route('voyager.worker-reviews.index')->with([
+                    'message'    => __('voyager::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+                    'alert-type' => 'success',
+                ]);
             }
             else{
                 DB::rollBack();
-                return redirect()->back()->withInput()->with('error_message', '全員を評価してください。');
+                return redirect()->back()->withInput()->with([
+                    'message'    => "Please rate everyone.",
+                    'alert-type' => 'error',
+                ]);
             }
 
         } catch (\Exception $e) {
+            dd($e);
             DB::rollBack();
             return abort('500', $e->getMessage());
         }

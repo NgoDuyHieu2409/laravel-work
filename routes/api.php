@@ -29,45 +29,45 @@ Route::group([
     //     'middleware' => ['auth.firebase', 'auto-register']
     // ], function () {
         // register
-        Route::post('/regist', 'Api\RegistController@store');
+        // Route::post('/regist', 'Api\RegistController@store');
 
-        // get list rooms user can chat
-        Route::get('/chat-rooms', 'Api\ChatController@listRoomsCanChat');
+        // // get list rooms user can chat
+        // Route::get('/chat-rooms', 'Api\ChatController@listRoomsCanChat');
 
-        // Apply Job
-        Route::post('/apply-work', 'Api\ApplyWorkController@applyWork');
+        // // Apply Job
+        // Route::post('/apply-work', 'Api\ApplyWorkController@applyWork');
 
-        //past_work_list
-        Route::apiResource('/past_work_list', 'Api\PastWorkListController')->only([
-            'index',
-        ]);
+        // //past_work_list
+        // Route::apiResource('/past_work_list', 'Api\PastWorkListController')->only([
+        //     'index',
+        // ]);
 
-        //total_wage
-        Route::apiResource('/total_wage', 'Api\TotalWageController')->only([
-            'index',
-        ]);
+        // //total_wage
+        // Route::apiResource('/total_wage', 'Api\TotalWageController')->only([
+        //     'index',
+        // ]);
 
-        //profile
-        Route::apiResource('/profile', 'Api\ProfileController')->only([
-            'index',
-        ]);
+        // //profile
+        // Route::apiResource('/profile', 'Api\ProfileController')->only([
+        //     'index',
+        // ]);
 
-        //assigned_works
-        Route::apiResource('/assigned_works', 'Api\AssignedWorksController')->only([
-            'index',
-        ]);
+        // //assigned_works
+        // Route::apiResource('/assigned_works', 'Api\AssignedWorksController')->only([
+        //     'index',
+        // ]);
 
-        //modifiable_works
-        Route::apiResource('/modifiable_works', 'Api\ModifiableWorksController')->only([
-            'index',
-        ]);
+        // //modifiable_works
+        // Route::apiResource('/modifiable_works', 'Api\ModifiableWorksController')->only([
+        //     'index',
+        // ]);
 
-        //modify_requests
-        Route::apiResource('/modify_requests', 'Api\ModifyRequestController')->only([
-            'index', 'store'
-        ]);
-        // Get preview modify request
-        Route::get('/modify_requests/preview', 'Api\ModifyRequestController@getPreview');
+        // //modify_requests
+        // Route::apiResource('/modify_requests', 'Api\ModifyRequestController')->only([
+        //     'index', 'store'
+        // ]);
+        // // Get preview modify request
+        // Route::get('/modify_requests/preview', 'Api\ModifyRequestController@getPreview');
 
 
         //checkout
@@ -80,117 +80,117 @@ Route::group([
             'index',
         ]);
 
-        //checkout_works
-        Route::apiResource('/checkout_works', 'Api\CheckoutWorksController')->only([
-            'index',
-        ]);
+    //     //checkout_works
+    //     Route::apiResource('/checkout_works', 'Api\CheckoutWorksController')->only([
+    //         'index',
+    //     ]);
 
-        //checkin_works
-        Route::apiResource('/checkin_works', 'Api\CheckinWorksController')->only([
-            'index',
-        ]);
+    //     //checkin_works
+    //     Route::apiResource('/checkin_works', 'Api\CheckinWorksController')->only([
+    //         'index',
+    //     ]);
 
-        //favorite_works
-        Route::apiResource('/favorite_works', 'Api\FavoriteWorksController')->only([
-            'index',
-        ]);
+    //     //favorite_works
+    //     Route::apiResource('/favorite_works', 'Api\FavoriteWorksController')->only([
+    //         'index',
+    //     ]);
 
-        //identification
-        Route::post('/worker/identification', 'Api\WorkerController@postIdentification');
+    //     //identification
+    //     Route::post('/worker/identification', 'Api\WorkerController@postIdentification');
 
-        //worker regist
-        Route::apiResource('/worker', 'Api\WorkerController')->except([
-            'create', 'index', 'destroy'
-        ]);
-        // Confirm work
-        Route::post('/confirm-work', 'Api\ConfirmWorkController@confirm');
+    //     //worker regist
+    //     Route::apiResource('/worker', 'Api\WorkerController')->except([
+    //         'create', 'index', 'destroy'
+    //     ]);
+    //     // Confirm work
+    //     Route::post('/confirm-work', 'Api\ConfirmWorkController@confirm');
 
-        // Cancel work
-        Route::post('/cancel-work', 'Api\CancelWorkController@cancel');
+    //     // Cancel work
+    //     Route::post('/cancel-work', 'Api\CancelWorkController@cancel');
 
-        //Upload avatar
-        Route::post('/upload-avatar', 'Api\ProfileController@uploadAvatar');
+    //     //Upload avatar
+    //     Route::post('/upload-avatar', 'Api\ProfileController@uploadAvatar');
 
-        //Check WorkerIdentification
-        Route::get('/check-identification', 'Api\WorkerController@checkIdentification');
+    //     //Check WorkerIdentification
+    //     Route::get('/check-identification', 'Api\WorkerController@checkIdentification');
 
-        //list job admin approved - worker can confirm to work
-        Route::get('/works/approved', 'Api\AssignedWorksController@getWorksAdminApproved');
-        // view checkin info
-        Route::get('/view_checkin_info', 'Api\ViewCheckController@viewCheckinInfo');
+    //     //list job admin approved - worker can confirm to work
+    //     Route::get('/works/approved', 'Api\AssignedWorksController@getWorksAdminApproved');
+    //     // view checkin info
+    //     Route::get('/view_checkin_info', 'Api\ViewCheckController@viewCheckinInfo');
 
-        //Reviews
-        Route::apiResource('/reviews', 'Api\WorksReviewController')->only([
-            'index', 'show', 'store'
-        ]);
-        // view checkin info
-        Route::get('/view_checkin_info', 'Api\ViewCheckController@viewCheckinInfo');
+    //     //Reviews
+    //     Route::apiResource('/reviews', 'Api\WorksReviewController')->only([
+    //         'index', 'show', 'store'
+    //     ]);
+    //     // view checkin info
+    //     Route::get('/view_checkin_info', 'Api\ViewCheckController@viewCheckinInfo');
 
-        // view checkout info
-        Route::get('/view_checkout_info', 'Api\ViewCheckController@viewCheckoutInfo');
+    //     // view checkout info
+    //     Route::get('/view_checkout_info', 'Api\ViewCheckController@viewCheckoutInfo');
 
-        //FavoriteWork
-        Route::apiResource('/favorite-works', 'Api\FavoriteWorkController')->only([
-            'index','store'
-        ]);
-        Route::post('/favorite-works/delete', 'Api\FavoriteWorkController@destroy');
-        // Past Work By Month
-        Route::apiResource('/past_work_by_month', 'Api\PastWorkByMonthController');
+    //     //FavoriteWork
+    //     Route::apiResource('/favorite-works', 'Api\FavoriteWorkController')->only([
+    //         'index','store'
+    //     ]);
+    //     Route::post('/favorite-works/delete', 'Api\FavoriteWorkController@destroy');
+    //     // Past Work By Month
+    //     Route::apiResource('/past_work_by_month', 'Api\PastWorkByMonthController');
 
-        // Past Work Detail
-        Route::apiResource('/past_work_detail', 'Api\PastWorkDetailController');
+    //     // Past Work Detail
+    //     Route::apiResource('/past_work_detail', 'Api\PastWorkDetailController');
 
-        // View Bank Info
-        Route::apiResource('/view_bank_info', 'Api\ViewBankInfoController');
+    //     // View Bank Info
+    //     Route::apiResource('/view_bank_info', 'Api\ViewBankInfoController');
 
-        // Edit Bank Account
-        Route::post('/edit_bank_account', 'Api\EditBankAccountController@update');
+    //     // Edit Bank Account
+    //     Route::post('/edit_bank_account', 'Api\EditBankAccountController@update');
 
-        //worker qualification
-        Route::apiResource('/worker-qualifications', 'Api\WorkerQualificationController')->only([
-            'index','store'
-        ]);
+    //     //worker qualification
+    //     Route::apiResource('/worker-qualifications', 'Api\WorkerQualificationController')->only([
+    //         'index','store'
+    //     ]);
 
-        //Skills
-        Route::apiResource('/skills', 'Api\SkillsController');
+    //     //Skills
+    //     Route::apiResource('/skills', 'Api\SkillsController');
 
-        // worker_reviews
-        Route::apiResource('/worker_reviews', 'Api\WorkerReviewsController');
+    //     // worker_reviews
+    //     Route::apiResource('/worker_reviews', 'Api\WorkerReviewsController');
 
-        // get_option_bank_info
-        Route::apiResource('/get_option_bank_info', 'Api\GetOptionBankInfoController');
-        //get_branch_name
-        Route::get('/get_branch_name', 'Api\GetOptionBankInfoController@getBranchName');
-        // get_option_bank_info
-        Route::apiResource('/turn_off_app', 'Api\TurnOffAppController');
-    // });
+    //     // get_option_bank_info
+    //     Route::apiResource('/get_option_bank_info', 'Api\GetOptionBankInfoController');
+    //     //get_branch_name
+    //     Route::get('/get_branch_name', 'Api\GetOptionBankInfoController@getBranchName');
+    //     // get_option_bank_info
+    //     Route::apiResource('/turn_off_app', 'Api\TurnOffAppController');
+    // // });
 
-    Route::apiResource('/test', 'Api\TestController');
-
-
-    //news
-    Route::apiResource('/news', 'Api\NewsController')->only([
-        'index',
-    ]);
-
-    //works
-    Route::get('/prefectures', 'Api\PrefectureController@index');
-    Route::get('/works/sorts', 'Api\WorksController@getListSort');
-
-    Route::apiResource('/works', 'Api\WorksController')->only([
-        'index', 'show'
-    ]);
+    // Route::apiResource('/test', 'Api\TestController');
 
 
-    // get skills by work id
-    Route::get('/works/{id}/skills', 'Api\WorksController@getSkillsByWorkId');
+    // //news
+    // Route::apiResource('/news', 'Api\NewsController')->only([
+    //     'index',
+    // ]);
 
-    //policy
-    Route::get('/policy', 'Api\PolicyController@getPolicy');
+    // //works
+    // Route::get('/prefectures', 'Api\PrefectureController@index');
+    // Route::get('/works/sorts', 'Api\WorksController@getListSort');
 
-    //worker qualification
-    Route::get('/qualification/types', 'Api\WorkerQualificationController@get_types');
+    // Route::apiResource('/works', 'Api\WorksController')->only([
+    //     'index', 'show'
+    // ]);
 
-    // Route::get('/get-token', 'Api\TestTokenController@index');
+
+    // // get skills by work id
+    // Route::get('/works/{id}/skills', 'Api\WorksController@getSkillsByWorkId');
+
+    // //policy
+    // Route::get('/policy', 'Api\PolicyController@getPolicy');
+
+    // //worker qualification
+    // Route::get('/qualification/types', 'Api\WorkerQualificationController@get_types');
+
+    // // Route::get('/get-token', 'Api\TestTokenController@index');
 
 });
