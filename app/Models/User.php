@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -14,6 +15,7 @@ use App\Models\UserWorkHistory;
 use App\Models\UserSkill;
 use App\Models\UserLanguage;
 use App\Models\UserCertification;
+use App\Models\UserWorkTotal;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -32,6 +34,7 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
+        'company_id',
     ];
 
     /**
@@ -92,5 +95,10 @@ class User extends \TCG\Voyager\Models\User
     public function certifications()
     {
         return $this->hasMany(UserCertification::class);
+    }
+
+    public function work()
+    {
+        return $this->hasOne(UserWorkTotal::class);
     }
 }

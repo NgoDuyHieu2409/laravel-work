@@ -19,6 +19,7 @@ class WorkApplication extends Model
         'confirm_yn',
         'confirmed_at',
         'canceled_at',
+        'room_id',
     ];
 
     /*

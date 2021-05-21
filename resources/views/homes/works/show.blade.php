@@ -32,7 +32,7 @@
                                     <ul class="ul-list-item">
                                         <li><label>Liên hệ:</label> {{ $work->contact_name }}</li>
                                         <li><label>Sô điện thoại:</label> {{ $work->contact_tel }}</li>
-                                        <li><label>Yêu cầu tuyển dụng:</label> {{ $work->category_name }}</li>
+                                        <li><label>Yêu cầu tuyển dụng:</label> {{ $work->tags }}</li>
                                         <li><label>Hạn nộp:</label> <span class="text-red">{{ date('d-m-Y', strtotime($work->worktime_start_at)) }}</span></li>
                                     </ul>
                                 </div>

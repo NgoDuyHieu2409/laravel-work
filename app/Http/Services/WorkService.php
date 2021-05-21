@@ -14,7 +14,7 @@ use App\Models\WorkQualification;
 use App\Models\WorkRecord;
 use App\Models\WorkSkill;
 use App\Models\WorkTag;
-use App\WorkApplication;
+use App\Models\WorkApplication;
 use Carbon\Carbon;
 
 class WorkService
@@ -244,17 +244,17 @@ class WorkService
         return $recruitment_end;
     }
 
-    public function getWorkerUid($work_id)
-    {
-        $worker_ids = WorkApplication::where('work_id', $work_id)
-            ->where('status', WorkApplicationStatus::ASSIGNED)
-            ->where('confirm_yn', config('const.WorkApplications.CONFIRM_STATUS.YES'))
-            ->pluck('worker_id')
-            ->toArray();
+    // public function getWorkerUid($work_id)
+    // {
+    //     $worker_ids = WorkApplication::where('work_id', $work_id)
+    //         ->where('status', WorkApplicationStatus::ASSIGNED)
+    //         ->where('confirm_yn', config('const.WorkApplications.CONFIRM_STATUS.YES'))
+    //         ->pluck('worker_id')
+    //         ->toArray();
 
-        $uids = Worker::find($worker_ids)->pluck('uid')->toArray();
-        return $uids;
-    }
+    //     $uids = Worker::find($worker_ids)->pluck('uid')->toArray();
+    //     return $uids;
+    // }
 
     public function formatDateTime($work)
     {

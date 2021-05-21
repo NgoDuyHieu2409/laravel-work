@@ -8,6 +8,7 @@ use App\Traits\AppUtility;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WorkApplication;
 use App\Enums\WorkApplicationStatus;
+use App\Models\City;
 
 class HomeController extends Controller
 {
@@ -20,69 +21,91 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        // $query = DB::table('works');
-        // $query->selectRaw('*, TIMESTAMPDIFF(HOUR,worktime_start_at,worktime_end_at) as hours');
+        $filter = [
+            'category_id' => $request->category,
+            'occupation_id' => $request->occupation,
+            'worktime_start_at' => [
+                'worktime_start_at',
+                '>=',
+                $request->form_date
+            ],
+            'worktime_end_at' => [
+                'worktime_end_at',
+                '<=',
+                $request->to_date
+            ],
+        ];
+        
+        if($request->hourly_wage) {
+            switch ($request->hourly_wage) {
+                case 1:
+                    $whereHourlyWage = [
+                        'hourly_wage' => ['hourly_wage', '<', 10000]
+                    ];
+                    break;
+                case 2:
+                    $whereHourlyWage = [
+                        ['hourly_wage' => ['hourly_wage', '>=', 10000]],
+                        ['hourly_wage' => ['hourly_wage', '<', 15000]]
+                    ];
+                    break;
+                case 3:
+                    $whereHourlyWage = [
+                        ['hourly_wage' => ['hourly_wage', '>=', 15000]],
+                        ['hourly_wage' => ['hourly_wage', '<', 18000]]
+                    ];
+                    break;
+                            
+                case 4:
+                    $whereHourlyWage = [
+                        ['hourly_wage' => ['hourly_wage', '>=', 18000]]
+                    ];
+                    break;
+                            
+                default:
+                    $whereHourlyWage = [];
+                    break;
+            };
 
-        // // sort
-        // if ($request->sort_id) {
-        //     switch ($request->sort_id) {
-        //         case 1:
-        //             $query->orderBy('created_at', 'DESC');
-        //             break;
-        //         case 2:
-        //             $query->orderBy('base_wage', 'ASC');
-        //             break;
-        //         case 3:
-        //             $query->orderBy('worktime_start_at', 'DESC');
-        //             break;
-        //         case 4:
-        //             $query->orderBy('hours', 'DESC');
-        //             break;
-        //     }
-        // }
-        $works = Work::whereIn('status', [1, 2, 3])->get();
+            $filter[] = $whereHourlyWage;
+        }
+
+        $filter = $this->formatSearchFilters($filter);
+        $works = Work::where($filter);
+
+        if($request->city){
+            $works = $works->whereHas('company', function($query) use($request){
+                return $query->where('city', $request->city);
+            });
+        }
+
+        if($request->work_name){
+            $works = $works->search($request->work_name);
+        }
+
+        $works = $works->orderBy('id', 'desc')->paginate(10);
         foreach ($works as $key => $work) {
             $work->work_type =  $work->occupation_id ? $this->getValueItemToArray(setting('admin.occupations'), $work->occupation_id) : null;
         }
 
-        // filter by recruitment_start_at
-        // if ($request->worktime_start_at) {
-        //     $time_form = Carbon::createFromFormat('Y-m-d', $request->worktime_start_at)->setTime(00,00,00);
-        //     $time_to   = Carbon::createFromFormat('Y-m-d', $request->worktime_start_at)->setTime(23,59,59);
-        //     $query->whereDate('worktime_start_at', '>=', $time_form)->whereDate('worktime_start_at', '<=', $time_to);
-        // }
+        $workTags = $this->getItemStringToArray(setting('admin.tags'));
+        $workSkills = $this->getItemStringToArray(setting('admin.skills'));
 
-        // // filter by tags
-        // if (isset($request->tags) && count($request->tags)) {
-        //     $work_ids = array();
+        $advancedSearch = [
+            'search_hourly_wage' => [
+                1 => 'Dưới 10,000/giờ',
+                2 => '10,000 - 15,000/giờ', 
+                3 => '15,000 - 18,000/giờ',
+                4 => 'Trên 18,000/giờ',
+            ],
+            'occupations' => $this->getItemStringToArray(setting('admin.occupations')),
+            'categories' => $this->getItemStringToArray(setting('admin.categories')),
+            'citys' => City::pluck('name', 'id'),
+        ];
 
-        //     $work_tags = WorkTag::whereIn('tag_id', $request->tags)->get();
-        //     foreach ($work_tags as $work_tag) {
-        //         $work_ids[] = $work_tag->work_id;
-        //     }
-        //     $query->whereIn('id', $work_ids);
-        // }
+        $outstandingWorks = Work::getOutstanding();
 
-        // // filter by prefectures
-        // if (isset($request->prefs) && count(explode(',', $request->prefs))) {
-        //     $prefs = explode(',', $request->prefs);
-        //     $home_ids = array();
-        //     $homes = Home::whereIn('pref', $prefs)->get();
-        //     foreach ($homes as $home) {
-        //         $home_ids[] = $home->id;
-        //     }
-        //     $query->whereIn('home_id', $home_ids);
-        // }
-
-        // // filter by worktime end
-        // if ($request->worktime_end_at) {
-        //     $query->whereTime('worktime_end_at', '<=', $request->worktime_end_at);
-        // }
-        // // filter by base wage
-        // if ($request->base_wage) {
-        //     $query->where('base_wage', '>=', $request->base_wage);
-        // }
-        return view('homes.works.index')->with(compact('works'));
+        return view('homes.works.index')->with(compact('works', 'workTags', 'workSkills', 'advancedSearch', 'outstandingWorks', 'request'));
     }
 
     /**
@@ -95,13 +118,15 @@ class HomeController extends Controller
     {
         $work = Work::findOrFail($id);
         $qualification_id = $work->work_qualifications->pluck('qualification_id')->toArray();
-        $skills_id = $work->work_skills->pluck('skill_id')->toArray();
+        $skill_ids = $work->work_skills->pluck('skill_id')->toArray();
+        $tag_ids = $work->work_tags->pluck('tag_id')->toArray();
 
         $work->work_type =  $work->occupation_id ? $this->getValueItemToArray(setting('admin.occupations'), $work->occupation_id) : null;
         $work->category_name =  $work->category_id ? $this->getValueItemToArray(setting('admin.categories'), $work->category_id) : null;
         $work->qualification_name =  $this->getItemToArray($this->getItemStringToArray(setting('admin.qualifications')), $qualification_id);
-        $work->skills =  explode( ', ', $this->getItemToArray($this->getItemStringToArray(setting('admin.skills')), $skills_id));
-        
+        $work->skills =  explode( ', ', $this->getItemToArray($this->getItemStringToArray(setting('admin.skills')), $skill_ids));
+        $work->tags =  $this->getItemToArray($this->getItemStringToArray(setting('admin.tags')), $tag_ids);
+
         return view('homes.works.show')->with(compact('work'));
     }
 

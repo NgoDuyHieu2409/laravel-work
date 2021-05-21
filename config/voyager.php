@@ -191,10 +191,10 @@ return [
     'additional_css' => [
         '/css/custom.css',
         '/fontawesome/css/all.css',
-        '/template/css/components.min.css',
         '/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css',
         '/global_assets/css/icons/icomoon/styles.min.css',
         'template/plugins/toastr/toastr.min.css',
+        '/template/css/components.min.css',
     ],
 
     'additional_js' => [

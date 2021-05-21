@@ -1,5 +1,5 @@
 <x-app-layout>
-    <form action="{{ route('mycv.store') }}" method="post">
+    <form action="{{ route('mycv.store') }}" method="post" id="form-update-cv">
         @csrf
 
         <input type="hidden" name="isWorkHistory" value="">
@@ -16,8 +16,7 @@
                                 class="fas fa-arrow-left"></i> Back to Dashboard</a>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save"></i> Save
-                            CV</button>
+                        <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save"></i> Save CV</button>
                     </div>
                 </div>
 
@@ -227,39 +226,47 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row mt-2 mb-3">
+                    <div class="col-sm-12 text-right">
+                        <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save"></i> Save CV</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 
     @push('scripts')
         <script>
-            const COMPANY_PREF = @JSON($user->congact->pref ?? 0);
-
+            const COMPANY_PREF = @JSON($user->contact->district ?? 0);
         </script>
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
+                // editer
+                $('.summernote_edit').summernote();
+
                 $('.btn_add_item').on('click', function() {
                     var itemId = $(this).data('id');
                     switch (itemId) {
                         case "work-history":
-                            $('input[name="isWorkHistory"]').val(true);
+                            $('input[name="isWorkHistory"]').val(1);
                             addWorkHistoryItem(itemId);
                             break;
                         case "education":
-                            $('input[name="isEducation"]').val(true);
+                            $('input[name="isEducation"]').val(1);
                             addEducationItem(itemId);
                             break;
                         case "skills":
-                            $('input[name="isSkill"]').val(true);
+                            $('input[name="isSkill"]').val(1);
                             addSkillsItem(itemId);
                             break;
                         case "language":
-                            $('input[name="isLanguage"]').val(true);
+                            $('input[name="isLanguage"]').val(1);
                             addLanguageItem(itemId);
                             break;
                         case "certifi":
-                            $('input[name="isCertification"]').val(true);
+                            $('input[name="isCertification"]').val(1);
                             addCertificationItem(itemId);
                             break;
                         default:
@@ -282,7 +289,6 @@
                     var dataIndex = $(".list-" + itemId + "-items .user_education_index:last-child").attr(
                         "data-index");
                     dataIndex = (dataIndex === undefined) ? 0 : parseInt(dataIndex) + 1;
-                    console.log(dataIndex)
                     var temp =
                         `@include('homes.users.items.education', ['dataIndex' => '${dataIndex}', 'isAdd' => true])`;
                     $('.list-' + itemId + '-items').append(temp);
@@ -292,7 +298,6 @@
                 function addSkillsItem(itemId) {
                     var dataIndex = $(".list-" + itemId + "-items .user_skill_index:last-child").attr("data-index");
                     dataIndex = (dataIndex === undefined) ? 0 : parseInt(dataIndex) + 1;
-                    console.log(dataIndex)
                     var temp =
                         `@include('homes.users.items.skills', ['dataIndex' => '${dataIndex}', 'isAdd' => true])`;
                     $('.list-' + itemId + '-items').append(temp);
@@ -303,7 +308,6 @@
                     var dataIndex = $(".list-" + itemId + "-items .user_language_index:last-child").attr(
                         "data-index");
                     dataIndex = (dataIndex === undefined) ? 0 : parseInt(dataIndex) + 1;
-                    console.log(dataIndex)
                     var temp =
                         `@include('homes.users.items.language', ['dataIndex' => '${dataIndex}', 'isAdd' => true])`;
                     $('.list-' + itemId + '-items').append(temp);
@@ -314,12 +318,35 @@
                     var dataIndex = $(".list-" + itemId + "-items .user_certification_index:last-child").attr(
                         "data-index");
                     dataIndex = (dataIndex === undefined) ? 0 : parseInt(dataIndex) + 1;
-                    console.log(dataIndex)
                     var temp =
                         `@include('homes.users.items.certification', ['dataIndex' => '${dataIndex}', 'isAdd' => true])`;
                     $('.list-' + itemId + '-items').append(temp);
                     $('.summernote_edit').summernote();
                 }
+
+                $('#form-update-cv').on('submit', function (e) {
+                    e.preventDefault();
+                    $('div.validation-invalid-label').text("");
+
+                    $(this).ajaxSubmit({
+                        target: '',
+                        error: function (err) {
+                            console.log(err.responseJSON.errors)
+                            if (err.status === 422) {
+                                Object.keys(err.responseJSON.errors).forEach(key => {
+                                    $('span.'+ key +'-error').text(err.responseJSON.errors[key][0]);
+                                });
+                            }
+                            toastr.error('Cập nhật thất bại.');
+                        },
+                        success: function () {
+                            toastr.success('Cập nhật hồ sơ thành công.');
+                            // setTimeout(function(){
+                            //     window.location.replace('/user/my-cv');
+                            // }, 1000);
+                        }
+                    })
+                });
             })
         </script>
     @endpush

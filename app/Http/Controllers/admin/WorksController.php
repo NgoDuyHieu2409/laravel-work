@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
@@ -416,19 +416,8 @@ class WorksController extends VoyagerBaseController
         ]);
     }
 
-    public function copy(Request $request, $copy = true)
-    {
-        $work = $this->workService->getDetail($request->work_id);
-        $tag_ids = $this->workService->getTagIds($work->id);
-        $qualification_ids = $this->workService->getQualificationIds($work->id);
-        $skill_ids = $this->workService->getSkillIds($work->id);
-
-        return view('home.works.create')->with(compact('work', 'tag_ids', 'qualification_ids', 'skill_ids', 'copy'));
-    }
-
     public function workValidation($errors, $request)
     {
-
         $date_now = Carbon::parse();
         $resttime_start_at = $request->resttime_start_at ? Carbon::parse($request->resttime_start_at) : '';
         $resttime_end_at = $request->resttime_end_at ? Carbon::parse($request->resttime_end_at) : '';
@@ -599,8 +588,10 @@ class WorksController extends VoyagerBaseController
             }
         }
 
-        $data->user_id = Auth::id();
-        $data->status = $this->workService->setStatusApplication($data); 
+        $user = Auth::user();
+        $data->user_id = $user->id;
+        $data->company_id = $user->company_id;
+        $data->status = $this->workService->setStatusApplication($data);
 
         $data->save();
 

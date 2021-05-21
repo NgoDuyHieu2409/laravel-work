@@ -6,10 +6,12 @@ trait AppUtility
     private function getItemStringToArray($string = '')
     {
         $data = [];
-        $array = explode(',', trim($string, ','));
-        foreach($array as $v){
-            $v = explode('-', $v);
-            $data[trim($v[0])] = trim($v[1]);
+        if($string){
+            $array = explode(',', trim($string, ','));
+            foreach($array as $v){
+                $v = explode('-', $v);
+                $data[trim($v[0])] = trim($v[1]);
+            }
         }
         return array_unique($data);
     }
@@ -33,5 +35,16 @@ trait AppUtility
         }
         
         return implode(', ', array_unique($data));
+    }
+
+    private function formatSearchFilters(array $filter): array
+    {
+        return array_filter($filter, function ($item) {
+            if (is_array($item)) {
+                list($field, $condition, $val) = $item;
+                return sizeof(array_filter(explode('%', $val)));
+            }
+            return isset($item);
+        });
     }
 }

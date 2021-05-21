@@ -15,6 +15,7 @@ class UserContact extends Model
         'user_id',
         'phone',
         'birthday',
+        'job_ttle',
         'sex',
         'city',
         'district',

@@ -10,4 +10,10 @@ class UserLanguage extends Model
     use HasFactory;
     
     protected $table = "user_languages";
+
+    protected $fillable = [
+        'user_id',
+        'language_id',
+        'proficiency',
+    ];
 }

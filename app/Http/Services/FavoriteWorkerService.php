@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
 use App\Enums\WorkApplicationStatus;
-use App\FavoriteWorker;
-use App\WorkApplication;
-use App\WorkRecord;
+use App\Models\FavoriteWorker;
+use App\Models\WorkApplication;
+use App\Models\WorkRecord;
 use Illuminate\Support\Facades\Auth;
 
 class FavoriteWorkerService
