@@ -36,12 +36,22 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('homes.index');
 Route::post('/get-districts', [DistrictController::class, 'getByCityId'])->name('company.district');
-Route::get('/user/my-cv', [MyProfileController::class, 'myProfile'])->name('mycv.add');
-Route::post('/user/my-cv', [MyProfileController::class, 'saveProfile'])->name('mycv.store');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-    Route::get('/{id}/{slug?}', [HomeController::class, 'show'])->name('work.show');
     Route::post('/apply-work', [HomeController::class, 'applyWork'])->name('work.apply');
+    Route::post('/unapply-work', [HomeController::class, 'unapplyWork'])->name('work.unapply');
+    Route::post('/favorite', [HomeController::class, 'favorite'])->name('work.favorite');
+    Route::post('/unfavorite', [HomeController::class, 'unFavorite'])->name('work.unfavorite');
+    Route::post('/worker-review', [HomeController::class, 'workerReviewJob'])->name('work.review');
+
+    Route::get('/user/my-cv', [MyProfileController::class, 'myProfile'])->name('mycv.add');
+    Route::post('/user/my-cv', [MyProfileController::class, 'saveProfile'])->name('mycv.store');
+    Route::get('/favourite-works', [HomeController::class, 'getFavoriteWork'])->name('work.favorite_work');
+    Route::get('/evaluating-works', [HomeController::class, 'getEvaluatingWork'])->name('work.evaluating_work');
+    Route::get('/application-works', [HomeController::class, 'workerApplication'])->name('work.application');
 });
+
+Route::get('/{id}/{slug?}', [HomeController::class, 'show'])->name('work.show');

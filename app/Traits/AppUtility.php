@@ -25,7 +25,6 @@ trait AppUtility
     private function getItemToArray($array, $keys)
     {
         if(!is_array($keys)){
-            dd($keys);
             $keys = (array) $keys;
         }
 
@@ -37,7 +36,7 @@ trait AppUtility
         return implode(', ', array_unique($data));
     }
 
-    private function formatSearchFilters(array $filter): array
+    private function formatSearchFilters(array $filter)
     {
         return array_filter($filter, function ($item) {
             if (is_array($item)) {

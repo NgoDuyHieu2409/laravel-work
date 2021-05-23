@@ -84,7 +84,6 @@ class WorkerReviewController extends VoyagerBaseController
             }
 
         } catch (\Exception $e) {
-            dd($e);
             DB::rollBack();
             return abort('500', $e->getMessage());
         }

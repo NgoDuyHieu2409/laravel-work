@@ -331,7 +331,6 @@
                     $(this).ajaxSubmit({
                         target: '',
                         error: function (err) {
-                            console.log(err.responseJSON.errors)
                             if (err.status === 422) {
                                 Object.keys(err.responseJSON.errors).forEach(key => {
                                     $('span.'+ key +'-error').text(err.responseJSON.errors[key][0]);
@@ -341,9 +340,9 @@
                         },
                         success: function () {
                             toastr.success('Cập nhật hồ sơ thành công.');
-                            // setTimeout(function(){
-                            //     window.location.replace('/user/my-cv');
-                            // }, 1000);
+                            setTimeout(function(){
+                                location.reload();
+                            }, 1500);
                         }
                     })
                 });

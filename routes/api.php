@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\CheckinController;
 use App\Http\Controllers\Api\CheckoutController;
+use App\Http\Controllers\Api\WorksReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,10 +120,10 @@ Route::group([
     //     // view checkin info
     //     Route::get('/view_checkin_info', 'Api\ViewCheckController@viewCheckinInfo');
 
-    //     //Reviews
-    //     Route::apiResource('/reviews', 'Api\WorksReviewController')->only([
-    //         'index', 'show', 'store'
-    //     ]);
+        //Reviews
+        Route::apiResource('/reviews', WorksReviewController::class)->only([
+            'index', 'show', 'store'
+        ]);
     //     // view checkin info
     //     Route::get('/view_checkin_info', 'Api\ViewCheckController@viewCheckinInfo');
 

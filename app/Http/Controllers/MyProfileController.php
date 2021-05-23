@@ -37,6 +37,7 @@ class MyProfileController extends Controller
             if(!$contact = $user->contact){
                 $contact = new UserContact;
             }
+
             $contact->fill([
                 'user_id' => $user->id,
                 'phone' => $request->phone,

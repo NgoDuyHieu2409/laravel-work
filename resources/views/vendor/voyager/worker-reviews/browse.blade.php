@@ -101,15 +101,14 @@
                 </div>
                 <div class="panel-body">
                     @foreach ($worker_comment as $item)
-
                     <div class="card">
                         <div class="card-body">
                             <div class="media">
                                 <div class="mr-3">
                                     @php
-                                    $url = isset($item->worker->photo) ?
-                                    Storage::url($item->worker->photo) :
-                                    '/_Template/global_assets/images/placeholders/placeholder.jpg';
+                                    $url = isset($item->worker->profile_photo_path) ? 
+                                    Storage::url($item->worker->profile_photo_path) :
+                                    Voyager::image($item->worker->avatar);
                                     @endphp
                                     <a href="#">
                                         <img src="{{ $url }}" class="rounded-circle" width="42" height="42" alt="">
@@ -118,10 +117,11 @@
 
                                 <div class="media-body">
                                     <h6 class="mb-0">
-                                        {{ $item->worker->first_name . $item->worker->last_name }}
+                                        {{ $item->worker->name}}
+                                        <span class="text-muted ml-2">
+                                            {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}
+                                        </span>
                                     </h6>
-                                    <span class="text-muted">業務番号: {{ sprintf('%06d', $item->work_id) }}
-                                        {{ \Carbon\Carbon::parse($item->created_at)->format('Y年m月d日') }}</span>
                                 </div>
                             </div>
                             <div class="mt-3">{{ $item->comment }}</div>
