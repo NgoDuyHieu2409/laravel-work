@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ModifyRequestStatus;
 use Illuminate\Http\Request;
 use App\Models\Work;
 use App\Models\User as Worker;
@@ -9,9 +10,11 @@ use App\Traits\AppUtility;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WorkApplication;
 use App\Enums\WorkApplicationStatus;
+use App\Helpers\WageCalculatorHelper;
 use App\Models\City;
 use App\Models\FavoriteWork;
 use App\Models\HomeReview;
+use App\Models\ModifyRequest;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -317,9 +320,7 @@ class HomeController extends Controller
 
         $workApplication = $workApplication->pluck('work_id')->toArray();
 
-        $works = Work::whereIn('works.id', $workApplication)
-                    ->leftJoin('home_reviews', 'home_reviews.work_id', '=', 'works.id')
-                    ->where('home_reviews.worker_id', $worker_id)
+        $works = Work::with('home_review')->whereIn('works.id', $workApplication)
                     ->orderBy('works.id', 'desc')->paginate(10);
 
         $outstandingWorks = Work::getOutstanding();
@@ -363,6 +364,66 @@ class HomeController extends Controller
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
+            return response()->json([
+                'status' => $e->getCode(),
+                'message' => $e->getMessage()
+            ], $e->getCode());
+        }
+    }
+
+    public function workerRequestJob(Request $request)
+    {
+        $work = Work::find($request->work_id);
+        if(!$work){
+            return response()->json([
+                'status' => false,
+                'message' => "Không tìm thấy công việc phù hợp!"
+            ]);
+        }
+
+        DB::beginTransaction();
+        try {
+            $workerIds = Auth::id();
+
+            $comment = $request->comment;
+            $modify_worktime_start_at = $request->modify_worktime_start_at ?? $work->worktime_start_at;
+            $modify_worktime_end_at = $request->modify_worktime_end_at ?? $work->worktime_end_at;
+            $resttime_minutes = $request->resttime_minutes ?? $work->resttime_minutes ?? 0;
+
+            $wageCalculator = new WageCalculatorHelper(
+                $work,
+                $modify_worktime_start_at,
+                $modify_worktime_end_at,
+                $resttime_minutes
+            );
+
+            ModifyRequest::create([
+                'worker_id' => $workerIds,
+                'home_id' => $work->user_id,
+                'work_id' => $work->id,
+                'comment' => $comment,
+                'scheduled_worktime_start_at' => $work->worktime_start_at,
+                'scheduled_worktime_end_at' => $work->worktime_end_at,
+                'modify_worktime_start_at' => $modify_worktime_start_at,
+                'modify_worktime_end_at' => $modify_worktime_end_at,
+                'resttime_minutes' => $resttime_minutes,
+                'ovetime_percentages' => $work->ovetime_extra_percentages,
+                'nighttime_percentages' => $work->night_extra_percentages,
+                'ovetime_wage' => $wageCalculator->getOverTimeWage(),
+                'nighttime_wage' => $wageCalculator->getNightTimeWage(),
+                'base_wage' => $wageCalculator->getBaseWage(),
+                'transportation_fee' => $work->transportation_fee,
+                'approval_status' => ModifyRequestStatus::NO_APPROVE,
+            ]);
+
+            DB::commit();
+            return response()->json([
+                'status' => true,
+                'message' => 'Cảm ơn bạn đã đánh giá công việc.'
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e);
             return response()->json([
                 'status' => $e->getCode(),
                 'message' => $e->getMessage()

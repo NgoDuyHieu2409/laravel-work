@@ -4,10 +4,10 @@ namespace App\Http\Services;
 
 use App\Enums\ModifyRequestStatus;
 use App\Enums\WorkApplicationStatus;
-use App\ModifyRequest;
-use App\WorkApplication;
-use App\Worker;
-use App\WorkRecord;
+use App\Models\ModifyRequest;
+use App\Models\WorkApplication;
+use App\Models\User as Worker;
+use App\Models\WorkRecord;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 

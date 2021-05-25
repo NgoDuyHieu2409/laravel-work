@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 use App\Models\WorkApplication;
 use App\Traits\FullTextSearch;
+use Illuminate\Support\Facades\Auth;
 
 class Work extends Model
 {
@@ -106,6 +107,12 @@ class Work extends Model
     public function favorites()
     {
         return $this->hasMany(\App\Models\FavoriteWork::class);
+    }
+
+    public function home_review()
+    {
+        return $this->hasOne(\App\Models\HomeReview::class)
+                    ->where('worker_id', Auth::id());
     }
 
     public function company()

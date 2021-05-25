@@ -46,6 +46,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/favorite', [HomeController::class, 'favorite'])->name('work.favorite');
     Route::post('/unfavorite', [HomeController::class, 'unFavorite'])->name('work.unfavorite');
     Route::post('/worker-review', [HomeController::class, 'workerReviewJob'])->name('work.review');
+    Route::post('/worker-request', [HomeController::class, 'workerRequestJob'])->name('work.review');
 
     Route::get('/user/my-cv', [MyProfileController::class, 'myProfile'])->name('mycv.add');
     Route::post('/user/my-cv', [MyProfileController::class, 'saveProfile'])->name('mycv.store');

@@ -6,10 +6,6 @@
         width: 19% !important;
         right: 12%;
     }
-
-    .mt-5 {
-        margin-top: 50px;
-    }
     </style>
 
     <div class="container">
@@ -116,85 +112,125 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        @auth
                                         <hr class="hr-custom mt-0">
-                                        <div class="text-right">
-                                            <span id="btn-show-advanced-search" data-toggle="collapse"
-                                                data-target="#home-review-{{$work->id}}" style="cursor: pointer;">
-                                                <a href="javascript:;"><i class="fa fa-angle-down"></i>&nbsp;Đánh giá
-                                                    công việc</a>
-                                            </span>
-                                        </div>
+                                        @auth
+                                        <div id="accordion">
+                                            <div class="text-right">
+                                                <span id="btn-show-advanced-search" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="mr-3"
+                                                    data-target="#modify-request-{{$work->id}}" style="cursor: pointer;">
+                                                    <a href="javascript:;" class="text-danger"><i class="fas fa-user-edit"></i>&nbsp;Request</a>
+                                                </span>
+                                                <span id="btn-show-advanced-search" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo"
+                                                    data-target="#home-review-{{$work->id}}" style="cursor: pointer;">
+                                                    <a href="javascript:;"><i class="far fa-calendar-check"></i>&nbsp;Comment</a>
+                                                </span>
+                                            </div>
 
-                                        <div id="home-review-{{$work->id}}"
-                                            class="collapse mt-2 @if($request->isReview)show @endif">
-                                            <div class="row">
-                                                <div class="col-sm-12 review_content">
-                                                    <table class="table table-hover border-bottom">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Giờ làm việc của bạn có đáp ứng lịch trình của bạn không?</td>
-                                                                <td>
-                                                                    <div class="form-group clearfix mb-0">
-                                                                        <div class="icheck-primary d-inline mr-2">
-                                                                            <input type="radio" id="good_yn1-1-{{$work->id}}" name="good_yn1"
-                                                                                value="y" @if($work->good_yn1 == 'y') checked @endif>
-                                                                            <label for="good_yn1-1-{{$work->id}}">Có</label>
+                                            <div id="home-review-{{$work->id}}" aria-labelledby="headingTwo" data-parent="#accordion"
+                                                class="collapse mt-2 @if($request->isReview)show @endif">
+                                                <div class="row">
+                                                    <div class="col-sm-12 review_content">
+                                                        <table class="table table-hover border-bottom">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Giờ làm việc của bạn có đáp ứng lịch trình của bạn không?</td>
+                                                                    <td>
+                                                                        <div class="form-group clearfix mb-0">
+                                                                            <div class="icheck-primary d-inline mr-2">
+                                                                                <input type="radio" id="good_yn1-1-{{$work->id}}" name="good_yn1"
+                                                                                    value="y" @if(!$work->home_review || $work->home_review->good_yn1 == 'y') checked @endif>
+                                                                                <label for="good_yn1-1-{{$work->id}}">Có</label>
+                                                                            </div>
+                                                                            <div class="icheck-primary d-inline">
+                                                                                <input type="radio" id="good_yn1-2-{{$work->id}}" name="good_yn1"
+                                                                                    value="n" @if($work->home_review && $work->home_review->good_yn1 == 'n') checked @endif>
+                                                                                <label for="good_yn1-2-{{$work->id}}">Không</label>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="radio" id="good_yn1-2-{{$work->id}}" name="good_yn1"
-                                                                                value="n" @if($work->good_yn1 == 'n') checked @endif>
-                                                                            <label for="good_yn1-2-{{$work->id}}">Không</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Bạn có làm theo mô tả doanh nghiệp được đăng không?
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="form-group clearfix mb-0">
+                                                                            <div class="icheck-primary d-inline mr-2">
+                                                                                <input type="radio" id="good_yn2-1-{{$work->id}}" name="good_yn2"
+                                                                                value="y" @if(!$work->home_review || $work->home_review->good_yn2 == 'y') checked @endif>
+                                                                                <label for="good_yn2-1-{{$work->id}}">Có</label>
+                                                                            </div>
+                                                                            <div class="icheck-primary d-inline">
+                                                                                <input type="radio" id="good_yn2-2-{{$work->id}}" name="good_yn2"
+                                                                                    value="n" @if($work->home_review && $work->home_review->good_yn2 == 'n') checked @endif>
+                                                                                <label for="good_yn2-2-{{$work->id}}">Không</label>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Bạn có làm theo mô tả doanh nghiệp được đăng không?
-                                                                </td>
-                                                                <td>
-                                                                    <div class="form-group clearfix mb-0">
-                                                                        <div class="icheck-primary d-inline mr-2">
-                                                                            <input type="radio" id="good_yn2-1-{{$work->id}}" name="good_yn2"
-                                                                            value="y" @if($work->good_yn2 == 'y') checked @endif>
-                                                                            <label for="good_yn2-1-{{$work->id}}">Có</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Bạn có muốn làm việc ở đây một lần nữa không?</td>
+                                                                    <td>
+                                                                        <div class="form-group clearfix mb-0">
+                                                                            <div class="icheck-primary d-inline mr-2">
+                                                                                <input type="radio" id="good_yn3-1-{{$work->id}}" name="good_yn3"
+                                                                                    value="y" @if(!$work->home_review || $work->home_review->good_yn3 == 'y') checked @endif>
+                                                                                <label for="good_yn3-1-{{$work->id}}">Có</label>
+                                                                            </div>
+                                                                            <div class="icheck-primary d-inline">
+                                                                                <input type="radio" id="good_yn3-2-{{$work->id}}" name="good_yn3"
+                                                                                    value="n" @if($work->home_review && $work->home_review->good_yn3 == 'n') checked @endif>
+                                                                                <label for="good_yn3-2-{{$work->id}}">Không</label>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="radio" id="good_yn2-2-{{$work->id}}" name="good_yn2"
-                                                                                value="n" @if($work->good_yn2 == 'n') checked @endif>
-                                                                            <label for="good_yn2-2-{{$work->id}}">Không</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Bạn có muốn làm việc ở đây một lần nữa không?</td>
-                                                                <td>
-                                                                    <div class="form-group clearfix mb-0">
-                                                                        <div class="icheck-primary d-inline mr-2">
-                                                                            <input type="radio" id="good_yn3-1-{{$work->id}}" name="good_yn3"
-                                                                                value="y" @if($work->good_yn3 == 'y') checked @endif>
-                                                                            <label for="good_yn3-1-{{$work->id}}">Có</label>
-                                                                        </div>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="radio" id="good_yn3-2-{{$work->id}}" name="good_yn3" 
-                                                                                value="n" @if($work->good_yn3 == 'n') checked @endif>
-                                                                            <label for="good_yn3-2-{{$work->id}}">Không</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
 
-                                                    <textarea name="comment" rows="2" style="width: 100%;">{{ $work->comment ?? ''}}</textarea>
+                                                        <textarea name="comment" rows="2" style="width: 100%;" placeholder="Bạn có ý kiến gì khác không?">{{ $work->home_review->comment ?? ''}}</textarea>
+                                                    </div>
+                                                    @if(!$request->isReview)
+                                                    <div class="col-sm-12 text-right">
+                                                        <button type="button" data-id="{{$work->id}}"
+                                                            class="btn btn-sm btn-success btn-js-review-work">Gửi đánh giá</button>
+                                                    </div>
+                                                    @endif
                                                 </div>
-                                                @if(!$request->isReview)
-                                                <div class="col-sm-12 text-right">
-                                                    <button type="button" data-id="{{$work->id}}"
-                                                        class="btn btn-sm btn-success btn-js-review-work">Gửi đánh giá</button>
+                                            </div>
+
+                                            <div id="modify-request-{{$work->id}}" aria-labelledby="headingOne" data-parent="#accordion" class="collapse mt-2">
+                                                <div class="row">
+                                                    <div class="col-sm-12 worker_modify_request">
+                                                        <span class="text-yellow-500" style="font-size: 13px;"><i>Thời gian bắt đầu, Thời gian kết thúc và Thời gian nghỉ: là thời gian thực tế bạn thự hiện công việc cua mình.</i></span>
+                                                    </div>
+
+                                                    <div class="col-sm-6 mb-2">
+                                                        <label>Thời gian bắt đầu</label>
+                                                        <input class="form-control js-work-time-start" type="datetime-local" name="worktime_start_at" value="">
+                                                    </div>
+
+                                                    <div class="col-lg-6 mb-2">
+                                                        <label>Thời gian kết thúc</label>
+                                                        <input class="form-control" type="datetime-local" name="worktime_end_at" value="">
+                                                    </div>
+
+                                                    <div class="col-lg-6 mb-2">
+                                                        <label>Thời gian nghỉ</label>
+                                                        <input class="form-control" type="number" min="0" name="resttime_minutes" value=""
+                                                            placeholder="Thời gian tính bằng phút.">
+                                                    </div>
+
+                                                    <div class="col-sm-12 worker_modify_request">
+                                                        <textarea name="comment" rows="3" style="width: 100%;" placeholder="Bạn có yêu cần cần chỉnh sửa gì?">{{ $work->home_review->comment ?? ''}}</textarea>
+                                                    </div>
+
+                                                    @if(!$request->isReview)
+                                                    <div class="col-sm-12 text-right">
+                                                        <button type="button" data-id="{{$work->id}}"
+                                                            class="btn btn-sm btn-success btn-js-modify-request">Gửi yêu cầu</button>
+                                                    </div>
+                                                    @endif
                                                 </div>
-                                                @endif
                                             </div>
                                         </div>
                                         @endauth

@@ -10,7 +10,7 @@ class ModifyRequest extends Model
 
     protected $fillable = [
         'worker_id',
-        'user_id',
+        'home_id',
         'work_id',
         'comment',
         'scheduled_worktime_start_at',
@@ -35,12 +35,12 @@ class ModifyRequest extends Model
 
     public function worker()
     {
-        return $this->belongsTo(\App\Models\Worker::class, 'worker_id', 'id');
+        return $this->belongsTo(\App\Models\User::class, 'worker_id', 'id');
     }
 
     public function user()
     {
-        return $this->belongsTo(App\Models\User::class, 'user_id', 'id');
+        return $this->belongsTo(App\Models\User::class, 'home_id', 'id');
     }
 
 }

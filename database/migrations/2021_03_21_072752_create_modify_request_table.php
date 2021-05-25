@@ -16,7 +16,7 @@ class CreateModifyRequestTable extends Migration
         Schema::create('modify_requests', function (Blueprint $table) {
             $table->bigInteger('id', true)->unsigned();
 			$table->bigInteger('worker_id')->unsigned()->index('modify_requests_worker_id_foreign');
-			$table->bigInteger('user_id')->unsigned()->index('modify_requests_user_id_foreign');
+			$table->bigInteger('home_id')->unsigned()->index('modify_requests_home_id_foreign');
 			$table->bigInteger('work_id')->unsigned()->index('modify_requests_work_id_foreign');
 			$table->text('comment', 65535)->nullable();
 			$table->dateTime('scheduled_worktime_start_at')->nullable();
