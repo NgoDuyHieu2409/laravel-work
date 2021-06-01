@@ -20,6 +20,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
+        "maatwebsite/excel": "^3.1",
         "nguyenquang2302/vietnam-zone": "dev-master",
         "tcg/voyager": "^1.4"
     },
