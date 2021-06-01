@@ -18,4 +18,14 @@ class WorkerReview extends Model
         'liked',
         'comment',
     ];
+
+    public function worker()
+    {
+        return $this->belongsTo(User::class, 'worker_id', 'id');
+    }
+
+    public function home()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

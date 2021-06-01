@@ -404,3 +404,22 @@ textarea {
 .px-5 {
   padding-left: 3rem !important;
 }
+.widget-user-image>img {
+  float: left !important;
+}
+.widget-user-username,
+.widget-user-desc {
+  margin-left: 60px !important;
+}
+.table-responsive div{padding: 0px !important;}
+.w-100 {width: 100% !important;}
+.media{
+  display: flex;
+  align-items: flex-start;
+}
+.navbar-badge{
+  font-size: 10px;
+  font-weight: 300;
+  padding: 4px 6px;
+  position: absolute;
+}

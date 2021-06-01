@@ -4,7 +4,7 @@
         position: fixed !important;
         top: 65px;
         width: 19% !important;
-        right: 12%;
+        right: 10%;
     }
     </style>
 
@@ -13,16 +13,16 @@
         <div class="row pt-3">
             <div class="col-md-9 col-sm-12">
                 <div class="row mb-2">
-                    <div class="col-sm-12" style="font-size: 20px;">
+                    <div class="col-sm-12" style="font-size: 15px;">
                         @if($request->isReview)
                         <a href="{{ route('work.evaluating_work', ['isReview' => 0]) }}" class="text-warning">
                             <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;
-                            Hiển thị danh sách chưa đánh giá
+                            Danh sách chưa đánh giá
                         </a>
                         @else
                         <a href="{{ route('work.evaluating_work', ['isReview' => 1]) }}" class="text-success">
                             <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;
-                            Hiển thị danh sách đã đánh giá
+                            Danh sách đã đánh giá
                         </a>
                         @endif
                     </div>

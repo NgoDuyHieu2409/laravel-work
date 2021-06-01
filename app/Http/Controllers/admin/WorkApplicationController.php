@@ -7,21 +7,23 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Database\Schema\SchemaManager;
 use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Events\BreadDataAdded;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use TCG\Voyager\Events\BreadDataUpdated;
-use Exception;
 use App\Http\Services\WorkerService;
+use App\Http\Services\WorkApplicationService;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-
-class WorkApplictionController extends VoyagerBaseController
+class WorkApplicationController extends VoyagerBaseController
 {
     protected $workerService;
+    protected $workApplicationService;
 
     public function __construct(
-        WorkerService $workerService
+        WorkerService $workerService,
+        WorkApplicationService $workApplicationService
     ){
         $this->workerService = $workerService;
+        $this->workApplicationService = $workApplicationService;
     }
 
     public function index(Request $request)
@@ -220,7 +222,10 @@ class WorkApplictionController extends VoyagerBaseController
 
         // Convert data show
         $worker = $this->workerService->getWorkerIds($dataTypeContent->worker_id);
-        // $worker_reviews = $this->workerService->getWorkerReview($worker_id);
+        $worker->profile_photo_path = isset($worker->profile_photo_path) ? Storage::url($worker->profile_photo_path) : Voyager::image($worker->avatar);
+        $worker->address_format = $worker->contact->address . ', ' . $worker->contact->rs_district->name . ', ' . $worker->contact->rs_city->name;
+        
+        $worker_reviews = $this->workerService->getWorkerReview($dataTypeContent->worker_id);
 
         $view = 'voyager::bread.read';
 
@@ -228,6 +233,25 @@ class WorkApplictionController extends VoyagerBaseController
             $view = "voyager::$slug.read";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted', 'worker'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted', 'worker', 'worker_reviews'));
+    }
+
+    public function updateApproval(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $this->workApplicationService->updateApplication($request);
+            DB::commit();
+            return redirect()->route("voyager.works-applications.index", ['work_id' => $request->work_id])->with([
+                'message'    => "It was confirmed normally.",
+                'alert-type' => 'success',
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with([
+                'message'    => $e->getMessage(),
+                'alert-type' => 'errors',
+            ]);
+        }
     }
 }

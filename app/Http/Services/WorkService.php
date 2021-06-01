@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Enums\WorkRequired;
 use App\Enums\WorkStatus;
-use App\Models\Work;
+use App\Models\User as Worker;
 use App\Models\WorkPhoto;
 use App\Models\WorkQualification;
 use App\Models\WorkRecord;
@@ -244,17 +244,17 @@ class WorkService
         return $recruitment_end;
     }
 
-    // public function getWorkerUid($work_id)
-    // {
-    //     $worker_ids = WorkApplication::where('work_id', $work_id)
-    //         ->where('status', WorkApplicationStatus::ASSIGNED)
-    //         ->where('confirm_yn', config('const.WorkApplications.CONFIRM_STATUS.YES'))
-    //         ->pluck('worker_id')
-    //         ->toArray();
+    public function getWorkerUid($work_id)
+    {
+        $worker_ids = WorkApplication::where('work_id', $work_id)
+            ->where('status', WorkApplicationStatus::ASSIGNED)
+            ->where('confirm_yn', config('const.WorkApplications.CONFIRM_STATUS.YES'))
+            ->pluck('worker_id')
+            ->toArray();
 
-    //     $uids = Worker::find($worker_ids)->pluck('uid')->toArray();
-    //     return $uids;
-    // }
+        $uids = Worker::find($worker_ids)->pluck('id')->toArray();
+        return $uids;
+    }
 
     public function formatDateTime($work)
     {

@@ -110,7 +110,7 @@ class CheckoutController extends ApiController
                 $workRecord->worker_id = $worker->id;
                 $workRecord->user_id = $home->id;
                 $workRecord->work_id = $work->id;
-                $workRecord->work_date = date('Y-m-d H:i:s');
+                $workRecord->work_date = Carbon::now();
                 $workRecord->ovetime_percentages  = Config('const.overtime_percentage');
                 $workRecord->nighttime_percentages = Config('const.nighttime_percentages');
                 $workRecord->transfer_request_status = Config('const.WorkRecords.TRANSFER_REQUEST_STATUS.NO');
@@ -122,17 +122,12 @@ class CheckoutController extends ApiController
                 $workRecord->scheduled_worktime_start_at = $work->worktime_start_at;
                 $workRecord->scheduled_worktime_end_at = $work->worktime_end_at;
                 $workRecord->scheduled_resttime_start_at = $work->resttime_start_at;
+                $workRecord->resttime_minutes = $work->resttime_minutes;
                 $workRecord->scheduled_resttime_end_at = $work->resttime_end_at;
                 $workRecord->worktime_start_at = $work->worktime_start_at;
                 $workRecord->worktime_end_at = $work->worktime_end_at;
                 $workRecord->hourly_wage = $work->hourly_wage;
-                $workRecord->resttime_minutes = $work->resttime_minutes;
                 $workRecord->transportation_fee = $work->transportation_fee;
-                $workRecord->worker_first_name = $worker->first_name;
-                $workRecord->worker_last_name = $worker->last_name;
-                $workRecord->worker_first_name_kana = $worker->first_name_kana;
-                $workRecord->worker_last_name_kana = $worker->last_name_kana;
-                $workRecord->worker_sex = $worker->sex;
                 $calculatorwWrktime = (Carbon::parse($work->worktime_start_at)->diffInMinutes($work->worktime_end_at, false) - $work->resttime_minutes) / 60;
                 $baseWorktime  = $calculatorwWrktime > 0 ? $calculatorwWrktime : 0;
                 $workRecord->base_worktime = $baseWorktime;

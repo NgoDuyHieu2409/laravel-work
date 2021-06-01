@@ -45,3 +45,17 @@
 [class*=icheck-]>label, [class*=icheck-]>input {
     cursor: pointer !important;
 }
+
+.widget-user-image>img {
+    float: left !important;
+}
+.widget-user-username,
+.widget-user-desc {
+    margin-left: 60px !important;
+    font-size: 15px;
+}
+.w-100 {width: 100% !important;}
+.media{
+  display: flex;
+  align-items: flex-start;
+}

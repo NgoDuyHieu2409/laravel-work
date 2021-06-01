@@ -9,6 +9,8 @@
 class AdminCusstom {
     init() {
         this._set_up_tinymce();
+        this._worksTable();
+        this._add_class_to_datatable();
         this._fix_min_height_content();
     }
 
@@ -28,6 +30,35 @@ class AdminCusstom {
 
         var content = (h - nav_top - footer) + 10;
         $('.side-body.padding-top').css('min-height', content);
+    }
+
+    _worksTable() {
+        var _this = this;
+        if (!$().DataTable) {
+            console.warn('Warning - datatables.min.js is not loaded.');
+            return;
+        }
+
+        $('.js-geenie-table').DataTable({
+            ordering: false,
+            scrollX: true,
+            language: {
+                search: '_INPUT_',
+                searchPlaceholder: 'Tìm kiếm',
+                lengthMenu: '_MENU_',
+                // paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+            },
+        });
+    };
+
+    _add_class_to_datatable(){
+        $('.dataTables_info').addClass('mb-0');
+        $('.dataTables_info').parent().addClass('mb-0');
+        $('.dataTables_paginate').addClass('mb-0');
+        $('.dataTables_paginate').parent().addClass('mb-0');
+        $('.dataTables_length').parent().addClass('mb-0');
+        $('.dataTables_filter').parent().addClass('mb-0');
+
     }
 }
 

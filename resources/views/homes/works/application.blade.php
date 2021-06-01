@@ -4,14 +4,33 @@
         position: fixed !important;
         top: 65px;
         width: 19% !important;
-        right: 12%;
+        right: 10%;
     }
-    .mt-5{margin-top: 50px;}
+
+    .mt-5 {
+        margin-top: 50px;
+    }
     </style>
 
     <div class="container">
         <div class="row pt-3">
             <div class="col-md-9 col-sm-12">
+                <div class="row mb-2">
+                    <div class="col-sm-12" style="font-size: 15px;">
+                        @if($request->isConfirm)
+                        <a href="{{ route('work.application', ['isConfirm' => 0]) }}" class="text-warning">
+                            <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;
+                            Công việc chưa tham gia.
+                        </a>
+                        @else
+                        <a href="{{ route('work.application', ['isConfirm' => 1]) }}" class="text-success">
+                            <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;
+                            Công việc đã tham gia.
+                        </a>
+                        @endif
+                    </div>
+                </div>
+
                 <div class="max-w-7xl mx-auto">
                     @if($works->count())
                     @csrf
@@ -101,13 +120,15 @@
                                                 <span class="info-box-text test-left save_work">
                                                     <span data-work="{{ $work->id }}"
                                                         class="js-btn-like float-right text-warning text-3xl animation"
-                                                        data-animation="pulse" style="cursor: pointer; @if($work->is_favorite) display: none; @endif">
+                                                        data-animation="pulse"
+                                                        style="cursor: pointer; @if($work->is_favorite) display: none; @endif">
                                                         <i class="far fa-heart"></i>
                                                     </span>
 
                                                     <span data-work="{{ $work->id }}"
                                                         class="js-btn-dislike float-right text-warning text-3xl animation"
-                                                        data-animation="pulse" style="cursor: pointer; @if(!$work->is_favorite) display: none; @endif">
+                                                        data-animation="pulse"
+                                                        style="cursor: pointer; @if(!$work->is_favorite) display: none; @endif">
                                                         <i class="fas fa-heart"></i>
                                                     </span>
                                                 </span>
@@ -116,9 +137,15 @@
                                         </div>
                                         @auth
                                         <hr class="hr-custom mt-0">
+                                        @if(!$request->isConfirm)
                                         <div class="text-right">
-                                            <button data-id="{{$work->id}}" class="btn btn-sm btn-danger btn-js-un-application">Hủy yêu cầu</a>
+                                            @if($work->is_confirm)
+                                            <button data-id="{{$work->id}}" class="btn btn-sm btn-warning btn-js-confirm-work">Confirm Approval</button>
+                                            @else
+                                            <button data-id="{{$work->id}}" class="btn btn-sm btn-danger btn-js-un-application">Hủy yêu cầu</button>
+                                            @endif
                                         </div>
+                                        @endif
                                         @endauth
                                     </div>
                                 </div>
@@ -169,52 +196,77 @@
     <script src="{{ asset('js/favorite_work.js') }}"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            $('.btn-js-un-application').click(function(){
-                var confirm = window.confirm('Bạn có muốn hủy yêu cầu công việc này?');
-                if(confirm == true){
-                    var data = {
-                        work_id: $(this).data('id'),
-                        _token: "{{ csrf_token() }}",
-                    };
-                    $.ajax({
-                        url: "{{ route('work.unapply') }}",
-                        type:'post',
-                        dataType: 'json',
-                        data: data,
-                        success: function (data) {
-                            if(data.status){
-                                toastr.success(data.message)
-                                setTimeout(function(){
-                                    location.reload();
-                                }, 1000);
-                            }
-                            else{
-                                toastr.error(data.message)
-                            }
+    document.addEventListener('DOMContentLoaded', function() {
+        $('.btn-js-un-application').click(function() {
+            var confirm = window.confirm('Bạn có muốn hủy yêu cầu công việc này?');
+            if (confirm == true) {
+                var data = {
+                    work_id: $(this).data('id'),
+                    _token: "{{ csrf_token() }}",
+                };
+                $.ajax({
+                    url: "{{ route('work.unapply') }}",
+                    type: 'post',
+                    dataType: 'json',
+                    data: data,
+                    success: function(data) {
+                        if (data.status) {
+                            toastr.success(data.message)
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            toastr.error(data.message)
                         }
-                    });
-                }
-            });
-        })
+                    }
+                });
+            }
+        });
+
+        $('.btn-js-confirm-work').click(function() {
+            var confirm = window.confirm('Bạn có đồng ý tiếp nhận công việc này?');
+            if (confirm == true) {
+                var data = {
+                    work_id: $(this).data('id'),
+                    _token: "{{ csrf_token() }}",
+                };
+                $.ajax({
+                    url: "{{ route('work.confirm') }}",
+                    type: 'post',
+                    dataType: 'json',
+                    data: data,
+                    success: function(data) {
+                        if (data.status) {
+                            toastr.success(data.message)
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            toastr.error(data.message)
+                        }
+                    }
+                });
+            }
+        });
+    })
     </script>
 
     <script>
-        window.onscroll = function() {
-            myFunction()
-        };
+    window.onscroll = function() {
+        myFunction()
+    };
 
-        var navbar = document.getElementById("work-advandced");
-        var sticky = navbar.offsetTop;
-        var bottom = navbar.offsetHeight;
+    var navbar = document.getElementById("work-advandced");
+    var sticky = navbar.offsetTop;
+    var bottom = navbar.offsetHeight;
 
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
         }
+    }
     </script>
     @endpush
 </x-app-layout>

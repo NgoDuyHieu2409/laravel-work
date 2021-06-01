@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}">
 
         @livewireStyles
+        @stack('css')
         <link rel="stylesheet" href="{{ asset('template/plugins/toastr/toastr.min.css') }}">
         <link rel="stylesheet" href="{{ asset('template/plugins/select2/css/select2.min.css') }}">
         <link rel="stylesheet" href="{{ asset('template/css/adminlte.min.css') }}">
@@ -23,9 +24,16 @@
         <link rel="stylesheet" href="{{ asset('template/plugins/animation/animate.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('template/css/custom.css') }}">
-
+        
         <!-- Scripts -->
+        <!-- firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+        
         <script src="{{ mix('js/app.js') }}" defer></script>
+        
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -62,7 +70,6 @@
         @stack('modals')
 
         @livewireScripts
-        @stack('scripts')
         <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script>
         <!-- Bootstrap -->
         <script src="{{ asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -75,5 +82,7 @@
         <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
         <script src="{{ asset('template/js/jqueryform.min.js') }}"></script>
         <script src="{{ asset('js/custom.js') }}"></script>
+        @stack('scripts')
+
     </body>
 </html>

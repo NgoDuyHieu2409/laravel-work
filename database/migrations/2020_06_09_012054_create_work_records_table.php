@@ -31,11 +31,6 @@ class CreateWorkRecordsTable extends Migration {
 			$table->dateTime('resttime_start_at')->nullable();
 			$table->dateTime('resttime_end_at')->nullable();
 			$table->integer('resttime_minutes')->nullable();
-			$table->string('worker_first_name')->nullable();
-			$table->string('worker_last_name')->nullable();
-			$table->string('worker_first_name_kana')->nullable();
-			$table->string('worker_last_name_kana')->nullable();
-			$table->integer('worker_sex')->nullable();
 			$table->integer('base_wage')->nullable();
 			$table->integer('ovetime_percentages')->nullable();
 			$table->integer('nighttime_percentages')->nullable();

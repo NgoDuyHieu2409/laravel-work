@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Enums\ModifyRequestStatus;
 use Illuminate\Http\Request;
 use App\Models\Work;
-use App\Models\User as Worker;
 use App\Traits\AppUtility;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WorkApplication;
@@ -15,6 +14,7 @@ use App\Models\City;
 use App\Models\FavoriteWork;
 use App\Models\HomeReview;
 use App\Models\ModifyRequest;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -165,6 +165,7 @@ class HomeController extends Controller
                 'work_id' => $request->work_id,
                 'worker_id' => $worker_id,
                 'status' => WorkApplicationStatus::APPLYING,
+                'confirm_yn' => config('const.WorkApplications.CONFIRM_STATUS.NO'),
             ]);
 
             // save room id firebase
@@ -266,6 +267,46 @@ class HomeController extends Controller
             FavoriteWork::where('work_id', $request->work_id)
                 ->where('worker_id', $worker_id)
                 ->delete();
+
+            DB::commit();
+            return response()->json([
+                'status' => true,
+                'message' => "success"
+            ]);
+
+        } catch (\Exception $e) {
+            // Transaction Rollback
+            DB::rollback();
+            return response()->json([
+                'status' => $e->getCode(),
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function confirmWork(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $worker_id = Auth::id();
+            $work = Work::find($request->work_id);
+            if (!$work) {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Không tìm thấy công việc phù hợp!"
+                ]);
+            }
+
+            // Create Work Application (apply job)
+            $application = WorkApplication::where('work_id', $request->work_id)
+                ->where('worker_id', $worker_id)
+                ->where('status', WorkApplicationStatus::ASSIGNED)
+                ->where('confirm_yn', '=', Config('const.WorkApplications.CONFIRM_STATUS.NO'))
+                ->first();
+
+            $application->confirm_yn = config('const.WorkApplications.CONFIRM_STATUS.YES');
+            $application->confirmed_at = Carbon::now();
+            $application->save();
 
             DB::commit();
             return response()->json([
@@ -423,7 +464,6 @@ class HomeController extends Controller
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e);
             return response()->json([
                 'status' => $e->getCode(),
                 'message' => $e->getMessage()
@@ -434,20 +474,39 @@ class HomeController extends Controller
     public function workerApplication(Request $request)
     {
         $worker_id = Auth::id();
+        $isConfirm = $request->isConfirm ? true : false;
+
         $outstandingWorks = Work::getOutstanding();
         $workTags = $this->getItemStringToArray(setting('admin.tags'));
         $workSkills = $this->getItemStringToArray(setting('admin.skills'));
 
-        $workApplication = WorkApplication::where('worker_id', $worker_id)
-                            ->where('status', WorkApplicationStatus::APPLYING)   
-                            ->pluck('work_id')->toArray();
-        $favoriteWork = FavoriteWork::where('worker_id', $worker_id)->pluck('work_id')->toArray();
-        $works = Work::whereIn('id', $workApplication)->orderBy('id', 'desc')->paginate(10);
-        
-        foreach($works->items() as $work){
-            $work->is_favorite = in_array($work->id, $favoriteWork);
+        $workApplication = WorkApplication::where('worker_id', $worker_id);
+
+        if($isConfirm) {
+            $workIds = $workApplication->where('status', WorkApplicationStatus::ASSIGNED)
+                ->where('confirm_yn', config('const.WorkApplications.CONFIRM_STATUS.YES'));
+        }
+        else {
+            $workIds = $workApplication->where('status', WorkApplicationStatus::APPLYING)
+                ->orWhere(function($query){
+                    $query->where('status', WorkApplicationStatus::ASSIGNED)
+                        ->where('confirm_yn', config('const.WorkApplications.CONFIRM_STATUS.NO'));
+                });
         }
 
-        return view('homes.works.application')->with(compact('works', 'outstandingWorks', 'workTags', 'workSkills'));
+        $workIds = $workIds->pluck('work_id')->toArray();
+        $works = Work::whereIn('id', $workIds)->orderBy('id', 'desc')->paginate(10);
+
+        $favoriteWork = FavoriteWork::where('worker_id', $worker_id)->pluck('work_id')->toArray();
+        $workConfirm = WorkApplication::where('worker_id', $worker_id)->where('status', WorkApplicationStatus::ASSIGNED)
+            ->where('confirm_yn', config('const.WorkApplications.CONFIRM_STATUS.NO'))
+            ->pluck('work_id')->toArray();
+
+        foreach($works->items() as $work){
+            $work->is_favorite = in_array($work->id, $favoriteWork);
+            $work->is_confirm = in_array($work->id, $workConfirm);
+        }
+
+        return view('homes.works.application')->with(compact('works', 'outstandingWorks', 'workTags', 'workSkills', 'request'));
     }
 }

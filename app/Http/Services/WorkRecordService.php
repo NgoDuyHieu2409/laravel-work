@@ -3,12 +3,13 @@
 namespace App\Http\Services;
 
 use App\Helpers\WageCalculatorHelper;
-use App\Work;
-use App\WorkApplication;
-use App\Worker;
-use App\WorkRecord;
+use App\Models\Work;
+use App\Models\WorkApplication;
+use App\Models\User as Worker;
+use App\Models\WorkRecord;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class WorkRecordService
 {
@@ -22,7 +23,7 @@ class WorkRecordService
     public function getList()
     {
         $user_id = Auth::id();
-        $record_by_month = WorkRecord::where('home_id', $user_id)
+        $record_by_month = WorkRecord::where('user_id', $user_id)
                 ->get()
                 ->groupBy(function($val) {
                     return Carbon::parse($val->created_at)->format('Y-m');
@@ -60,7 +61,7 @@ class WorkRecordService
             return $key == $month;
         })->first();
 
-        $record_by_month = WorkRecord::where('home_id', $user_id)
+        $record_by_month = WorkRecord::where('user_id', $user_id)
                 ->where(function($query) use($month){
                     $query->whereYear('created_at', Carbon::parse($month)->format('Y'))
                           ->whereMonth('created_at', Carbon::parse($month)->format('m'));
@@ -68,11 +69,29 @@ class WorkRecordService
                 ->get()
                 ->groupBy(['work_id']);
 
+        foreach ($record_by_month as $work_id => $records) {
+            foreach ($records as $record){
+                $record->work_title = Str::limit($record->work->title, 50);
+                $record->gender = $record->worker->contact->sex ? 'Nam' : 'Nữ';
+                $record->base_wage = number_format($record->base_wage) ?? 0;
+                $record->transportation_fee = number_format($record->transportation_fee) ?? 0;
+                $record->total_wage = number_format($record->total_wage) ?? 0;
+                $record->commission_fee = number_format($record->commission_fee) ?? 0;
+                $record->commission_fee_tax = number_format($record->commission_fee_tax) ?? 0;
+                $record->work_date = Carbon::parse($record->work_date)->format('d/m/Y');
+                $record->transfer_requested_at = Carbon::parse($record->transfer_requested_at)->format('d/m/Y');
+                $record->transfered_at = Carbon::parse($record->transfered_at)->format('d/m/Y');
+                $record->worktime_start_at= Carbon::parse($record->worktime_start_at)->format('H:i');
+                $record->worktime_end_at = Carbon::parse($record->worktime_end_at)->format('H:i');
+                $record->resttime_start_at = Carbon::parse($record->resttime_start_at)->format('H:i');
+                $record->resttime_end_at = Carbon::parse($record->resttime_end_at)->format('H:i');
+            }
+        }
+
         $data = [
             'total_paid' => $total_paid,
             'date' =>  $this->dayInMonth($month),
             'record_by_month' => $record_by_month ?? [],
-            // 'record_by_month' => $this->detailWorkerByMonth($record_by_month),
         ];
 
         return $data;
@@ -82,17 +101,16 @@ class WorkRecordService
     {
         $month_now = Carbon::now()->format('Y-m');
         $month_format = Carbon::parse($month)->format('Y-m');
-
+        
         if($month_format > $month_now){
             $date = 0;
         }
-        elseif($month_format = $month_now){
+        elseif($month_format == $month_now){
             $date = Carbon::now()->day;
         }
         else{
             $date = Carbon::create($month)->daysInMonth;
         }
-
         return $date;
     }
 
@@ -130,7 +148,7 @@ class WorkRecordService
         $record = new WorkRecord();
         $record->fill([
             'worker_id' => $modify->worker_id,
-            'home_id' => $modify->home_id,
+            'user_id' => $modify->home_id,
             'work_id' => $work->id,
             'company_id' => $modify->home->company_id,
             'work_application_id' => $work_application_id,

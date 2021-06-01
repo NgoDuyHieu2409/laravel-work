@@ -6,7 +6,7 @@ use App\Models\Work;
 use App\Models\User as Worker;
 use App\Models\WorkerReview;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Storage;
 
 class WorkerService
@@ -14,7 +14,6 @@ class WorkerService
     public function getWorkerIds($worker_id)
     {
         $worker = Worker::findOrFail($worker_id);
-        $worker->avatar = $worker->photo ? Storage::url($worker->photo) : '/_Template/global_assets/images/placeholders/placeholder.jpg';
         return $worker;
     }
 
@@ -26,9 +25,9 @@ class WorkerService
         foreach($worker_reviews as $work_id => $worker_reivews){
             $work_name = Work::findOrFail($work_id)->title;
             foreach($worker_reivews as $worker_reivew){
-                $worker_reivew->photo_url = $worker_reivew->home->photo_url ? Storage::url($worker_reivew->home->photo_url) : '/_Template/global_assets/images/placeholders/placeholder.jpg';
+                $worker_reivew->photo_url = $worker_reivew->home->profile_photo_path ? Storage::url($worker_reivew->home->profile_photo_path) : Voyager::image($worker_reivew->home->avatar);
                 $worker_reivew->home_name = $worker_reivew->home->name;
-                $worker_reivew->format_time = Carbon::parse($worker_reivew->created_at)->format('Y年m月d日');
+                $worker_reivew->format_time = Carbon::parse($worker_reivew->created_at)->format('d/m/Y');
             }
 
             $new_worker_review[$work_name] = $worker_reivews;

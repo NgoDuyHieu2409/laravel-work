@@ -205,6 +205,12 @@ return [
         '/template/plugins/inputmask/jquery.inputmask.min.js',
         '/template/js/jqueryform.min.js',
         'template/plugins/toastr/toastr.min.js',
+        'https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js',
+        'https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js',
+        'https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js',
+        'https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js',
+        'js/messages/index_message.js',
+        'js/messages/send_message.js',
     ],
 
     'googlemaps' => [

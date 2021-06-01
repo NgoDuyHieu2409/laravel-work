@@ -4,7 +4,7 @@
         position: fixed !important;
         top: 65px;
         width: 19% !important;
-        right: 12%;
+        right: 10%;
     }
     </style>
 

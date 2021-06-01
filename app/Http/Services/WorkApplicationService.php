@@ -4,12 +4,11 @@ namespace App\Http\Services;
 
 use App\Enums\WorkApplicationStatus;
 use App\Http\Resources\WorksResource;
-use App\Work;
-use App\WorkApplication;
-use App\Worker;
-use App\WorkRecord;
+use App\Models\Work;
+use App\Models\WorkApplication;
+use App\Models\User as Worker;
+use App\Models\WorkRecord;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 
 class WorkApplicationService
 {
