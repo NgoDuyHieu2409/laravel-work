@@ -3,6 +3,9 @@
 @section('page_title', __('voyager::generic.viewing').' '.$dataType->getTranslatedAttribute('display_name_plural'))
 
 @section('content')
+@php
+use Illuminate\Support\Str;
+@endphp
 <div class="page-content browse container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -39,15 +42,17 @@
                         </div>
                     </div>
 
-                    <div class="text-left">
+                    <div class="text-left mt-2">
                         <a href="{{ route('voyager.works.show', ['id' => $modify_request->work->id]) }}"
-                            class="btn btn-light">{{ $modify_request->work->title }}</a>
+                            title="{{ $modify_request->work->title }}">
+                            {{ Str::limit($modify_request->work->title, 30) }}
+                        </a>
                     </div>
 
                     <div class="font-size-sm">
                         <form action="#" method="POST">
                             @csrf
-                            @method('PUT')
+                            @method('POST')
 
                             <div class="table-responsive">
                                 <table class="table table-hover border-bottom w-100 mt-3">
@@ -59,21 +64,21 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>元の業務</th>
-                                            <th>申請内容</th>
+                                            <th>Work</th>
+                                            <th>Request</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>業務日</td>
-                                            <td>{{ \Carbon\Carbon::parse($modify_request->work->worktime_start_at)->format('m月d日') }}
+                                            <td>Date</td>
+                                            <td>{{ \Carbon\Carbon::parse($modify_request->work->worktime_start_at)->format('d/m/Y') }}
                                             </td>
                                             <td class="{{ $modify_request->text_scheduled ?? '' }}">
-                                                {{ \Carbon\Carbon::parse($modify_request->scheduled_worktime_start_at)->format('m月d日') }}
+                                                {{ \Carbon\Carbon::parse($modify_request->scheduled_worktime_start_at)->format('d/m/Y') }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>業務時間</td>
+                                            <td>Time</td>
                                             <td>
                                                 {{ \Carbon\Carbon::parse($modify_request->work->worktime_start_at)->format('H:i') }}
                                                 &#126;
@@ -88,39 +93,38 @@
                                         <tr>
 
 
-                                            <td>休憩時間</td>
-                                            <td>{{ number_format($modify_request->work->resttime_minutes) }}分</td>
+                                            <td>Resttime</td>
+                                            <td>{{ number_format($modify_request->work->resttime_minutes) }} phút</td>
                                             <td class="{{ $modify_request->text_resttime ?? '' }}">
-                                                {{ number_format($modify_request->resttime_minutes) }}分</td>
+                                                {{ number_format($modify_request->resttime_minutes) }} phút</td>
                                         </tr>
                                         <tr>
-                                            <td>報酬額合計</td>
+                                            <td>Total wages</td>
                                             <td>
-                                                <span>{{ number_format($modify_request->work->base_wage + $modify_request->work->transportation_fee) }}円</span>
-                                                <p>（交通費{{ $modify_request->work->transportation_fee }}円込）</p>
+                                                <span>{{ number_format($modify_request->work->base_wage + $modify_request->work->transportation_fee) }} VNĐ</span>
+                                                <p class="text-info">(Đã bao gồm {{ $modify_request->work->transportation_fee }} VNĐ chi phí đi lại.)</p>
                                             </td>
                                             <td>
-                                                <span
-                                                    class="{{ $modify_request->text_base ?? '' }}">{{ number_format($modify_request->total_paid) }}円</span>
-                                                <p>（交通費{{ $modify_request->transportation_fee }}円込）</p>
+                                                <span class="{{ $modify_request->text_base ?? '' }}">{{ number_format($modify_request->total_paid) }} VNĐ</span>
+                                                <p class="text-info">(Đã bao gồm {{ $modify_request->transportation_fee }} VNĐ chi phí đi lại.)</p>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
 
-                            <div class="p-3" style="padding-bottom: 0 !important;">
-                                <p>修正依頼の理由</p>
+                            <div class="p-2">
+                                <p>Comment</p>
                                 <p>{!! $modify_request->comment !!}</p>
                             </div>
-                            <hr>
+                            <hr class="mt-0">
 
                             <div class="text-right">
-                                <button type="button" class="btn btn-sm btn-danger js-btn-refuse-request"
+                                <button type="button" class="btn btn-xs btn-danger js-btn-refuse-request"
                                     data-id="{{ $modify_request->id }}">
                                     Từ chối
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary js-btn-approve-request"
+                                <button type="button" class="btn btn-xs btn-primary js-btn-approve-request"
                                     data-id="{{ $modify_request->id }}">
                                     Chấp thuận
                                 </button>
@@ -135,16 +139,6 @@
 </div>
 @stop
 
-@section('css')
-@if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-<link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
-@endif
-@stop
-
 @section('javascript')
-<!-- DataTables -->
-@if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-<script src="{{ voyager_asset('lib/js/dataTables.responsive.min.js') }}"></script>
-@endif
-
+<script src="{{ asset('js/modify_requests/modify_requests.js') }}"></script>
 @stop

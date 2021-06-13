@@ -96,11 +96,7 @@
                                         Add Education
                                     </button>
                                 </h4>
-                                <div class="card-tools">
-                                    <span class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </span>
-                                </div>
+                                
                             </div>
                             <div class="card-body">
                                 <div class="row">

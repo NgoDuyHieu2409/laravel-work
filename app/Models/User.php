@@ -34,7 +34,9 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
-        'company_id',
+        // 'company_id',
+        // 'total_workcount',
+        // 'total_worktime',
     ];
 
     /**

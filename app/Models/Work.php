@@ -6,9 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
-use App\Models\WorkApplication;
-use App\Traits\FullTextSearch;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\FullTextSearch;
+use App\Models\WorkPhoto;
+use App\Models\WorkQualification;
+use App\Models\WorkSkill;
+use App\Models\WorkRecord;
+use App\Models\WorkTag;
+use App\Models\WorkApplication;
+use App\Models\ModifyRequest;
+use App\Models\User;
+use App\Models\FavoriteWork;
+use App\Models\HomeReview;
+use App\Models\company;
 
 class Work extends Model
 {
@@ -66,27 +76,27 @@ class Work extends Model
 
     public function work_photos()
     {
-        return $this->hasMany(\App\Models\WorkPhoto::class);
+        return $this->hasMany(WorkPhoto::class);
     }
 
     public function work_skills()
     {
-        return $this->hasMany(\App\Models\WorkSkill::class);
+        return $this->hasMany(WorkSkill::class);
     }
 
     public function work_qualifications()
     {
-        return $this->hasMany(\App\Models\WorkQualification::class);
+        return $this->hasMany(WorkQualification::class);
     }
 
     public function work_tags()
     {
-        return $this->hasMany(\App\Models\WorkTag::class);
+        return $this->hasMany(WorkTag::class);
     }
 
     public function work_records()
     {
-        return $this->hasMany(\App\Models\WorkRecord::class);
+        return $this->hasMany(WorkRecord::class);
     }
 
     public function work_applications()
@@ -94,30 +104,30 @@ class Work extends Model
         return $this->hasMany(WorkApplication::class);
     }
 
-    public function modify_requests()
+    public function modify_request()
     {
-        return $this->hasMany(\App\Models\ModifyRequest::class);
+        return $this->hasOne(ModifyRequest::class)->where('worker_id', Auth::id());
     }
 
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function favorites()
     {
-        return $this->hasMany(\App\Models\FavoriteWork::class);
+        return $this->hasMany(FavoriteWork::class);
     }
 
     public function home_review()
     {
-        return $this->hasOne(\App\Models\HomeReview::class)
+        return $this->hasOne(HomeReview::class)
                     ->where('worker_id', Auth::id());
     }
 
     public function company()
     {
-        return $this->belongsTo(\App\Models\company::class);
+        return $this->belongsTo(company::class);
     }
 
     /**

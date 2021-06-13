@@ -41,11 +41,14 @@ class ModifyRequestsController extends VoyagerBaseController
             DB::commit();
             return response()->json([
                 'status' => 'success',
-                'flash_message' => "修正依頼が拒否されました。"
+                'flash_message' => "Yêu cầu đã bị từ chối."
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
-            return abort('500', $e->getMessage());
+            return response()->json([
+                'status' => 'error',
+                'flash_message' => $e->getMessage(),
+            ]);
         }
     }
 
@@ -54,15 +57,17 @@ class ModifyRequestsController extends VoyagerBaseController
         try {
             DB::beginTransaction();
             $this->modifyRequestService->updateStatus($request->modify_id, 'approve');
-
             DB::commit();
             return response()->json([
                 'status' => 'success',
-                'flash_message' => "修正依頼が承認されました。"
+                'flash_message' => "Yêu cầu đã được chấp thuận."
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
-            return abort('500', $e->getMessage());
+            return response()->json([
+                'status' => 'error',
+                'flash_message' => $e->getMessage(),
+            ]);
         }
     }
 

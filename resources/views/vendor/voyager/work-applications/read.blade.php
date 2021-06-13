@@ -18,11 +18,11 @@
                     <!-- form start -->
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-10">
-                                <div class="user-panel mt-3 mb-3 d-flex">
+                            <div class="col-lg-10 mb-0">
+                                <div class="user-panel d-flex">
                                     <div class="image mr-3">
                                         <a href="#"><img src="{{ $worker->profile_photo_path }}" class="rounded-circle"
-                                                width="42" height="42" alt=""></a>
+                                                width="50" height="50" alt=""></a>
                                     </div>
                                     <div class="info">
                                         <a href="#" class="d-block">
@@ -35,23 +35,204 @@
                         </div>
                         <hr>
 
-                        <div class="row">
-                            <div class="col-lg-2">Gender</div>
-                            <div class="col-lg-10">{{ $worker->contact->sex ? 'Nam' : 'Nữ'}}</div>
-                        </div>
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-lg-2">Birthday</div>
-                            <div class="col-lg-10">
-                                {{ \Carbon\Carbon::parse($worker->contact->birthday)->format('d/m/Y')}}
+                        @if($worker->contact)
+                            <!-- Thông tin cá nhân -->
+                            <div class="row">
+                                <div class="col-lg-2 mb-0">Email</div>
+                                <div class="col-lg-10 mb-0">{{ $worker->email ?? ''}}</div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-2">Address</div>
-                            <div class="col-lg-10">{{ $worker->address_format }}</div>
-                        </div>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-lg-2 mb-0">Gender</div>
+                                <div class="col-lg-10 mb-0">{{ $worker->contact->sex ? 'Nam' : 'Nữ'}}</div>
+                            </div>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-lg-2 mb-0">Birthday</div>
+                                <div class="col-lg-10 mb-0">
+                                    {{ \Carbon\Carbon::parse($worker->contact->birthday)->format('d/m/Y')}}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-2 mb-0">Address</div>
+                                <div class="col-lg-10 mb-0">{{ $worker->address_format }}</div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-2 mb-0">Skills</div>
+                                <div class="col-lg-10 mb-0">
+                                    <ol>
+                                        @foreach ($worker->skills as $key => $skill)
+                                        <li>{{ $skill->name }}</li>    
+                                        @endforeach
+                                    </ol>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-2 mb-0">Languages</div>
+                                <div class="col-lg-10 mb-0">
+                                    <ol>
+                                        @foreach ($worker->languages as $language)
+                                        @php
+                                            switch ($language->proficiency){
+                                                case 0:
+                                                    $profy = '<span class="text-primary" style="font-size: 12px;">Beginner</span>';
+                                                    break;
+                                                case 1:
+                                                    $profy = '<span class="text-warning" style="font-size: 12px;">Intermediate</span>';
+                                                    break;
+                                                case 2:
+                                                    $profy = '<span class="text-danger" style="font-size: 12px;">Advanced</span>';
+                                                    break;
+                                                case 3:
+                                                    $profy = '<span class="text-success" style="font-size: 12px;">Native</span>';
+                                                    break;
+                                            }
+                                        @endphp
+                                        <li>{{ $languages[$language->language_id] }} {!! $profy !!}</li>    
+                                        @endforeach
+                                    </ol>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-2 mb-0">Summary</div>
+                                <div class="col-lg-10 mb-0">{!! $worker->contact->summary !!}</div>
+                            </div>
+
+                            <hr>
+                            <!-- Thông tin lịch sử công việc -->
+                            @if($worker->workHistories->count())
+                            <div class="card">
+                                <div class="card-header header-elements-inline">
+                                    <h4 class="card-title">
+                                        <b>Work Histories</b>
+                                    </h4>
+                                    <div class="card-tools">
+                                        <span class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body pl-0 pr-0">
+                                    <table class="table table-hover mb-3 border-bottom js-admin-table" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Position</th>
+                                                <th>Company</th>
+                                                <th>Time</th>
+                                                <th>Descriptions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($worker->workHistories as $key => $item)
+                                        <tr>
+                                            <td>{{ $item->position ?? '' }}</td>
+                                            <td>{{ $item->company ?? '' }}</td>
+                                            <td>
+                                                {{ \Carbon\Carbon::parse($item->from_date)->format('d/m/Y')}}
+                                                &nbsp;~&nbsp; 
+                                                {{ \Carbon\Carbon::parse($item->to_date)->format('d/m/Y')}}
+                                            </td>
+                                            <td>{!! $item->description ?? '' !!}</td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @endif
+
+                            <!-- Thông tin Educations -->
+                            @if($worker->educations->count())
+                            <div class="card">
+                                <div class="card-header header-elements-inline">
+                                    <h4 class="card-title">
+                                        <b>Educations</b>
+                                    </h4>
+                                    <div class="card-tools">
+                                        <span class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body pl-0 pr-0">
+                                    <table class="table table-hover mb-3 border-bottom js-admin-table" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Subject</th>
+                                                <th>School</th>
+                                                <th>Qualifications</th>
+                                                <th>Time</th>
+                                                <th>Descriptions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($worker->educations as $key => $item)
+                                        <tr>
+                                            <td>{{ $item->subject ?? '' }}</td>
+                                            <td>{{ $item->school ?? '' }}</td>
+                                            <td>{{ $item->qualification ?? '' }}</td>
+                                            <td>
+                                                {{ \Carbon\Carbon::parse($item->from_date)->format('d/m/Y')}}
+                                                &nbsp;~&nbsp; 
+                                                {{ \Carbon\Carbon::parse($item->to_date)->format('d/m/Y')}}
+                                            </td>
+                                            <td>{!! $item->description ?? '' !!}</td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @endif
+
+                            <!-- Thông tin Educations -->
+                            @if($worker->certifications->count())
+                            <div class="card">
+                                <div class="card-header header-elements-inline">
+                                    <h4 class="card-title">
+                                        <b>Certifications</b>
+                                    </h4>
+                                    <div class="card-tools">
+                                        <span class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body pl-0 pr-0">
+                                    <table class="table table-hover mb-3 border-bottom js-admin-table" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Institution</th>
+                                                <th>Date</th>
+                                                <th>Link</th>
+                                                <th>Descriptions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($worker->certifications as $key => $item)
+                                        <tr>
+                                            <td>{{ $item->name ?? '' }}</td>
+                                            <td>{{ $item->institution ?? '' }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->date)->format('d/m/Y')}}</td>
+                                            <td>{!! $item->link ?? '' !!}</td>
+                                            <td>{!! $item->description ?? '' !!}</td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @endif
+                        @else
+                        <p>Hiên chưa có thông tin cá nhân</p>
+                        @endif
                         <div class="clear-fix" style="height: 20px;"></div>
                     </div>
 
@@ -64,7 +245,8 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary js-btn-update-application"><i class="icon-checkmark4"></i> Approval</a>
+                                <button type="submit" class="btn btn-primary js-btn-update-application"><i
+                                        class="icon-checkmark4"></i> Approval</a>
                             </div>
                         </div>
                     </div>

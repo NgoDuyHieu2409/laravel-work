@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Work;
+use App\Models\User;
 
 class ModifyRequest extends Model
 {
@@ -30,17 +32,17 @@ class ModifyRequest extends Model
 
     public function work()
     {
-        return $this->belongsTo(\App\Models\Work::class, 'work_id', 'id');
+        return $this->belongsTo(Work::class, 'work_id', 'id');
     }
 
     public function worker()
     {
-        return $this->belongsTo(\App\Models\User::class, 'worker_id', 'id');
+        return $this->belongsTo(User::class, 'worker_id', 'id');
     }
 
     public function user()
     {
-        return $this->belongsTo(App\Models\User::class, 'home_id', 'id');
+        return $this->belongsTo(User::class, 'home_id', 'id');
     }
 
 }

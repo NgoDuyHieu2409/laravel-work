@@ -150,7 +150,7 @@ class WorkRecordService
             'worker_id' => $modify->worker_id,
             'user_id' => $modify->home_id,
             'work_id' => $work->id,
-            'company_id' => $modify->home->company_id,
+            'company_id' => $modify->user->company_id,
             'work_application_id' => $work_application_id,
             'title' => $work->title,
             'work_date' => $modify->scheduled_worktime_start_at,

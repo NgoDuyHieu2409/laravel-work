@@ -223,9 +223,10 @@ class WorkApplicationController extends VoyagerBaseController
         // Convert data show
         $worker = $this->workerService->getWorkerIds($dataTypeContent->worker_id);
         $worker->profile_photo_path = isset($worker->profile_photo_path) ? Storage::url($worker->profile_photo_path) : Voyager::image($worker->avatar);
-        $worker->address_format = $worker->contact->address . ', ' . $worker->contact->rs_district->name . ', ' . $worker->contact->rs_city->name;
+        $worker->address_format = ($worker->contact->address ?? '') . ', ' . ($worker->contact->rs_district->name ?? '') . ', ' . ($worker->contact->rs_city->name ?? '');
         
         $worker_reviews = $this->workerService->getWorkerReview($dataTypeContent->worker_id);
+        $languages = config('constant.language_skills');
 
         $view = 'voyager::bread.read';
 
@@ -233,7 +234,7 @@ class WorkApplicationController extends VoyagerBaseController
             $view = "voyager::$slug.read";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted', 'worker', 'worker_reviews'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted', 'worker', 'worker_reviews', 'languages'));
     }
 
     public function updateApproval(Request $request)
@@ -242,7 +243,7 @@ class WorkApplicationController extends VoyagerBaseController
             DB::beginTransaction();
             $this->workApplicationService->updateApplication($request);
             DB::commit();
-            return redirect()->route("voyager.works-applications.index", ['work_id' => $request->work_id])->with([
+            return redirect()->route("voyager.work-applications.index", ['work_id' => $request->work_id])->with([
                 'message'    => "It was confirmed normally.",
                 'alert-type' => 'success',
             ]);

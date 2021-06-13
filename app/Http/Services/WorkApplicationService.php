@@ -44,5 +44,7 @@ class WorkApplicationService
         $work_record->fixed_at = Carbon::now();
         $work_record->fixed_yn  = 'y';
         $work_record->save();
+
+        return true;
     }
 }

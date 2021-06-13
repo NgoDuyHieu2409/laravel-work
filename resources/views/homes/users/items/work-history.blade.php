@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <label>From</label>
                             <input type="date" name="workHistories[{{ $key }}][from_date]" class="form-control"
-                                value="{{ $item->form_date ?? '' }}">
+                                value="{{ $item->from_date ?? '' }}">
                         </div>
                     </div>
 

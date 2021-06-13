@@ -58,10 +58,8 @@ class ModifyRequestService
         $modify = ModifyRequest::find($id);
         if($type == 'approve'){
             $modify->approval_status = ModifyRequestStatus::APPROVE;
-
             //Add new work record
             $record = $this->workRecordService->store($modify);
-
             //Update status work applicartion
             $application = WorkApplication::where('work_id', $modify->work_id)->where('worker_id', $modify->worker_id)->first();
             $application->status = WorkApplicationStatus::FINISH;
@@ -72,6 +70,7 @@ class ModifyRequestService
             $worker->total_worktime = $worker->total_worktime + $record->base_worktime + $record->overtime_worktime + $record->nighttime_worktime;
             $worker->total_workcount += 1;
             $worker->save();
+
         }
         else{
             $modify->approval_status = ModifyRequestStatus::REFUSE;

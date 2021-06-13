@@ -10,6 +10,7 @@ class WorkReview {
     init() {
         this._btn_review();
         this._btn_request();
+        this._disabled_custom();
     }
 
     _btn_review() {
@@ -49,8 +50,8 @@ class WorkReview {
                 var work_id = $(this).data('id');
                 var form = '#modify-request-' + work_id;
 
-                var modify_worktime_start_at = $(form + ' input[name="worktime_start_at"]').val();
-                var modify_worktime_end_at = $(form + ' input[name="worktime_end_at"]').val();
+                var modify_worktime_start_at = $(form + ' input[name="modify_worktime_start_at"]').val();
+                var modify_worktime_end_at = $(form + ' input[name="modify_worktime_end_at"]').val();
                 var resttime_minutes = $(form + ' input[name="resttime_minutes"]').val();
                 var comment = $(form + ' textarea[name="comment"]').val();
 
@@ -82,6 +83,12 @@ class WorkReview {
             }
         });
     };
+
+    _disabled_custom(){
+        if(HOME_IS_REVIEW == 1){
+            $('.list-work-review').find('input, textarea').prop('disabled', true);
+        }
+    }
 }
 
 const review = new WorkReview();

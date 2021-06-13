@@ -361,7 +361,7 @@ class HomeController extends Controller
 
         $workApplication = $workApplication->pluck('work_id')->toArray();
 
-        $works = Work::with('home_review')->whereIn('works.id', $workApplication)
+        $works = Work::with('home_review', 'modify_request')->whereIn('works.id', $workApplication)
                     ->orderBy('works.id', 'desc')->paginate(10);
 
         $outstandingWorks = Work::getOutstanding();

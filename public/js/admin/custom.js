@@ -46,7 +46,15 @@ class AdminCusstom {
                 search: '_INPUT_',
                 searchPlaceholder: 'Tìm kiếm',
                 lengthMenu: '_MENU_',
-                // paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+            },
+        });
+
+        $('.js-admin-table').DataTable({
+            ordering: false,
+            scrollX: true,
+            language: {
+                search: null,
+                lengthMenu: null,
             },
         });
     };

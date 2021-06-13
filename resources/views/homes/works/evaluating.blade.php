@@ -30,7 +30,7 @@
                 <div class="max-w-7xl mx-auto">
                     @if($works->count())
                     @csrf
-                    <div class="overflow-hidden sm:rounded-lg">
+                    <div class="overflow-hidden sm:rounded-lg list-work-review">
                         @foreach($works as $work)
                         <div class="row">
                             <div class="col-12 col-sm-12">
@@ -42,8 +42,7 @@
                                         <div class="row ml-1 mb-2">
                                             <div class="col-12 col-sm-9">
                                                 <span class="info-box-text text-left text-uppercase text-bold">
-                                                    <a
-                                                        href="{{ route('work.show', ['id' => $work->id]) }}">{{ $work->title }}</a>
+                                                    <a href="{{ route('work.show', ['id' => $work->id]) }}">{{ $work->title }}</a>
                                                 </span>
                                             </div>
                                             <div class="col-12 col-sm-3">
@@ -187,7 +186,8 @@
                                                             </tbody>
                                                         </table>
 
-                                                        <textarea name="comment" rows="2" style="width: 100%;" placeholder="Bạn có ý kiến gì khác không?">{{ $work->home_review->comment ?? ''}}</textarea>
+                                                        <textarea name="comment" rows="2" style="width: 100%;"
+                                                            placeholder="Bạn có ý kiến gì khác không?">{{ $work->home_review->comment ?? ''}}</textarea>
                                                     </div>
                                                     @if(!$request->isReview)
                                                     <div class="col-sm-12 text-right">
@@ -198,33 +198,44 @@
                                                 </div>
                                             </div>
 
-                                            <div id="modify-request-{{$work->id}}" aria-labelledby="headingOne" data-parent="#accordion" class="collapse mt-2">
+                                            <div id="modify-request-{{$work->id}}" aria-labelledby="headingOne" data-parent="#accordion" class="collapse mt-2 js-custom-requests">
                                                 <div class="row">
                                                     <div class="col-sm-12 worker_modify_request">
-                                                        <span class="text-yellow-500" style="font-size: 13px;"><i>Thời gian bắt đầu, Thời gian kết thúc và Thời gian nghỉ: là thời gian thực tế bạn thự hiện công việc cua mình.</i></span>
+                                                        <span class="text-yellow-500" style="font-size: 13px;">
+                                                            <i>Thời gian bắt đầu, Thời gian kết thúc và Thời gian nghỉ: là thời gian thực tế bạn thực hiện công việc cua mình.</i>
+                                                        </span>
                                                     </div>
 
                                                     <div class="col-sm-6 mb-2">
                                                         <label>Thời gian bắt đầu</label>
-                                                        <input class="form-control js-work-time-start" type="datetime-local" name="worktime_start_at" value="">
+                                                        <input class="form-control js-work-time-start" type="datetime-local" name="modify_worktime_start_at"
+                                                            @if($work->modify_request) disabled @endif
+                                                            value="{{ $work->modify_request ?
+                                                                \Carbon\Carbon::create($work->modify_request->modify_worktime_start_at)->format('Y-m-d\TH:i') : ''}}">
                                                     </div>
 
                                                     <div class="col-lg-6 mb-2">
                                                         <label>Thời gian kết thúc</label>
-                                                        <input class="form-control" type="datetime-local" name="worktime_end_at" value="">
+                                                        <input class="form-control" type="datetime-local" name="modify_worktime_end_at"
+                                                            @if($work->modify_request) disabled @endif
+                                                            value="{{ $work->modify_request ?
+                                                                \Carbon\Carbon::create($work->modify_request->modify_worktime_end_at)->format('Y-m-d\TH:i') : ''}}">
                                                     </div>
 
                                                     <div class="col-lg-6 mb-2">
                                                         <label>Thời gian nghỉ</label>
-                                                        <input class="form-control" type="number" min="0" name="resttime_minutes" value=""
+                                                        <input class="form-control" type="number" min="0" name="resttime_minutes"
+                                                            @if($work->modify_request) disabled @endif
+                                                            value="{{ $work->modify_request->resttime_minutes ?? ''}}"
                                                             placeholder="Thời gian tính bằng phút.">
                                                     </div>
 
                                                     <div class="col-sm-12 worker_modify_request">
-                                                        <textarea name="comment" rows="3" style="width: 100%;" placeholder="Bạn có yêu cần cần chỉnh sửa gì?">{{ $work->home_review->comment ?? ''}}</textarea>
+                                                        <textarea name="comment" rows="3" style="width: 100%;" @if($work->modify_request) disabled @endif
+                                                            placeholder="Bạn cần request vấn đề gì không?">{{ $work->modify_request->comment ?? ''}}</textarea>
                                                     </div>
 
-                                                    @if(!$request->isReview)
+                                                    @if(!$work->modify_request)
                                                     <div class="col-sm-12 text-right">
                                                         <button type="button" data-id="{{$work->id}}"
                                                             class="btn btn-sm btn-success btn-js-modify-request">Gửi yêu cầu</button>
@@ -284,6 +295,10 @@
     </div>
 
     @push('scripts')
+    <script>
+        const HOME_IS_REVIEW = @JSON($request->isReview ?? 0);
+    </script>
+
     <script src="{{ asset('js/work_review.js') }}"></script>
     <script>
     window.onscroll = function() {

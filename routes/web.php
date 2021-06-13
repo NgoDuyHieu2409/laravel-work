@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\FavoriteWorkersController;
 use App\Http\Controllers\Admin\WorkRecordController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\WorkApplicationController;
+use App\Http\Controllers\Admin\ModifyRequestsController;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
@@ -54,6 +55,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('messages/work/room-ids', [MessageController::class, 'ajaxGetRoomIdsByWork']);
 
     Route::post('/work-applications/approval', [WorkApplicationController::class, 'updateApproval'])->name('work_applications.approval');
+
+    Route::post('modify_requests/refuse', [ModifyRequestsController::class, 'refuse'])->name('home.modify_requests.refuse');
+    Route::post('modify_requests/approve', [ModifyRequestsController::class, 'approve'])->name('home.modify_requests.approve');
 });
 // End admin
 
