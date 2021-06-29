@@ -16,6 +16,9 @@ use App\Models\HomeReview;
 use App\Models\ModifyRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\SendNotificationEmail;
+use App\Mail\NotificationEmail;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -151,6 +154,7 @@ class HomeController extends Controller
     public function applyWork(Request $request)
     {
         try {
+            DB::beginTransaction();
             $worker_id = Auth::id();
             $job = WorkApplication::where('work_id', $request->work_id)->where('worker_id', $worker_id)->first();
             if ($job) {
@@ -171,6 +175,13 @@ class HomeController extends Controller
             // save room id firebase
             $workApplication->room_id = $workApplication->id;
             $workApplication->save();
+
+            // SEnd mail to leader for work
+            $mail = new NotificationEmail($job);
+            $sendEmailJob = new SendNotificationEmail($mail, ['phiasaunucuoi58pm2@gmil.com']);
+            dispatch($sendEmailJob)->afterResponse();
+            
+            DB::commit();
             return response()->json([
                 'status' => true,
                 'message' => "Bạn đã nộp hồ sơ cho công việc thành công!"
@@ -178,6 +189,7 @@ class HomeController extends Controller
 
         } catch (\Exception $e) {
             // Transaction Rollback
+            DB::rollBack();
             return response()->json([
                 'status' => $e->getCode(),
                 'message' => $e->getMessage()
@@ -188,6 +200,7 @@ class HomeController extends Controller
     public function unapplyWork(Request $request)
     {
         try {
+            DB::beginTransaction();
             $worker_id = Auth::id();
             $job = WorkApplication::where('work_id', $request->work_id)->where('worker_id', $worker_id)->first();
             if (!$job) {
@@ -198,6 +211,7 @@ class HomeController extends Controller
             }
 
             $job->delete();
+            DB::commit();
             return response()->json([
                 'status' => true,
                 'message' => "Success!"
@@ -205,6 +219,7 @@ class HomeController extends Controller
 
         } catch (\Exception $e) {
             // Transaction Rollback
+            DB::rollBack();
             return response()->json([
                 'status' => $e->getCode(),
                 'message' => $e->getMessage()

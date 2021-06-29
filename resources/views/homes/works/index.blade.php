@@ -225,7 +225,7 @@
                                         @auth
                                         <div class="text-right">
                                             <a href="{{ route('work.show', ['id' => $work->id]) }}"
-                                                class="btn btn-sm btn-success">Nộ hồ sơ</a>
+                                                class="btn btn-sm btn-success">Nộp hồ sơ</a>
                                         </div>
                                         @endauth
                                     </div>

@@ -134,26 +134,27 @@
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 $('.btn-apply-work').click(function(){
-                        var data = {
-                            work_id: $(this).data('work_id'),
-                            _token: "{{ csrf_token() }}",
-                        };
-                        $.ajax({
-                            url: "{{ route('work.apply') }}",
-                            type:'post',
-                            dataType: 'json',
-                            data: data,
-                            success: function (data) {
-                                if(data.status){
-                                    $('.btn-apply-work').hide();
-                                    toastr.success(data.message)
-                                }
-                                else{
-                                    toastr.error(data.message)
-                                }
+                    $('.btn-apply-work').hide();
+                    var data = {
+                        work_id: $(this).data('work_id'),
+                        _token: "{{ csrf_token() }}",
+                    };
+                    $.ajax({
+                        url: "{{ route('work.apply') }}",
+                        type:'post',
+                        dataType: 'json',
+                        data: data,
+                        success: function (data) {
+                            if(data.status){
+                                toastr.success(data.message);
                             }
-                        });
+                            else{
+                                $('.btn-apply-work').show();
+                                toastr.error(data.message);
+                            }
+                        }
                     });
+                });
             })
         </script>
 

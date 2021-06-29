@@ -149,13 +149,10 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-12">
-                                        <label>Chi phí vận chuyển<span class="text-danger ml-1">*</span></label>
-                                        <input type="text" class="form-control @error('transportation_fee') is-invalid @enderror" placeholder="" name="transportation_fee"
+                                    <div class="col-lg-6">
+                                        <label>Chi phí đi lại</label>
+                                        <input type="text" class="form-control" placeholder="" name="transportation_fee"
                                             value="{{ old('transportation_fee', $work->transportation_fee) }}">
-                                        @error('transportation_fee')
-                                            <div class="validation-invalid-label">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>

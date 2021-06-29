@@ -69,7 +69,7 @@ class WorkService
         }
 
         // 7:Có yêu cầu từ người làm
-        $modify_request_null = $work->modify_requests()->whereNull('approved_at')->count();
+        $modify_request_null = $work->modify_request()->whereNull('approved_at')->count();
         if ($modify_request_null > 0) {
             $status = WorkStatus::REQUESTING;
         }
