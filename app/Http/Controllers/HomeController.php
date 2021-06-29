@@ -176,10 +176,10 @@ class HomeController extends Controller
             $workApplication->room_id = $workApplication->id;
             $workApplication->save();
 
-            // SEnd mail to leader for work
-            $mail = new NotificationEmail($job);
-            $sendEmailJob = new SendNotificationEmail($mail, ['phiasaunucuoi58pm2@gmil.com']);
-            dispatch($sendEmailJob)->afterResponse();
+            // // SEnd mail to leader for work
+            // $mail = new NotificationEmail($job);
+            // $sendEmailJob = new SendNotificationEmail($mail, ['phiasaunucuoi58pm2@gmil.com']);
+            // dispatch($sendEmailJob)->afterResponse();
             
             DB::commit();
             return response()->json([
