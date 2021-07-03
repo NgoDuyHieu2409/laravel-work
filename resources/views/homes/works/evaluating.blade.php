@@ -3,8 +3,8 @@
     .sticky {
         position: fixed !important;
         top: 65px;
-        width: 19% !important;
-        right: 10%;
+        width: 21% !important;
+        right: 8%;
     }
     </style>
 

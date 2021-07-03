@@ -1,17 +1,4 @@
 <x-app-layout>
-    <style>
-    .sticky {
-        position: fixed !important;
-        top: 65px;
-        width: 19% !important;
-        right: 10%;
-    }
-
-    .mt-5 {
-        margin-top: 50px;
-    }
-    </style>
-
     <div class="container">
         <div class="row pt-3">
             <div class="col-md-4">
@@ -22,26 +9,27 @@
 
                     <div class="card-body">
                         <ul class="media-list media-chat-scrollable mb-3">
+                            @if($work_chats->count())
                             @foreach ($work_chats as $work)
                             <li>
-                                
-                                    <div class="widget-user-header" style="display: table;">
-                                        <div class="widget-user-image">
-                                            <img class="img-circle elevation-2" src="{{ $work->user_avatar }}"
-                                                width="40" height="40" alt="Work Avatar">
-                                                <span class="badge badge-danger navbar-badge js-count-message-{{ $workerId }}-{{ $work->id }}"
-                                                    style="top: unset; right: unset; left: 50px; "></span>
-                                        </div>
-                                        <div class="widget-user-username">
-                                            <a href="{{ route('work.chat', ['work_id' => $work->id]) }}"
-                                                class="font-weight-semibold mr-3" title="{{ $work->title }}">
-                                                {{ $work->format_title }}
-                                            </a>
-                                            <p><span class="font-size-sm text-gray js-comment-worker-{{ $work->id }}">Không có tin nhắn</span></p>
-                                        </div>
+                                <div class="widget-user-header" style="display: table;">
+                                    <div class="widget-user-image">
+                                        <img class="img-circle elevation-2" src="{{ $work->user_avatar }}"
+                                            width="40" height="40" alt="Work Avatar">
+                                            <span class="badge badge-danger navbar-badge js-count-message-{{ $workerId }}-{{ $work->id }}"
+                                                style="top: unset; right: unset; left: 50px; "></span>
                                     </div>
+                                    <div class="widget-user-username">
+                                        <a href="{{ route('work.chat', ['work_id' => $work->id]) }}"
+                                            class="font-weight-semibold mr-3" title="{{ $work->title }}">
+                                            {{ $work->format_title }}
+                                        </a>
+                                        <p><span class="font-size-sm text-gray js-comment-worker-{{ $work->id }}">Không có tin nhắn</span></p>
+                                    </div>
+                                </div>
                             </li>
                             @endforeach
+                            @endif
                         </ul>
 
                     </div>
@@ -51,8 +39,8 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h6 class="card-title" title="{{ $work_detail->title }}">
-                            Chat with: {{ $work_detail->format_title }}
+                        <h6 class="card-title" title="{{ $work_detail->title ?? '' }}">
+                            Chat with: {{ $work_detail->format_title ?? '' }}
                         </h6>
                     </div>
 

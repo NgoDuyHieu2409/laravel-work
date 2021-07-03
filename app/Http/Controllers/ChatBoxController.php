@@ -29,18 +29,21 @@ class ChatBoxController extends Controller
             $work->user_avatar = Voyager::image($work->user->avatar);
             $work->format_title = Str::limit($work->title, 20);
         }
-
         
         $workIds = $this->messageService->getWorkChatIdWorker()->pluck('id')->toArray();
         $room_ids = $this->messageService->getRoomIdsbyWork($workIds, $workerId);
-
+        
         $workId = $request->work_id ?? $workIds[0] ?? 0;
         $room_id = $this->messageService->getRoomIdbyWorker($workId, $workerId);
-        $work_detail = Work::findOrFail($workId);
-        $work_detail->format_title = Str::limit($work_detail->title, 50);
+        $work_detail = Work::find($workId);
 
-        $worker = User::findOrFail($workerId);
-        $user_avatar = Voyager::image($work_detail->user->avatar);
+        $user_avatar = '';
+        if($work_detail){
+            $work_detail->format_title = Str::limit($work_detail->title, 50);
+            $user_avatar = Voyager::image($work_detail->user->avatar);
+        }
+
+        $worker = User::find($workerId);
         $worker_avatar = $worker->profile_photo_path ? Storage::url($worker->profile_photo_path) : Voyager::image($worker->avatar);
 
         return view('homes.works.chat_box')->with(compact(

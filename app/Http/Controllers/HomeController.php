@@ -141,9 +141,8 @@ class HomeController extends Controller
         $work->work_type =  $work->occupation_id ? $this->getValueItemToArray(setting('admin.occupations'), $work->occupation_id) : null;
         $work->category_name =  $work->category_id ? $this->getValueItemToArray(setting('admin.categories'), $work->category_id) : null;
         $work->qualification_name =  $this->getItemToArray($this->getItemStringToArray(setting('admin.qualifications')), $qualification_id);
-        $work->skills =  explode( ', ', $this->getItemToArray($this->getItemStringToArray(setting('admin.skills')), $skill_ids));
+        $work->skills = $skill_ids ? explode( ', ', $this->getItemToArray($this->getItemStringToArray(setting('admin.skills')), $skill_ids)) : [];
         $work->tags =  $this->getItemToArray($this->getItemStringToArray(setting('admin.tags')), $tag_ids);
-
         $workApplication = WorkApplication::where('worker_id', Auth::id())->pluck('work_id')->toArray();
         $work->is_applications = in_array($work->id, $workApplication);
         $outstandingWorks = Work::getOutstanding();

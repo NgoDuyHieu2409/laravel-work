@@ -3,8 +3,8 @@
     .sticky {
         position: fixed !important;
         top: 65px;
-        width: 19% !important;
-        right: 10%;
+        width: 21% !important;
+        right: 8%;
     }
     </style>
     <div class="container">
@@ -58,6 +58,7 @@
 
                                         <div class="col-12">
                                             <label>Yêu Cầu Kỹ Năng</label>
+                                            @if(count($work->skills))
                                             <ul class="ul-list-item ml-3">
                                                 @foreach ($work->skills as $item)
                                                 <li>{{ $item }}</li>
@@ -67,6 +68,7 @@
                                                 {!! $work->{'condition' . $i} ? '<li>'. $work->{'condition' . $i} . '</li>' : null !!}
                                                 @endfor
                                             </ul>
+                                            @endif
                                         </div>
 
                                         <div class="col-12">

@@ -35,8 +35,8 @@ class MessageService
 
     public function getRoomIdbyWorker($work_id, $workerId)
     {
-        $worker = Worker::findOrFail($workerId);
-        $work = Work::findOrFail($work_id);
+        $worker = Worker::find($workerId);
+        $work = Work::find($work_id);
 
         if($worker && $work){
             $worker_id = $worker->id;
