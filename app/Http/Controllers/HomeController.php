@@ -474,7 +474,7 @@ class HomeController extends Controller
             DB::commit();
             return response()->json([
                 'status' => true,
-                'message' => 'Cảm ơn bạn đã đánh giá công việc.'
+                'message' => 'Yêu cầu của bạn đã được tiếp nhận.'
             ]);
         } catch (\Exception $e) {
             DB::rollBack();

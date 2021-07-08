@@ -14,6 +14,8 @@ use App\Http\Controllers\APIController;
 use App\Models\UserWorkTotal;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Date;
+
 // use Kreait\Firebase\Auth;
 
 class CheckoutController extends ApiController
