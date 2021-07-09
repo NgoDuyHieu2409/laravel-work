@@ -1,5 +1,5 @@
 @if(!isset($innerLoop))
-<ul class="nav navbar-nav">
+<ul class="nav navbar-nav" style="align-items: center !important;">
 @else
 <ul class="dropdown-menu">
 @endif

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2021 at 02:09 AM
+-- Generation Time: Jul 09, 2021 at 03:53 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -83,7 +83,7 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `email`, `remember_token`, `name`, `name_english`, `contact_name`, `contact_name_english`, `tel`, `zipcode`, `pref`, `city`, `address`, `mf_approve_status`, `website_url`, `representative_name`, `corporate_number`, `description`, `admin_approval_at`, `credit_limit`, `deleted_at`, `created_at`, `updated_at`, `logo`, `user_id`) VALUES
-(2, 'admin@admin.com', NULL, 'てください。12345434', 'てください。', 'Nguyễn Văn Hiêp', 'てください。', '06-6301-1766', '12345678', 2, '1', '東京都品川区大井1-47-1 78f dshfjsdh fjsfjsfs', NULL, 'http://laravel-work.test/', NULL, NULL, 'Với solution là vượt qua mọi giới hạn, các thành viên tham gia vào Miichisoft sẽ được định hướng công việc, đào tạo để phát huy hết khả năng của bản thân\n\nNgoài vấn đề đạo tạo về quy trình làm việc, kỹ thuật Miichisoft còn chú trọng đào tạo các kỹ năng mềm trong công việc giúp các bạn làm việc có hiệu suất cao hơn, hòa nhập nhanh hơn với sự phát triển nhanh chóng của kinh tế nước nhà.\n\nWeb : Docker, AWS, PHP Laravel, CakePHP , \n\nMobile : Swift , Objective C , Android Java , Kotlin', NULL, NULL, NULL, '2021-04-16 23:30:27', '2021-04-17 11:24:35', 'Companies/April2021/DFIZ6ASutf0zhicNf1gFxrmJTIQQvyZBb12DsxYa.jpg', 1);
+(2, 'miichisoft@gmail.com', NULL, 'Công ty CP sáng tạo trẻ Việt Nam Miichisoft', 'Miichisoft', 'Hoàng Trọng Cừ', 'HoangCu', '03-7810-3999', '1000000', 5, '1', 'Tòa nhà GreenPark, Dương Đình Nghệ, Trung Hòa', NULL, 'https://miichisoft.com/', NULL, NULL, 'Với solution là vượt qua mọi giới hạn, các thành viên tham gia vào Miichisoft sẽ được định hướng công việc, đào tạo để phát huy hết khả năng của bản thân\n\nNgoài vấn đề đạo tạo về quy trình làm việc, kỹ thuật Miichisoft còn chú trọng đào tạo các kỹ năng mềm trong công việc giúp các bạn làm việc có hiệu suất cao hơn, hòa nhập nhanh hơn với sự phát triển nhanh chóng của kinh tế nước nhà.\n\nWeb : Docker, AWS, PHP Laravel, CakePHP , \n\nMobile : Swift , Objective C , Android Java , Kotlin', NULL, NULL, NULL, '2021-04-16 23:30:27', NULL, 'Companies/June2021/rIJr10fI6LFux3ySmJd5yxt27SlOpTx7NdvsLoOq.png', 1);
 
 -- --------------------------------------------------------
 
@@ -112,17 +112,17 @@ CREATE TABLE `data_rows` (
 --
 
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
-(1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
-(2, 1, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, NULL, 2),
-(3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, NULL, 3),
-(4, 1, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 0, NULL, 4),
-(5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, NULL, 5),
-(6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, NULL, 6),
-(7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7),
-(8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, NULL, 8),
-(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":0}', 10),
+(1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '{}', 1),
+(2, 1, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 2),
+(3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '{}', 3),
+(4, 1, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 0, '{}', 4),
+(5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '{}', 5),
+(6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 6),
+(7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '{}', 8),
+(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"user_roles\",\"pivot\":\"1\",\"taggable\":\"0\"}', 11),
-(11, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, NULL, 12),
+(11, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '{}', 12),
 (12, 2, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
 (13, 2, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, NULL, 2),
 (14, 2, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, NULL, 3),
@@ -132,14 +132,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (18, 3, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, NULL, 3),
 (19, 3, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 4),
 (20, 3, 'display_name', 'text', 'Display Name', 1, 1, 1, 1, 1, 1, NULL, 5),
-(21, 1, 'role_id', 'text', 'Role', 1, 1, 1, 1, 1, 1, NULL, 9),
-(22, 4, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
-(23, 4, 'parent_id', 'select_dropdown', 'Parent', 0, 0, 1, 1, 1, 1, '{\"default\":\"\",\"null\":\"\",\"options\":{\"\":\"-- None --\"},\"relationship\":{\"key\":\"id\",\"label\":\"name\"}}', 2),
-(24, 4, 'order', 'text', 'Order', 1, 1, 1, 1, 1, 1, '{\"default\":1}', 3),
-(25, 4, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, NULL, 4),
-(26, 4, 'slug', 'text', 'Slug', 1, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"}}', 5),
-(27, 4, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 0, 0, 0, NULL, 6),
-(28, 4, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7),
+(21, 1, 'role_id', 'text', 'Role', 0, 1, 1, 1, 1, 1, '{}', 9),
 (29, 5, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
 (30, 5, 'author_id', 'text', 'Author', 1, 0, 1, 1, 0, 1, NULL, 2),
 (31, 5, 'category_id', 'text', 'Category', 1, 0, 1, 1, 1, 0, NULL, 3),
@@ -194,25 +187,20 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (88, 7, 'hourly_wage', 'text', 'Lương theo giờ', 0, 0, 0, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\"}}}', 28),
 (90, 7, 'ovetime_extra_percentages', 'text', 'Ovetime Extra Percentages', 0, 0, 0, 1, 1, 1, '{}', 29),
 (91, 7, 'night_extra_percentages', 'text', 'Night Extra Percentages', 0, 0, 0, 1, 1, 1, '{}', 30),
-(92, 7, 'transportation_fee', 'text', 'Transportation Fee', 0, 0, 0, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\"}}}', 31),
+(92, 7, 'transportation_fee', 'text', 'Transportation Fee', 0, 0, 0, 1, 1, 1, '{}', 31),
 (94, 7, 'working_conditions_pdf_url', 'text', 'Working Conditions Pdf Url', 0, 0, 0, 1, 1, 1, '{}', 32),
 (97, 7, 'recruitment_start_at', 'text', 'Recruitment Start At', 0, 0, 0, 1, 1, 1, '{}', 33),
 (99, 7, 'deleted_at', 'timestamp', 'Deleted At', 0, 0, 0, 1, 1, 1, '{}', 34),
 (100, 7, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 1, 0, 1, '{}', 35),
 (101, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 36),
 (102, 7, 'user_id', 'number', 'User Id', 0, 0, 0, 1, 1, 1, '{}', 9),
-(103, 8, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(104, 8, 'work_id', 'text', 'Work Id', 1, 1, 1, 1, 1, 1, '{}', 2),
-(105, 8, 'tag_id', 'text', 'Tag Id', 1, 1, 1, 1, 1, 1, '{}', 3),
-(106, 8, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
-(107, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
 (110, 9, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (111, 9, 'work_id', 'text', 'Work Id', 1, 0, 1, 1, 1, 1, '{}', 4),
 (112, 9, 'worker_id', 'text', 'Worker Id', 1, 0, 1, 1, 1, 1, '{}', 5),
 (113, 9, 'status', 'text', 'Status', 1, 0, 1, 1, 1, 1, '{}', 6),
-(114, 9, 'canceled_at', 'text', 'Canceled At', 0, 0, 1, 1, 1, 1, '{}', 8),
-(115, 9, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, '{}', 9),
-(116, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 10),
+(114, 9, 'canceled_at', 'text', 'Canceled At', 0, 0, 0, 1, 1, 1, '{}', 8),
+(115, 9, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 1, 1, 1, '{}', 10),
+(116, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 13),
 (117, 7, 'contact_tel', 'text', 'SĐT liên lạc', 0, 0, 1, 1, 1, 1, '{}', 8),
 (118, 7, 'contact_name', 'text', 'Người liên hệ', 0, 0, 1, 1, 1, 1, '{}', 7),
 (119, 7, 'occupation_id', 'text', 'Occupation Id', 0, 0, 0, 1, 1, 1, '{}', 37),
@@ -220,22 +208,22 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (121, 10, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required|email:rfc,dns|unique:companies,email\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\",\"email\":\"\\u300c:attribute\\u300d kh\\u00f4ng ph\\u1ea3i \\u0111\\u1ecbnh d\\u1ea1ng email.\",\"unique\":\"\\u300c:attribute\\u300d \\u0111\\u00e3 t\\u1ed3n t\\u1ea1i,\"}}}', 4),
 (123, 10, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 1, 1, '{}', 5),
 (124, 10, 'name', 'text', 'Tên Công ty', 1, 1, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\"}}}', 3),
-(126, 10, 'contact_name', 'text', 'Người đại diện', 1, 0, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required|max:255\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\",\"max\":\"T\\u00ean \\u300c:attribute\\u300dkh\\u00f4ng v\\u01b0\\u1ee3t qu\\u00e1 :max k\\u00fd t\\u1ef1.\"}}}', 8),
+(126, 10, 'contact_name', 'text', 'Người đại diện', 1, 0, 0, 1, 1, 1, '{\"validation\":{\"rule\":\"required|max:255\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\",\"max\":\"T\\u00ean \\u300c:attribute\\u300dkh\\u00f4ng v\\u01b0\\u1ee3t qu\\u00e1 :max k\\u00fd t\\u1ef1.\"}}}', 8),
 (128, 10, 'tel', 'text', 'Số điện thoại', 1, 1, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\"}}}', 9),
-(129, 10, 'zipcode', 'text', 'Mã bưu điện', 0, 0, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required|max:15\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\",\"max\":\"\\u300c:attribute\\u300d t\\u1ed1i \\u0111a :max k\\u00fd t\\u1ef1\"}}}', 10),
-(130, 10, 'pref', 'text', 'Pref', 1, 0, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\"}}}', 11),
-(131, 10, 'city', 'text', 'City', 1, 0, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\"}}}', 13),
-(134, 10, 'mf_approve_status', 'text', 'Mf Approve Status', 0, 0, 1, 1, 1, 1, '{}', 14),
+(129, 10, 'zipcode', 'text', 'Mã bưu điện', 0, 0, 0, 1, 1, 1, '{\"validation\":{\"rule\":\"required|max:15\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\",\"max\":\"\\u300c:attribute\\u300d t\\u1ed1i \\u0111a :max k\\u00fd t\\u1ef1\"}}}', 10),
+(130, 10, 'pref', 'text', 'Pref', 1, 0, 0, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\"}}}', 11),
+(131, 10, 'city', 'text', 'City', 1, 0, 0, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"\\u300c:attribute\\u300dkh\\u00f4ng \\u0111\\u01b0\\u1ee3c \\u0111\\u1ec3 tr\\u1ed1ng.\"}}}', 13),
+(134, 10, 'mf_approve_status', 'text', 'Mf Approve Status', 0, 0, 0, 1, 1, 1, '{}', 14),
 (135, 10, 'website_url', 'text', 'Website Url', 0, 0, 1, 1, 1, 1, '{}', 15),
-(136, 10, 'representative_name', 'text', 'Tên đại diện', 0, 0, 1, 1, 1, 1, '{}', 17),
-(137, 10, 'corporate_number', 'text', 'số công ty', 0, 0, 1, 1, 1, 1, '{}', 18),
-(139, 10, 'admin_approval_at', 'text', 'phê duyệt quản trị tại', 0, 0, 1, 1, 1, 1, '{}', 19),
-(140, 10, 'credit_limit', 'text', 'giới hạn tín dụng', 0, 0, 1, 1, 1, 1, '{}', 20),
+(136, 10, 'representative_name', 'text', 'Tên đại diện', 0, 0, 0, 1, 1, 1, '{}', 17),
+(137, 10, 'corporate_number', 'text', 'số công ty', 0, 0, 0, 1, 1, 1, '{}', 18),
+(139, 10, 'admin_approval_at', 'text', 'phê duyệt quản trị tại', 0, 0, 0, 1, 1, 1, '{}', 19),
+(140, 10, 'credit_limit', 'text', 'giới hạn tín dụng', 0, 0, 0, 1, 1, 1, '{}', 20),
 (141, 10, 'deleted_at', 'timestamp', 'Deleted At', 0, 0, 0, 1, 1, 1, '{}', 21),
 (142, 10, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 1, 1, '{}', 22),
 (143, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 1, 0, 1, '{}', 23),
-(144, 10, 'name_english', 'text', 'Name English', 0, 0, 1, 1, 1, 1, '{}', 6),
-(145, 10, 'contact_name_english', 'text', 'Contact Name English', 0, 0, 1, 1, 1, 1, '{}', 7),
+(144, 10, 'name_english', 'text', 'Name English', 0, 0, 0, 1, 1, 1, '{}', 6),
+(145, 10, 'contact_name_english', 'text', 'Contact Name English', 0, 0, 0, 1, 1, 1, '{}', 7),
 (146, 13, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (147, 13, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 2),
 (148, 13, 'gso_id', 'text', 'Gso Id', 1, 1, 1, 1, 1, 1, '{}', 3),
@@ -251,11 +239,94 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (158, 10, 'company_belongsto_district_relationship', 'relationship', 'Quân huyện', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\District\",\"table\":\"districts\",\"type\":\"belongsTo\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 25),
 (159, 10, 'company_belongsto_province_relationship', 'relationship', 'Tỉnh/ Thành phố', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\City\",\"table\":\"provinces\",\"type\":\"belongsTo\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 24),
 (160, 10, 'description', 'text', 'Giới thiệu về công ty', 0, 0, 1, 1, 1, 1, '{}', 16),
-(161, 10, 'logo', 'image', 'Logo', 0, 1, 0, 1, 1, 1, '{\"resize\":{\"width\":\"100\",\"height\":\"100\"}}', 2),
+(161, 10, 'logo', 'image', 'Logo', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"100\",\"height\":\"100\"}}', 2),
 (162, 10, 'user_id', 'text', 'User Id', 1, 0, 0, 1, 1, 1, '{}', 24),
 (163, 9, 'room_id', 'text', 'Phòng chat', 0, 1, 1, 1, 1, 1, '{}', 7),
 (164, 9, 'work_application_belongsto_work_relationship', 'relationship', 'works', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Work\",\"table\":\"works\",\"type\":\"belongsTo\",\"column\":\"work_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
-(165, 9, 'work_application_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"worker_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 2);
+(165, 9, 'work_application_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"worker_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 2),
+(166, 7, 'category_id', 'text', 'Category Id', 0, 0, 0, 1, 1, 1, '{}', 38),
+(167, 15, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(168, 15, 'worker_id', 'text', 'Worker Id', 1, 1, 1, 1, 1, 1, '{}', 2),
+(169, 15, 'user_id', 'text', 'User Id', 1, 1, 1, 1, 1, 1, '{}', 3),
+(170, 15, 'work_id', 'text', 'Work Id', 0, 1, 1, 1, 1, 1, '{}', 4),
+(171, 15, 'liked', 'text', 'Liked', 0, 1, 1, 1, 1, 1, '{}', 5),
+(172, 15, 'comment', 'text', 'Comment', 0, 1, 1, 1, 1, 1, '{}', 6),
+(173, 15, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 7),
+(174, 15, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
+(175, 1, 'profile_photo_path', 'text', 'Profile Photo Path', 0, 0, 0, 1, 1, 1, '{}', 6),
+(176, 1, 'email_verified_at', 'timestamp', 'Email Verified At', 0, 1, 1, 1, 1, 1, '{}', 7),
+(177, 1, 'two_factor_secret', 'text', 'Two Factor Secret', 0, 1, 1, 1, 1, 1, '{}', 9),
+(178, 1, 'two_factor_recovery_codes', 'text', 'Two Factor Recovery Codes', 0, 1, 1, 1, 1, 1, '{}', 10),
+(179, 1, 'company_id', 'text', 'Company Id', 0, 0, 0, 1, 1, 1, '{}', 15),
+(180, 9, 'assigned_at', 'text', 'Assigned At', 0, 0, 0, 1, 1, 1, '{}', 9),
+(181, 9, 'confirmed_at', 'text', 'Confirmed At', 0, 0, 0, 1, 1, 1, '{}', 12),
+(182, 9, 'confirm_yn', 'text', 'Confirm Yn', 0, 0, 0, 1, 1, 1, '{}', 11),
+(183, 1, 'user_belongsto_company_relationship', 'relationship', 'companies', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Company\",\"table\":\"companies\",\"type\":\"belongsTo\",\"column\":\"company_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 16),
+(184, 16, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(185, 16, 'worker_id', 'text', 'Worker Id', 1, 1, 1, 1, 1, 1, '{}', 2),
+(186, 16, 'user_id', 'text', 'User Id', 1, 1, 1, 1, 1, 1, '{}', 3),
+(187, 16, 'work_id', 'text', 'Work Id', 1, 1, 1, 1, 1, 1, '{}', 4),
+(188, 16, 'comment', 'text', 'Comment', 0, 1, 1, 1, 1, 1, '{}', 5),
+(189, 16, 'scheduled_worktime_start_at', 'text', 'Scheduled Worktime Start At', 0, 1, 1, 1, 1, 1, '{}', 6),
+(190, 16, 'scheduled_worktime_end_at', 'text', 'Scheduled Worktime End At', 0, 1, 1, 1, 1, 1, '{}', 7),
+(191, 16, 'modify_worktime_start_at', 'text', 'Modify Worktime Start At', 0, 1, 1, 1, 1, 1, '{}', 8),
+(192, 16, 'modify_worktime_end_at', 'text', 'Modify Worktime End At', 0, 1, 1, 1, 1, 1, '{}', 9),
+(193, 16, 'resttime_minutes', 'text', 'Resttime Minutes', 0, 1, 1, 1, 1, 1, '{}', 10),
+(194, 16, 'ovetime_percentages', 'text', 'Ovetime Percentages', 0, 1, 1, 1, 1, 1, '{}', 11),
+(195, 16, 'nighttime_percentages', 'text', 'Nighttime Percentages', 0, 1, 1, 1, 1, 1, '{}', 12),
+(196, 16, 'ovetime_wage', 'text', 'Ovetime Wage', 0, 1, 1, 1, 1, 1, '{}', 13),
+(197, 16, 'nighttime_wage', 'text', 'Nighttime Wage', 0, 1, 1, 1, 1, 1, '{}', 14),
+(198, 16, 'base_wage', 'text', 'Base Wage', 0, 1, 1, 1, 1, 1, '{}', 15),
+(199, 16, 'transportation_fee', 'text', 'Transportation Fee', 0, 1, 1, 1, 1, 1, '{}', 16),
+(200, 16, 'approval_status', 'text', 'Approval Status', 0, 1, 1, 1, 1, 1, '{}', 17),
+(201, 16, 'approved_at', 'text', 'Approved At', 0, 1, 1, 1, 1, 1, '{}', 18),
+(202, 16, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 19),
+(203, 16, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 20),
+(204, 17, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(205, 17, 'invoice_id', 'text', 'Invoice Id', 0, 1, 1, 1, 1, 1, '{}', 2),
+(206, 17, 'worker_id', 'text', 'Worker Id', 1, 1, 1, 1, 1, 1, '{}', 3),
+(207, 17, 'user_id', 'text', 'User Id', 1, 1, 1, 1, 1, 1, '{}', 4),
+(208, 17, 'work_id', 'text', 'Work Id', 1, 1, 1, 1, 1, 1, '{}', 5),
+(209, 17, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 6),
+(210, 17, 'work_date', 'text', 'Work Date', 0, 1, 1, 1, 1, 1, '{}', 7),
+(211, 17, 'scheduled_worktime_start_at', 'text', 'Scheduled Worktime Start At', 0, 1, 1, 1, 1, 1, '{}', 8),
+(212, 17, 'scheduled_worktime_end_at', 'text', 'Scheduled Worktime End At', 0, 1, 1, 1, 1, 1, '{}', 9),
+(213, 17, 'worktime_start_at', 'text', 'Worktime Start At', 0, 1, 1, 1, 1, 1, '{}', 10),
+(214, 17, 'worktime_end_at', 'text', 'Worktime End At', 0, 1, 1, 1, 1, 1, '{}', 11),
+(215, 17, 'scheduled_resttime_start_at', 'text', 'Scheduled Resttime Start At', 0, 1, 1, 1, 1, 1, '{}', 12),
+(216, 17, 'scheduled_resttime_end_at', 'text', 'Scheduled Resttime End At', 0, 1, 1, 1, 1, 1, '{}', 13),
+(217, 17, 'resttime_start_at', 'text', 'Resttime Start At', 0, 1, 1, 1, 1, 1, '{}', 14),
+(218, 17, 'resttime_end_at', 'text', 'Resttime End At', 0, 1, 1, 1, 1, 1, '{}', 15),
+(219, 17, 'resttime_minutes', 'text', 'Resttime Minutes', 0, 1, 1, 1, 1, 1, '{}', 16),
+(225, 17, 'base_wage', 'text', 'Base Wage', 0, 1, 1, 1, 1, 1, '{}', 22),
+(226, 17, 'ovetime_percentages', 'text', 'Ovetime Percentages', 0, 1, 1, 1, 1, 1, '{}', 23),
+(227, 17, 'nighttime_percentages', 'text', 'Nighttime Percentages', 0, 1, 1, 1, 1, 1, '{}', 24),
+(228, 17, 'ovetime_wage', 'text', 'Ovetime Wage', 0, 1, 1, 1, 1, 1, '{}', 25),
+(229, 17, 'nighttime_wage', 'text', 'Nighttime Wage', 0, 1, 1, 1, 1, 1, '{}', 26),
+(230, 17, 'transportation_fee', 'text', 'Transportation Fee', 0, 1, 1, 1, 1, 1, '{}', 27),
+(231, 17, 'total_wage', 'text', 'Total Wage', 0, 1, 1, 1, 1, 1, '{}', 28),
+(232, 17, 'transfer_request_status', 'text', 'Transfer Request Status', 0, 1, 1, 1, 1, 1, '{}', 29),
+(233, 17, 'transfer_requested_at', 'text', 'Transfer Requested At', 0, 1, 1, 1, 1, 1, '{}', 30),
+(234, 17, 'transfered_at', 'text', 'Transfered At', 0, 1, 1, 1, 1, 1, '{}', 31),
+(235, 17, 'commission_fee', 'text', 'Commission Fee', 0, 1, 1, 1, 1, 1, '{}', 32),
+(236, 17, 'commission_fee_tax', 'text', 'Commission Fee Tax', 0, 1, 1, 1, 1, 1, '{}', 33),
+(237, 17, 'commission_fee_tax_rate', 'text', 'Commission Fee Tax Rate', 0, 1, 1, 1, 1, 1, '{}', 34),
+(238, 17, 'fixed_yn', 'text', 'Fixed Yn', 0, 1, 1, 1, 1, 1, '{}', 35),
+(239, 17, 'fixed_at', 'text', 'Fixed At', 0, 1, 1, 1, 1, 1, '{}', 36),
+(240, 17, 'work_application_id', 'text', 'Work Application Id', 0, 1, 1, 1, 1, 1, '{}', 37),
+(241, 17, 'nighttime_worktime', 'text', 'Nighttime Worktime', 0, 1, 1, 1, 1, 1, '{}', 38),
+(242, 17, 'overtime_worktime', 'text', 'Overtime Worktime', 0, 1, 1, 1, 1, 1, '{}', 39),
+(243, 17, 'base_worktime', 'text', 'Base Worktime', 0, 1, 1, 1, 1, 1, '{}', 40),
+(244, 17, 'hourly_wage', 'text', 'Hourly Wage', 0, 1, 1, 1, 1, 1, '{}', 41),
+(245, 17, 'company_id', 'text', 'Company Id', 1, 1, 1, 1, 1, 1, '{}', 42),
+(246, 17, 'bank_commission_fee_tax', 'text', 'Bank Commission Fee Tax', 0, 1, 1, 1, 1, 1, '{}', 43),
+(247, 17, 'bank_commission_fee', 'text', 'Bank Commission Fee', 0, 1, 1, 1, 1, 1, '{}', 44),
+(248, 17, 'withholding_fee', 'text', 'Withholding Fee', 0, 1, 1, 1, 1, 1, '{}', 45),
+(249, 17, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 46),
+(250, 17, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 47),
+(251, 1, 'total_workcount', 'text', 'Total Workcount', 0, 1, 1, 1, 1, 1, '{}', 16),
+(252, 1, 'total_worktime', 'text', 'Total Worktime', 0, 1, 1, 1, 1, 1, '{}', 17),
+(253, 7, 'company_id', 'text', 'Company Id', 1, 0, 0, 1, 1, 1, '{}', 39);
 
 -- --------------------------------------------------------
 
@@ -286,18 +357,19 @@ CREATE TABLE `data_types` (
 --
 
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', '', 1, 0, NULL, '2021-02-05 21:32:20', '2021-02-05 21:32:20'),
+(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'App\\Http\\Controllers\\Admin\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-02-05 21:32:20', '2021-06-13 08:40:37'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2021-02-05 21:32:21', '2021-02-05 21:32:21'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2021-02-05 21:32:21', '2021-02-05 21:32:21'),
-(4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2021-02-05 21:32:30', '2021-02-05 21:32:30'),
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2021-02-05 21:32:32', '2021-02-05 21:32:32'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2021-02-05 21:32:33', '2021-02-05 21:32:33'),
-(7, 'works', 'works', 'Work', 'Works', 'voyager-polaroid', 'App\\Models\\Work', NULL, 'App\\Http\\Controllers\\WorksController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-02-07 19:23:48', '2021-04-02 21:03:10'),
-(8, 'work_tag', 'work-tag', 'Work Tag', 'Work Tags', NULL, 'App\\Models\\WorkTag', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-03-13 01:28:50', '2021-03-13 01:28:50'),
-(9, 'work_applications', 'work-applications', 'Work Application', 'Work Applications', NULL, 'App\\Models\\WorkApplication', NULL, 'App\\Http\\Controllers\\WorkApplictionController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-03-19 23:35:23', '2021-04-17 22:33:11'),
-(10, 'companies', 'companies', 'Company', 'Companies', NULL, 'App\\Models\\Company', NULL, 'App\\Http\\Controllers\\CompanyController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-04-09 21:20:46', '2021-04-17 10:58:09'),
+(7, 'works', 'works', 'Work', 'Works', 'voyager-polaroid', 'App\\Models\\Work', NULL, 'App\\Http\\Controllers\\Admin\\WorksController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-02-07 19:23:48', '2021-06-29 07:27:24'),
+(9, 'work_applications', 'work-applications', 'Work Application', 'Work Applications', NULL, 'App\\Models\\WorkApplication', NULL, 'App\\Http\\Controllers\\Admin\\WorkApplicationController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-03-19 23:35:23', '2021-05-29 03:09:06'),
+(10, 'companies', 'companies', 'Company', 'Companies', NULL, 'App\\Models\\Company', NULL, 'App\\Http\\Controllers\\Admin\\CompanyController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-04-09 21:20:46', '2021-06-29 03:50:02'),
 (13, 'provinces', 'provinces', 'Province', 'Provinces', NULL, 'App\\Models\\City', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-04-11 00:10:26', '2021-04-11 00:10:26'),
-(14, 'districts', 'districts', 'District', 'Districts', NULL, 'App\\Models\\District', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-04-11 00:10:41', '2021-04-11 00:10:41');
+(14, 'districts', 'districts', 'District', 'Districts', NULL, 'App\\Models\\District', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-04-11 00:10:41', '2021-04-11 00:10:41'),
+(15, 'worker_reviews', 'worker-reviews', 'Worker Review', 'Worker Reviews', NULL, 'App\\Models\\WorkerReview', NULL, 'App\\Http\\Controllers\\Admin\\WorkerReviewController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-05-03 08:46:50', '2021-05-03 08:46:50'),
+(16, 'modify_requests', 'modify-requests', 'Modify Request', 'Modify Requests', NULL, 'App\\Models\\ModifyRequest', NULL, 'App\\Http\\Controllers\\Admin\\ModifyRequestsController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-05-23 03:35:07', '2021-05-23 03:35:07'),
+(17, 'work_records', 'work-records', 'Work Record', 'Work Records', NULL, 'App\\Models\\WorkRecord', NULL, 'App\\Http\\Controllers\\Admin\\WorkRecordController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-05-26 00:15:49', '2021-05-26 08:40:46');
 
 -- --------------------------------------------------------
 
@@ -1042,6 +1114,20 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `favorite_workers`
+--
+
+CREATE TABLE `favorite_workers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `worker_id` bigint(20) UNSIGNED NOT NULL,
+  `home_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `favorite_works`
 --
 
@@ -1051,6 +1137,57 @@ CREATE TABLE `favorite_works` (
   `work_id` bigint(20) UNSIGNED NOT NULL COMMENT '仕事ID',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `favorite_works`
+--
+
+INSERT INTO `favorite_works` (`id`, `worker_id`, `work_id`, `created_at`, `updated_at`) VALUES
+(5, 1, 8, '2021-05-21 10:25:21', '2021-05-21 10:25:21'),
+(7, 5, 11, '2021-05-23 00:43:52', '2021-05-23 00:43:52'),
+(8, 5, 10, '2021-05-23 00:43:54', '2021-05-23 00:43:54'),
+(10, 7, 12, '2021-05-23 02:02:44', '2021-05-23 02:02:44'),
+(11, 7, 11, '2021-05-23 02:02:45', '2021-05-23 02:02:45'),
+(12, 7, 9, '2021-05-23 02:02:46', '2021-05-23 02:02:46'),
+(14, 5, 8, '2021-05-30 01:12:28', '2021-05-30 01:12:28'),
+(17, 1, 1, '2021-07-02 21:22:28', '2021-07-02 21:22:28'),
+(18, 5, 1, '2021-07-02 21:34:49', '2021-07-02 21:34:49'),
+(19, 5, 2, '2021-07-09 07:23:04', '2021-07-09 07:23:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_reviews`
+--
+
+CREATE TABLE `home_reviews` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `worker_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `work_id` bigint(20) NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `good_yn1` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `good_yn2` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `good_yn3` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1102,28 +1239,32 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2021-02-05 21:32:22', '2021-02-05 21:32:22', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, 5, 3, '2021-02-05 21:32:22', '2021-02-27 08:41:52', 'voyager.media.index', NULL),
-(3, 1, 'Danh sách', '', '_self', 'voyager-person', '#000000', 16, 1, '2021-02-05 21:32:22', '2021-02-27 08:43:36', 'voyager.users.index', 'null'),
-(4, 1, 'Roles', '', '_self', 'voyager-lock', '#000000', 16, 2, '2021-02-05 21:32:22', '2021-02-27 08:44:05', 'voyager.roles.index', 'null'),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 10, '2021-02-05 21:32:22', '2021-04-09 21:21:33', NULL, NULL),
-(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2021-02-05 21:32:22', '2021-02-27 08:15:59', 'voyager.menus.index', NULL),
-(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2021-02-05 21:32:22', '2021-02-27 08:15:59', 'voyager.database.index', NULL),
-(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 4, '2021-02-05 21:32:22', '2021-02-27 08:41:52', 'voyager.compass.index', NULL),
-(9, 1, 'BREAD', '', '_self', 'voyager-bread', '#000000', NULL, 9, '2021-02-05 21:32:22', '2021-04-09 21:21:33', 'voyager.bread.index', 'null'),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 8, '2021-02-05 21:32:22', '2021-04-09 21:21:33', 'voyager.settings.index', NULL),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 7, '2021-02-05 21:32:31', '2021-04-09 21:21:32', 'voyager.categories.index', NULL),
-(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 5, '2021-02-05 21:32:33', '2021-04-09 21:21:32', 'voyager.posts.index', NULL),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 6, '2021-02-05 21:32:34', '2021-04-09 21:21:32', 'voyager.pages.index', NULL),
-(14, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 5, '2021-02-05 21:32:37', '2021-02-27 08:41:59', 'voyager.hooks', NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, 5, 5, '2021-02-05 21:32:22', '2021-05-03 08:32:15', 'voyager.media.index', NULL),
+(3, 1, 'Danh sách', '', '_self', 'voyager-dot', '#000000', 16, 1, '2021-02-05 21:32:22', '2021-05-03 08:32:55', 'voyager.users.index', 'null'),
+(4, 1, 'Nhóm người dùng', '', '_self', 'voyager-dot', '#000000', 16, 2, '2021-02-05 21:32:22', '2021-07-09 07:38:43', 'voyager.roles.index', 'null'),
+(5, 1, 'Chức năng', '', '_self', 'voyager-tools', '#000000', NULL, 9, '2021-02-05 21:32:22', '2021-07-09 07:39:05', NULL, ''),
+(6, 1, 'Menu', '', '_self', 'voyager-list', '#000000', 5, 1, '2021-02-05 21:32:22', '2021-07-09 07:39:19', 'voyager.menus.index', 'null'),
+(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 3, '2021-02-05 21:32:22', '2021-05-03 08:32:08', 'voyager.database.index', NULL),
+(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 6, '2021-02-05 21:32:22', '2021-05-03 08:32:15', 'voyager.compass.index', NULL),
+(9, 1, 'BREAD', '', '_self', 'voyager-bread', '#000000', 5, 2, '2021-02-05 21:32:22', '2021-05-03 08:32:08', 'voyager.bread.index', 'null'),
+(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, 5, 4, '2021-02-05 21:32:22', '2021-05-03 08:32:15', 'voyager.settings.index', NULL),
+(14, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 7, '2021-02-05 21:32:37', '2021-05-03 08:32:16', 'voyager.hooks', NULL),
 (15, 1, 'Công việc', '', '_self', 'voyager-helm', '#000000', NULL, 3, '2021-02-07 19:23:49', '2021-04-09 21:22:03', NULL, ''),
-(16, 1, 'Người dùng', '', '_self', 'voyager-people', '#000000', NULL, 4, '2021-02-27 08:14:45', '2021-04-09 21:22:17', NULL, ''),
-(17, 1, 'Danh sách', '', '_self', 'voyager-list', '#000000', 15, 1, '2021-02-27 09:33:45', '2021-02-27 09:34:35', 'voyager.works.index', 'null'),
-(18, 1, 'Thêm mới', '', '_self', 'voyager-edit', '#000000', 15, 2, '2021-02-28 07:07:35', '2021-02-28 07:08:34', 'voyager.works.create', NULL),
-(21, 2, 'Home', '/', '_self', NULL, '#000000', NULL, 1, '2021-03-27 01:21:33', '2021-03-27 01:33:34', NULL, ''),
-(22, 2, 'Contact', '/contacts', '_self', NULL, '#000000', NULL, 2, '2021-03-27 01:22:11', '2021-03-27 01:49:42', NULL, ''),
-(23, 2, '11111', '/contacts2', '_self', NULL, '#000000', 22, 2, '2021-03-27 01:48:33', '2021-03-27 01:49:46', NULL, ''),
-(24, 2, '33333', '/contacts3', '_self', NULL, '#000000', 22, 1, '2021-03-27 01:48:45', '2021-03-27 01:49:43', NULL, ''),
-(26, 1, 'Công ty', '', '_self', NULL, '#000000', NULL, 2, '2021-04-09 21:20:46', '2021-04-09 21:21:45', 'voyager.companies.index', 'null');
+(16, 1, 'Người dùng', '', '_self', 'voyager-people', '#000000', NULL, 8, '2021-02-27 08:14:45', '2021-05-28 02:12:51', NULL, ''),
+(17, 1, 'Danh sách', '', '_self', 'voyager-dot', '#000000', 15, 1, '2021-02-27 09:33:45', '2021-05-03 08:33:22', 'voyager.works.index', 'null'),
+(18, 1, 'Thêm mới', '', '_self', 'voyager-dot', '#000000', 15, 2, '2021-02-28 07:07:35', '2021-05-03 08:33:30', 'voyager.works.create', 'null'),
+(21, 2, 'Danh sách công việc', '/', '_self', NULL, '#000000', NULL, 1, '2021-03-27 01:21:33', '2021-07-09 07:34:59', NULL, ''),
+(23, 2, 'Đánh giá', '/evaluating-works', '_self', NULL, '#000000', NULL, 4, '2021-03-27 01:48:33', '2021-07-09 07:36:14', NULL, ''),
+(24, 2, 'Công việc yêu thích', '/favourite-works', '_self', NULL, '#000000', NULL, 3, '2021-03-27 01:48:45', '2021-07-09 07:36:00', NULL, ''),
+(26, 1, 'Công ty', '', '_self', 'voyager-company', '#000000', NULL, 2, '2021-04-09 21:20:46', '2021-05-03 08:31:31', NULL, 'null'),
+(29, 1, 'Danh sách', '', '_self', 'voyager-dot', '#000000', 26, 1, '2021-05-03 08:28:42', '2021-05-03 08:30:15', 'voyager.companies.index', 'null'),
+(30, 1, 'Thêm mới', '', '_self', 'voyager-dot', '#000000', 26, 2, '2021-05-03 08:28:52', '2021-05-03 08:30:55', 'voyager.companies.create', 'null'),
+(31, 1, 'Đánh giá', '', '_self', 'voyager-trophy', '#000000', NULL, 4, '2021-05-03 08:35:47', '2021-05-22 03:21:43', 'voyager.worker-reviews.index', 'null'),
+(35, 2, 'Công việc tham gia', '/application-works', '_self', NULL, '#000000', NULL, 2, '2021-05-23 02:33:27', '2021-07-09 07:35:40', NULL, ''),
+(36, 1, 'Yêu cầu', '', '_self', 'voyager-edit', '#000000', NULL, 5, '2021-05-23 03:35:08', '2021-07-09 07:37:30', 'voyager.modify-requests.index', 'null'),
+(37, 1, 'Báo cáo', '', '_self', 'voyager-window-list', '#000000', NULL, 6, '2021-05-26 00:15:50', '2021-07-09 07:38:02', 'voyager.work-records.index', 'null'),
+(38, 1, 'Tin nhắn', '/admin/messages', '_self', 'voyager-bubble', '#000000', NULL, 7, '2021-05-28 02:12:30', '2021-07-09 07:38:18', NULL, ''),
+(39, 2, 'Tin nhắn', '/chat-box', '_self', NULL, '#000000', NULL, 5, '2021-05-30 01:22:04', '2021-07-09 07:36:26', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -1175,7 +1316,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (31, '2020_06_09_012054_create_work_occupation_table', 3),
 (32, '2020_06_09_012054_create_work_photos_table', 3),
 (33, '2020_06_09_012054_create_work_qualification_table', 3),
-(34, '2020_06_09_012054_create_work_records_table', 3),
 (35, '2020_06_09_012054_create_work_skill_table', 3),
 (36, '2020_06_09_012054_create_work_tag_table', 3),
 (37, '2020_06_09_012054_create_works_table', 3),
@@ -1192,7 +1332,16 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (48, '2021_04_18_075910_create_user_skills_table', 8),
 (49, '2021_04_18_080118_create_user_languages_table', 8),
 (51, '2021_04_18_080455_create_user_certifications_table', 9),
-(52, '2021_04_21_081302_create_user_contacts_table', 10);
+(52, '2021_04_21_081302_create_user_contacts_table', 10),
+(53, '2021_05_03_150055_create_worker_reviews_table', 11),
+(54, '2021_05_03_164116_create_home_reviews_table', 12),
+(55, '2021_05_08_144024_add_full_text_search_table_work', 13),
+(56, '2021_05_11_080442_create_timecard_table', 14),
+(58, '2020_06_09_012054_create_work_records_table', 15),
+(59, '2021_05_12_101948_create_user_work_total_table', 16),
+(60, '2021_05_15_090435_create_favorite_workers_table', 17),
+(61, '2021_05_15_163706_create_worker_skill_table', 18),
+(62, '2021_06_15_091838_create_jobs_table', 19);
 
 -- --------------------------------------------------------
 
@@ -1203,7 +1352,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `modify_requests` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `worker_id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `home_id` bigint(20) UNSIGNED NOT NULL,
   `work_id` bigint(20) UNSIGNED NOT NULL,
   `comment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `scheduled_worktime_start_at` datetime DEFAULT NULL,
@@ -1222,6 +1371,13 @@ CREATE TABLE `modify_requests` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `modify_requests`
+--
+
+INSERT INTO `modify_requests` (`id`, `worker_id`, `home_id`, `work_id`, `comment`, `scheduled_worktime_start_at`, `scheduled_worktime_end_at`, `modify_worktime_start_at`, `modify_worktime_end_at`, `resttime_minutes`, `ovetime_percentages`, `nighttime_percentages`, `ovetime_wage`, `nighttime_wage`, `base_wage`, `transportation_fee`, `approval_status`, `approved_at`, `created_at`, `updated_at`) VALUES
+(1, 5, 1, 1, 'Tôi thấy nhận không đủ lương', '2021-07-04 09:07:00', '2021-07-04 15:07:00', '2021-07-04 21:43:00', '2021-07-04 15:43:00', 20, NULL, NULL, 10800, 0, 0, 50000, 1, NULL, '2021-07-08 14:44:21', '2021-07-08 14:44:21');
 
 -- --------------------------------------------------------
 
@@ -1307,11 +1463,6 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (23, 'edit_settings', 'settings', '2021-02-05 21:32:24', '2021-02-05 21:32:24'),
 (24, 'add_settings', 'settings', '2021-02-05 21:32:24', '2021-02-05 21:32:24'),
 (25, 'delete_settings', 'settings', '2021-02-05 21:32:24', '2021-02-05 21:32:24'),
-(26, 'browse_categories', 'categories', '2021-02-05 21:32:31', '2021-02-05 21:32:31'),
-(27, 'read_categories', 'categories', '2021-02-05 21:32:31', '2021-02-05 21:32:31'),
-(28, 'edit_categories', 'categories', '2021-02-05 21:32:31', '2021-02-05 21:32:31'),
-(29, 'add_categories', 'categories', '2021-02-05 21:32:31', '2021-02-05 21:32:31'),
-(30, 'delete_categories', 'categories', '2021-02-05 21:32:31', '2021-02-05 21:32:31'),
 (31, 'browse_posts', 'posts', '2021-02-05 21:32:33', '2021-02-05 21:32:33'),
 (32, 'read_posts', 'posts', '2021-02-05 21:32:33', '2021-02-05 21:32:33'),
 (33, 'edit_posts', 'posts', '2021-02-05 21:32:33', '2021-02-05 21:32:33'),
@@ -1328,11 +1479,6 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (44, 'edit_works', 'works', '2021-02-07 19:23:48', '2021-02-07 19:23:48'),
 (45, 'add_works', 'works', '2021-02-07 19:23:48', '2021-02-07 19:23:48'),
 (46, 'delete_works', 'works', '2021-02-07 19:23:48', '2021-02-07 19:23:48'),
-(47, 'browse_work_tag', 'work_tag', '2021-03-13 01:28:50', '2021-03-13 01:28:50'),
-(48, 'read_work_tag', 'work_tag', '2021-03-13 01:28:50', '2021-03-13 01:28:50'),
-(49, 'edit_work_tag', 'work_tag', '2021-03-13 01:28:50', '2021-03-13 01:28:50'),
-(50, 'add_work_tag', 'work_tag', '2021-03-13 01:28:50', '2021-03-13 01:28:50'),
-(51, 'delete_work_tag', 'work_tag', '2021-03-13 01:28:50', '2021-03-13 01:28:50'),
 (52, 'browse_work_applications', 'work_applications', '2021-03-19 23:35:24', '2021-03-19 23:35:24'),
 (53, 'read_work_applications', 'work_applications', '2021-03-19 23:35:24', '2021-03-19 23:35:24'),
 (54, 'edit_work_applications', 'work_applications', '2021-03-19 23:35:24', '2021-03-19 23:35:24'),
@@ -1352,7 +1498,22 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (68, 'read_districts', 'districts', '2021-04-11 00:10:41', '2021-04-11 00:10:41'),
 (69, 'edit_districts', 'districts', '2021-04-11 00:10:41', '2021-04-11 00:10:41'),
 (70, 'add_districts', 'districts', '2021-04-11 00:10:41', '2021-04-11 00:10:41'),
-(71, 'delete_districts', 'districts', '2021-04-11 00:10:41', '2021-04-11 00:10:41');
+(71, 'delete_districts', 'districts', '2021-04-11 00:10:41', '2021-04-11 00:10:41'),
+(72, 'browse_worker_reviews', 'worker_reviews', '2021-05-03 08:46:51', '2021-05-03 08:46:51'),
+(73, 'read_worker_reviews', 'worker_reviews', '2021-05-03 08:46:51', '2021-05-03 08:46:51'),
+(74, 'edit_worker_reviews', 'worker_reviews', '2021-05-03 08:46:51', '2021-05-03 08:46:51'),
+(75, 'add_worker_reviews', 'worker_reviews', '2021-05-03 08:46:51', '2021-05-03 08:46:51'),
+(76, 'delete_worker_reviews', 'worker_reviews', '2021-05-03 08:46:51', '2021-05-03 08:46:51'),
+(77, 'browse_modify_requests', 'modify_requests', '2021-05-23 03:35:08', '2021-05-23 03:35:08'),
+(78, 'read_modify_requests', 'modify_requests', '2021-05-23 03:35:08', '2021-05-23 03:35:08'),
+(79, 'edit_modify_requests', 'modify_requests', '2021-05-23 03:35:08', '2021-05-23 03:35:08'),
+(80, 'add_modify_requests', 'modify_requests', '2021-05-23 03:35:08', '2021-05-23 03:35:08'),
+(81, 'delete_modify_requests', 'modify_requests', '2021-05-23 03:35:08', '2021-05-23 03:35:08'),
+(82, 'browse_work_records', 'work_records', '2021-05-26 00:15:49', '2021-05-26 00:15:49'),
+(83, 'read_work_records', 'work_records', '2021-05-26 00:15:49', '2021-05-26 00:15:49'),
+(84, 'edit_work_records', 'work_records', '2021-05-26 00:15:49', '2021-05-26 00:15:49'),
+(85, 'add_work_records', 'work_records', '2021-05-26 00:15:49', '2021-05-26 00:15:49'),
+(86, 'delete_work_records', 'work_records', '2021-05-26 00:15:49', '2021-05-26 00:15:49');
 
 -- --------------------------------------------------------
 
@@ -1395,11 +1556,6 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (23, 1),
 (24, 1),
 (25, 1),
-(26, 1),
-(27, 1),
-(28, 1),
-(29, 1),
-(30, 1),
 (31, 1),
 (32, 1),
 (33, 1),
@@ -1416,11 +1572,6 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (44, 1),
 (45, 1),
 (46, 1),
-(47, 1),
-(48, 1),
-(49, 1),
-(50, 1),
-(51, 1),
 (52, 1),
 (53, 1),
 (57, 1),
@@ -1437,7 +1588,22 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (68, 1),
 (69, 1),
 (70, 1),
-(71, 1);
+(71, 1),
+(72, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(76, 1),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1),
+(81, 1),
+(82, 1),
+(83, 1),
+(84, 1),
+(85, 1),
+(86, 1);
 
 -- --------------------------------------------------------
 
@@ -1616,11 +1782,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('1tUC7JVLjhaUPKEZUDHyEr4sP6Vy0IV8OYmGw7mP', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiTk50dWZraVQ5QjhyTHo4bmRpWW5OTXY5Q1hZaUZKVHdWMTdxSWRwQSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly9sYXJhdmVsLXdvcmsudGVzdC91c2VyL215LWN2Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjU7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzeUFRemIuM2E0allaTlJqbDlyRXkuVnRPeU1RWDBGM01KMjNkTWZJN05CLlhKVWhHVTQzYSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc3lBUXpiLjNhNGpZWk5Samw5ckV5LlZ0T3lNUVgwRjNNSjIzZE1mSTdOQi5YSlVoR1U0M2EiO30=', 1619331991),
-('3ag16vpiC42XhkpmnSVQClUu5JXbPsy26DrIOPMe', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiYzV3dnVPUTRISHhtQmt0VTRENDFNeldaTEFiOW1FTnB2UlhnZm43ZCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly9sYXJhdmVsLXdvcmsudGVzdC91c2VyL215LWN2Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjU7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzeUFRemIuM2E0allaTlJqbDlyRXkuVnRPeU1RWDBGM01KMjNkTWZJN05CLlhKVWhHVTQzYSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc3lBUXpiLjNhNGpZWk5Samw5ckV5LlZ0T3lNUVgwRjNNSjIzZE1mSTdOQi5YSlVoR1U0M2EiO30=', 1619370601),
-('arbLEHiencWEsHRQcoeUkoM5O1hY6iL3pbZGrX67', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiWndoaldvazZSWnExQ3lZOUpIcjE0Q0ZDQ1BvWTJ4WG1mbUhsZEk0aiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly9sYXJhdmVsLXdvcmsudGVzdC91c2VyL215LWN2Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjU7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzeUFRemIuM2E0allaTlJqbDlyRXkuVnRPeU1RWDBGM01KMjNkTWZJN05CLlhKVWhHVTQzYSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc3lBUXpiLjNhNGpZWk5Samw5ckV5LlZ0T3lNUVgwRjNNSjIzZE1mSTdOQi5YSlVoR1U0M2EiO30=', 1619346399),
-('IPltkF3zeZJmMXGuFWS52w2h0xozo9uQJ0wzkquh', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiSmtTdzAzSEdORGpYakd6RVBhOUIwSUVsRE5BMDFoVWpEdmJDT1pLayI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vbGFyYXZlbC13b3JrLnRlc3QvdXNlci9teS1jdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjU7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzeUFRemIuM2E0allaTlJqbDlyRXkuVnRPeU1RWDBGM01KMjNkTWZJN05CLlhKVWhHVTQzYSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc3lBUXpiLjNhNGpZWk5Samw5ckV5LlZ0T3lNUVgwRjNNSjIzZE1mSTdOQi5YSlVoR1U0M2EiO30=', 1619193366),
-('kCNpQNEskgguuHAHvw7kUw72JtPCDMBLsRjtp1rs', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoid29aeFdqcVg1cmVJWTJrS3lYR0NydzM3UXB6SVB6RTREdTVuNUxWdiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM1OiJodHRwOi8vbGFyYXZlbC13b3JrLnRlc3QvdXNlci9teS1jdiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjU7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzeUFRemIuM2E0allaTlJqbDlyRXkuVnRPeU1RWDBGM01KMjNkTWZJN05CLlhKVWhHVTQzYSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc3lBUXpiLjNhNGpZWk5Samw5ckV5LlZ0T3lNUVgwRjNNSjIzZE1mSTdOQi5YSlVoR1U0M2EiO30=', 1619293391);
+('fC1uJAreprYrAVkadq9c1BTChlStNwh2VyO6040E', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiTUxWMktUV0dIY2h1VDUxOXFCSU1zMGZ2cFlNOGJKS3IyRGJCRGN3SSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjY0OiJodHRwOi8vbGFyYXZlbC13b3JrLnRlc3QvYWRtaW4vdm95YWdlci1hc3NldHM/cGF0aD1jc3MlMkZhcHAuY3NzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJEw4ZzNKSHV2YW5haU9pY3E5WG1Oei5ZSVppSi5RTHRYZDFQeWlFZzYwVnQ1SDVuRTlqZE4uIjt9', 1625838603),
+('M0qrPDYSWMc1HQ2BGBxKr8XRATLgRNfv8d5xU31O', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiQUVtSmhvY1owTWFHc2UxalBWSnA1Q0xzWUlGcXp3Z1pJeTdGN1gzWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9sYXJhdmVsLXdvcmsudGVzdC9ldmFsdWF0aW5nLXdvcmtzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHN5QVF6Yi4zYTRqWVpOUmpsOXJFeS5WdE95TVFYMEYzTUoyM2RNZkk3TkIuWEpVaEdVNDNhIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRzeUFRemIuM2E0allaTlJqbDlyRXkuVnRPeU1RWDBGM01KMjNkTWZJN05CLlhKVWhHVTQzYSI7fQ==', 1625838548),
+('MV2oQw4EWPE5GqwXGhGQTJZZGiCtsqNfJIyywOBJ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTGxHZE50NkVoRlhzTk0wVmkxaWlXMVU0Z2U3ekt1RVplaHJPOG41eiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjQ6Imh0dHA6Ly9sYXJhdmVsLXdvcmsudGVzdCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1625837095);
 
 -- --------------------------------------------------------
 
@@ -1646,10 +1810,10 @@ CREATE TABLE `settings` (
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
 (1, 'site.title', 'Site Title', 'Tuyển dụng', '', 'text', 1, 'Site'),
 (2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
-(3, 'site.logo', 'Site Logo', 'settings\\March2021\\fYnFdXIGUsipfhU1Yvie.png', '', 'image', 3, 'Site'),
+(3, 'site.logo', 'Site Logo', 'settings\\July2021\\yEFyPbZjiuTfRZFzlZO2.png', '', 'image', 3, 'Site'),
 (4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 4, 'Site'),
 (5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin'),
-(6, 'admin.title', 'Admin Title', 'Voyager', '', 'text', 1, 'Admin'),
+(6, 'admin.title', 'Admin Title', 'work-shop', '', 'text', 1, 'Admin'),
 (7, 'admin.description', 'Admin Description', 'Welcome to Voyager. The Missing Admin for Laravel', '', 'text', 2, 'Admin'),
 (8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
 (9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
@@ -1657,12 +1821,37 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (13, 'admin.employment_form', 'HÌnh thức tuyển dụng', '1-Hợp đồng lao động, 2-Hợp đồng ủy thác', NULL, 'text_area', 6, 'Admin'),
 (14, 'admin.deadline_types', 'Thời hạn tuyển dụng', '1 - 5 giờ trước thời gian bắt đầu, 2 - 8 giờ trước thời gian bắt đầu, 3 - 12 giờ trước thời gian bắt đầu, 4 - 1 ngày trước thời gian bắt đầu (24 giờ trước), 5 - 2 ngày trước thời gian bắt đầu (48 giờ trước), 6 - 3 ngày trước thời gian bắt đầu (72 giờ trước)', NULL, 'text_area', 7, 'Admin'),
 (15, 'admin.categories', 'Ngành nghề', '1 -  Nhà Chăm sóc Người cao tuổi, 2 - Cơ sở Y tế chăm sóc dài hạn, 3 - Dịch vụ ban ngày, 4 - Lưu trú ngắn ngày, 5 - Chăm sóc tại nhà đa chức năng quy mô nhỏ, 6 - Văn phòng hỗ trợ chăm sóc tại nhà, 7 - Cơ sở cho người khuyết tật, 8 - Vận chuyển, 9 - Khác', NULL, 'text_area', 8, 'Admin'),
-(17, 'admin.occupations', 'Loại hình công việc', '1-Làm việc toàn thời gian, 2 - Nhân viên thời vụ, 3 - Thực tập sinh, 4 - Nhân viên tự do, 5 - Khác', NULL, 'text_area', 10, 'Admin'),
+(17, 'admin.occupations', 'Loại hình công việc', '1-Làm việc toàn thời gian, 2-Nhân viên thời vụ, 3-Thực tập sinh, 4 - Nhân viên tự do, 5-Khác', NULL, 'text_area', 10, 'Admin'),
 (18, 'admin.tags', 'Yêu cầu tuyển dụng', '1- Tuyển dụng gấp, 2 - Không yêu cầu kinh nghiệm, 3 -Yêu cầu có khinh nghiệp Về công việc, 4 - Không yêu cầu bằng cấp, 5 -Yêu cầu bằng cấp, 6 -Chấp nhận sinh viên mới ra trường, 7 - Không yêu cầu kỹ thuật, 8 -Tận dụng trải nghiệm dịch vụ khách hàng, 9 - Có phương tiện đi lại, 10 - Công việc ngắn hạn, 11 - Không làm ca đêm', NULL, 'text_area', 11, 'Admin'),
 (20, 'admin.skills', 'Kỹ năng', '1 - Giao tiếp, 2 - Ngoại ngữ, 3 - Tin học văn phòng, 4 - Làm việc nhóm, 5 - Quan sát nhạy bén', NULL, 'text_area', 13, 'Admin'),
 (21, 'admin.qualifications', 'Cấp bậc', '1- Sinh viên mới tốt nghiệp, 2 - Nhân viên, 3 - Trưởng phòng, 4 - Giám đốc hoặc cao hơn', NULL, 'text_area', 14, 'Admin'),
 (23, 'admin.night_extra_percentages', 'Trợ cấp làm đêm', '20000', NULL, 'text', 16, 'Admin'),
-(24, 'admin.ovetime_extra_percentages', 'Trợ cấp tăng ca', '15000', NULL, 'text', 17, 'Admin');
+(24, 'admin.ovetime_extra_percentages', 'Trợ cấp tăng ca', '15000', NULL, 'text', 17, 'Admin'),
+(26, 'admin.currency', 'Currency', 'VNĐ', NULL, 'text', 18, 'Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timecards`
+--
+
+CREATE TABLE `timecards` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `worker_id` bigint(20) UNSIGNED NOT NULL,
+  `home_id` bigint(20) UNSIGNED NOT NULL,
+  `work_id` bigint(20) UNSIGNED NOT NULL,
+  `checkin_at` datetime DEFAULT NULL,
+  `checkout_at` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `timecards`
+--
+
+INSERT INTO `timecards` (`id`, `worker_id`, `home_id`, `work_id`, `checkin_at`, `checkout_at`, `created_at`, `updated_at`) VALUES
+(1, 5, 1, 1, '2021-07-12 09:07:00', '2021-07-04 15:53:50', '2021-07-03 01:25:18', '2021-07-04 08:53:50');
 
 -- --------------------------------------------------------
 
@@ -1727,7 +1916,6 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sex` int(2) NOT NULL DEFAULT 0 COMMENT '0 -> nam, 1 -> nữ',
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
   `profile_photo_path` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1738,17 +1926,21 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `settings` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `company_id` bigint(20) DEFAULT NULL,
+  `total_workcount` bigint(20) DEFAULT NULL,
+  `total_worktime` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `name`, `sex`, `email`, `avatar`, `profile_photo_path`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'SuperAdmin', 0, 'your@email.com', 'users\\March2021\\gkhslI66jHIPkC1I2S66.png', 'profile-photos/7DudFQ1r0U4sPhyo9ovJk2jafcu4GZ4AdER9PIbK.jpg', NULL, '$2y$10$L8g3JHuvanaiOicq9XmNz.YIZiJ.QLtXd1PyiEg60Vt5H5nE9jdN.', NULL, NULL, NULL, '{\"locale\":\"en\"}', '2021-03-28 14:55:40', '2021-03-28 15:32:08'),
-(2, 1, 'Quản lý chung', 0, 'hahaha@gmail.com', 'users/default.png', NULL, NULL, '$2y$10$7KsPOBXT3BiurB0bMvc.eOo7vml15b4znjHmZ41xmYbzKyiprqnpm', NULL, NULL, NULL, '{\"locale\":\"en\"}', '2021-02-20 00:38:53', '2021-03-13 00:34:56'),
-(5, NULL, 'てください。', 0, 'hahatest@admin.com', 'users/default.png', 'profile-photos/QO70L80qyVnrm50N4W0IjkDwBMhS855BmW48zkOC.jpg', NULL, '$2y$10$syAQzb.3a4jYZNRjl9rEy.VtOyMQX0F3MJ23dMfI7NB.XJUhGU43a', NULL, NULL, NULL, NULL, '2021-03-28 14:43:24', '2021-03-28 16:20:04');
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `profile_photo_path`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `settings`, `created_at`, `updated_at`, `company_id`, `total_workcount`, `total_worktime`) VALUES
+(1, 1, 'SuperAdmin', 'admin@admin.com', 'users\\March2021\\gkhslI66jHIPkC1I2S66.png', 'profile-photos/POb36zOSrFZDbnQVXWb59F7SvLtdCBONcjGY3Tn6.jpg', NULL, '$2y$10$L8g3JHuvanaiOicq9XmNz.YIZiJ.QLtXd1PyiEg60Vt5H5nE9jdN.', NULL, NULL, NULL, '{\"locale\":\"en\"}', '2021-03-28 14:55:40', '2021-05-29 03:27:53', 2, NULL, NULL),
+(2, 1, 'Quản lý chung', 'hahaha@gmail.com', 'users/default.png', NULL, NULL, '$2y$10$7KsPOBXT3BiurB0bMvc.eOo7vml15b4znjHmZ41xmYbzKyiprqnpm', NULL, NULL, NULL, '{\"locale\":\"en\"}', '2021-02-20 00:38:53', '2021-03-13 00:34:56', NULL, NULL, NULL),
+(5, NULL, 'Nguyễn A', 'hahatest@admin.com', 'users/default.png', NULL, NULL, '$2y$10$syAQzb.3a4jYZNRjl9rEy.VtOyMQX0F3MJ23dMfI7NB.XJUhGU43a', NULL, NULL, NULL, '{\"locale\":\"en\"}', '2021-03-28 14:43:24', '2021-07-02 20:44:26', NULL, 1, 7),
+(7, 2, 'Thương Thương', '123@gmail.com', 'users/default.png', 'profile-photos/Vb3CXKM2nV979dlruMtCmYpIgJhbT0fEZ9ZOU34m.jpg', NULL, '$2y$10$GfIBVFrFr.eV.0SKlr/h..Vu.k0Z.3T68wMixBKL.GT3d5BYr4yy2', NULL, NULL, NULL, NULL, '2021-05-23 01:20:32', '2021-05-23 01:25:54', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1761,11 +1953,20 @@ CREATE TABLE `user_certifications` (
   `user_id` bigint(20) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `institution` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `certification_date` date DEFAULT NULL,
-  `certification_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file` mediumint(9) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_certifications`
+--
+
+INSERT INTO `user_certifications` (`id`, `user_id`, `name`, `institution`, `date`, `link`, `file`, `created_at`, `updated_at`) VALUES
+(15, 7, 'N1 tiếng nhât', 'Miichisoft', '2021-05-23', 'aaaaaaaaaaaaaaaaaaa', NULL, '2021-05-23 02:02:17', '2021-05-23 02:02:17'),
+(17, 5, '11111111', '2222222222', NULL, NULL, NULL, '2021-06-10 01:37:40', '2021-06-10 01:37:40');
 
 -- --------------------------------------------------------
 
@@ -1778,6 +1979,7 @@ CREATE TABLE `user_contacts` (
   `user_id` bigint(20) NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birthday` date DEFAULT NULL,
+  `job_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sex` int(11) DEFAULT NULL,
   `city` int(11) DEFAULT NULL,
   `district` int(11) DEFAULT NULL,
@@ -1786,6 +1988,14 @@ CREATE TABLE `user_contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_contacts`
+--
+
+INSERT INTO `user_contacts` (`id`, `user_id`, `phone`, `birthday`, `job_title`, `sex`, `city`, `district`, `address`, `summary`, `created_at`, `updated_at`) VALUES
+(2, 5, '03-7810-3289', '2021-05-20', 'kỹ sư công nghệ', 1, 1, 9, '2021-05-20', '<ol><li>aaaaaaaaaaaa</li><li>bbbbbbb</li><li>ccc</li><li>bbbjyjyjtjtjtj</li></ol>', '2021-05-03 00:34:57', '2021-06-10 01:37:40'),
+(3, 7, '03-7810-3289', '1997-09-23', 'php manager', 0, 1, 1, '1997-09-23', NULL, '2021-05-23 02:01:23', '2021-05-23 02:02:17');
 
 -- --------------------------------------------------------
 
@@ -1801,10 +2011,17 @@ CREATE TABLE `user_educations` (
   `qualification` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Bằng cấp',
   `from_date` date DEFAULT NULL,
   `to_date` date DEFAULT NULL,
-  `descriptions` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_educations`
+--
+
+INSERT INTO `user_educations` (`id`, `user_id`, `subject`, `school`, `qualification`, `from_date`, `to_date`, `description`, `created_at`, `updated_at`) VALUES
+(17, 5, 'công nghệ thông tin', 'ĐH Xây Dựng', 'TB', NULL, '2021-06-05', NULL, '2021-06-10 01:37:40', '2021-06-10 01:37:40');
 
 -- --------------------------------------------------------
 
@@ -1816,10 +2033,18 @@ CREATE TABLE `user_languages` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `language_id` bigint(20) NOT NULL,
-  `status` int(11) NOT NULL,
+  `proficiency` int(2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_languages`
+--
+
+INSERT INTO `user_languages` (`id`, `user_id`, `language_id`, `proficiency`, `created_at`, `updated_at`) VALUES
+(25, 5, 12, 1, '2021-06-10 01:37:40', '2021-06-10 01:37:40'),
+(26, 5, 38, 3, '2021-06-10 01:37:40', '2021-06-10 01:37:40');
 
 -- --------------------------------------------------------
 
@@ -1842,9 +2067,18 @@ CREATE TABLE `user_skills` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_skills`
+--
+
+INSERT INTO `user_skills` (`id`, `user_id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(29, 5, 'Tin học văn phòng', NULL, '2021-06-10 01:37:40', '2021-06-10 01:37:40'),
+(30, 5, 'PHP', NULL, '2021-06-10 01:37:40', '2021-06-10 01:37:40');
 
 -- --------------------------------------------------------
 
@@ -1859,10 +2093,42 @@ CREATE TABLE `user_work_histories` (
   `company` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Tên côn ty',
   `from_date` date DEFAULT NULL COMMENT 'ngày bắt đầu công việc',
   `to_date` date DEFAULT NULL COMMENT 'ngày kết thúc công việc',
-  `descriptions` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_job` int(2) NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_work_histories`
+--
+
+INSERT INTO `user_work_histories` (`id`, `user_id`, `position`, `company`, `from_date`, `to_date`, `current_job`, `description`, `created_at`, `updated_at`) VALUES
+(45, 5, 'Nhân viên kỹ thuật', 'Đất Xanh Miền Bắc', '2020-12-10', '2021-04-27', 0, 'wwwwwwwwwww', '2021-06-10 01:37:40', '2021-06-10 01:37:40'),
+(46, 5, 'kỹ sư', 'Miichisoft', '2020-12-15', '2021-12-24', 1, NULL, '2021-06-10 01:37:40', '2021-06-10 01:37:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_work_totals`
+--
+
+CREATE TABLE `user_work_totals` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `total_worktime` int(11) DEFAULT NULL,
+  `total_workcount` int(11) DEFAULT NULL,
+  `penalty_point` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_work_totals`
+--
+
+INSERT INTO `user_work_totals` (`id`, `user_id`, `total_worktime`, `total_workcount`, `penalty_point`, `created_at`, `updated_at`) VALUES
+(1, 5, 13, 2, NULL, '2021-07-04 08:53:50', '2021-07-04 08:53:50');
 
 -- --------------------------------------------------------
 
@@ -12519,6 +12785,39 @@ INSERT INTO `wards` (`id`, `name`, `gso_id`, `district_id`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `worker_reviews`
+--
+
+CREATE TABLE `worker_reviews` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `worker_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `work_id` int(11) DEFAULT NULL,
+  `liked` smallint(6) DEFAULT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `worker_skill`
+--
+
+CREATE TABLE `worker_skill` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `worker_id` bigint(20) UNSIGNED NOT NULL,
+  `skill_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `work_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `works`
 --
 
@@ -12560,27 +12859,17 @@ CREATE TABLE `works` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `contact_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `occupation_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `category_id` int(11) DEFAULT NULL,
+  `company_id` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `works`
 --
 
-INSERT INTO `works` (`id`, `user_id`, `title`, `content`, `address`, `access`, `contact_tel`, `things_to_bring1`, `things_to_bring2`, `things_to_bring3`, `things_to_bring4`, `things_to_bring5`, `notes`, `condition1`, `condition2`, `condition3`, `condition4`, `condition5`, `status`, `worktime_start_at`, `worktime_end_at`, `resttime_start_at`, `resttime_end_at`, `resttime_minutes`, `deadline_type`, `recruitment_person_count`, `hourly_wage`, `ovetime_extra_percentages`, `night_extra_percentages`, `transportation_fee`, `working_conditions_pdf_url`, `recruitment_start_at`, `deleted_at`, `created_at`, `updated_at`, `contact_name`, `occupation_id`, `category_id`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-07 03:04:42', '2021-03-12 11:10:54', NULL, NULL, NULL),
-(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-12 10:35:13', '2021-03-07 03:07:03', '2021-03-12 10:35:13', NULL, NULL, NULL),
-(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-12 10:35:13', '2021-03-07 03:34:43', '2021-03-12 10:35:13', NULL, NULL, NULL),
-(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-12 23:47:00', '2021-03-12 23:53:00', NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-12 10:35:13', '2021-03-12 09:48:05', '2021-03-12 10:35:13', NULL, NULL, NULL),
-(5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8, '2021-03-12 13:52:00', '2021-03-12 14:43:00', NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-12 10:35:13', '2021-03-12 09:52:48', '2021-03-12 10:35:13', NULL, NULL, NULL),
-(6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, '2021-03-13 00:13:00', '2021-03-13 06:09:00', NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, '2021-03-13 11:14:00', '2021-03-12 10:35:13', '2021-03-12 10:14:08', '2021-03-12 10:35:13', NULL, NULL, NULL),
-(7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, '2021-03-13 06:31:00', '2021-03-13 11:31:00', '2021-03-13 08:32:00', '2021-03-13 09:40:00', 68, 1, 1, 1000, NULL, NULL, NULL, NULL, '2021-03-12 00:31:00', NULL, '2021-03-12 10:34:57', '2021-03-12 10:34:57', NULL, NULL, NULL),
-(8, 1, 'Miichisoft', 'Vận chuyển kiện hàng tới khu chung cư.', 'Hà Nội', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, '2021-03-13 20:03:00', '2021-03-14 00:00:00', NULL, NULL, NULL, 1, 1, 1000, NULL, NULL, 100, NULL, '2021-03-12 15:00:00', NULL, NULL, '2021-03-13 01:42:22', NULL, NULL, NULL),
-(9, 1, 'Danh sách', NULL, 'Hà Nội 1111111111111', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2021-03-14 15:21:00', '2021-03-14 22:21:00', '2021-03-14 18:21:00', '2021-03-14 19:21:00', 60, 1, 1, 44444, NULL, NULL, 1111, NULL, '2021-03-13 15:21:00', NULL, NULL, '2021-03-13 02:03:44', NULL, NULL, NULL),
-(10, 1, 'Danh sách', '<ul>\r\n<li>44444444444</li>\r\n</ul>\r\n<ol>\r\n<li>4wef</li>\r\n<li>aaaa</li>\r\n</ol>', 'Hà Nội 1111111111111', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '<ol>\r\n<li>\r\n<h2>ccccccccccccccc</h2>\r\n</li>\r\n<li>\r\n<h2>jkjkk jbhj</h2>\r\n</li>\r\n<li>\r\n<h2>nkj</h2>\r\n</li>\r\n<li>\r\n<h2>77906r76kbkj</h2>\r\n</li>\r\n</ol>', NULL, NULL, NULL, NULL, NULL, 2, '2021-03-14 15:21:00', '2021-03-14 22:21:00', '2021-03-14 18:21:00', '2021-03-14 19:21:00', 60, 3, 1, 44444, NULL, NULL, 1111, NULL, '2021-03-13 15:21:00', NULL, '2021-03-13 02:09:49', '2021-03-22 06:56:46', NULL, NULL, NULL),
-(11, 1, 'Danh sách CÁN BỘ QUẢN LÝ ĐÀO TẠO KHẢO THÍ - FPOLYHN', NULL, 'Hà Nội 1111111111111', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, '2021-03-30 03:21:00', '2021-03-30 11:21:00', '2021-03-30 07:21:00', '2021-03-30 07:21:00', 0, 1, 1, 44444, NULL, NULL, 1111, NULL, '2021-03-27 15:21:00', NULL, '2021-03-13 02:10:07', '2021-03-27 08:48:55', NULL, NULL, NULL),
-(12, 1, 'Danh sách CHUYÊN VIÊN PHÁT TRIỂN THỊ TRƯỜNG LƯƠNG 15-30 TRIỆU (NAM)', '<p><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- H&agrave;nh ch&iacute;nh: Lễ t&acirc;n (L&agrave;m việc tại VP H&agrave; Nội)</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Mua h&agrave;ng: lựa chọn nh&agrave; cung cấp, mua h&agrave;ng cho khối văn ph&ograve;ng hoặc linh kiện, phụ t&ugrave;ng sản xuất (Vĩnh Ph&uacute;c)</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- T&agrave;i ch&iacute;nh/ Kế to&aacute;n: Thanh to&aacute;n chứng từ, kiểm tra sổ s&aacute;ch, lập kế hoạch chi ti&ecirc;u&hellip; (Vĩnh Ph&uacute;c)</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Hỗ trợ sản xuất: Lập/ điều chỉnh kế hoạch sản xuất, quản l&yacute; chi ph&iacute; sản xuất. Chuẩn bị chứng từ xuất nhập khẩu linh kiện, phụ t&ugrave;ng, h&agrave;ng h&oacute;a. L&ecirc;n kế hoạch tiếp vận xe (Vĩnh Ph&uacute;c, B&igrave;nh Dương)</span></p>', 'Hà Nội 1111111111111', NULL, '037-810-3289', NULL, NULL, NULL, NULL, NULL, '<p><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Tr&igrave;nh độ học vấn: Cao đẳng/ Đại học từ loại Kh&aacute; trở l&ecirc;n, điểm trung b&igrave;nh t&iacute;ch lũy (GPA) từ 6.5 theo thang điểm 10 hoặc 2.25 theo thang điểm 4 (Chấp nhận sinh vi&ecirc;n sẽ tốt nghiệp trong th&aacute;ng 07/2021)</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Chuy&ecirc;n ng&agrave;nh: Tốt nghiệp đại học Chuy&ecirc;n ng&agrave;nh kinh tế, quản trị, thương mại, kế to&aacute;n hoặc c&aacute;c Chuy&ecirc;n ng&agrave;nh kh&aacute;c c&oacute; li&ecirc;n quan</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Tiếng Anh: Th&agrave;nh thạo c&aacute;c kỹ năng nghe, n&oacute;i, đọc, viết</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Kỹ năng kh&aacute;c: Sử dụng th&agrave;nh thạo m&aacute;y t&iacute;nh v&agrave; c&aacute;c phần mềm văn ph&ograve;ng (Word, Excel, Power Point, Access&hellip;)</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Nam, Nữ tuổi từ 21 đến 28</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Chăm chỉ, cẩn thận, chịu được &aacute;p lực c&ocirc;ng việc</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Sẵn s&agrave;ng l&agrave;m tăng ca, đi c&ocirc;ng t&aacute;c</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- C&oacute; khả năng l&agrave;m việc độc lập hoặc theo nh&oacute;m với tinh thần tr&aacute;ch nhiệm cao</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">Điều kiện l&agrave;m việc v&agrave; ph&uacute;c lợi</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Ng&agrave;y l&agrave;m việc: 5-6 ng&agrave;y/tuần (trung b&igrave;nh nghỉ 03 ng&agrave;y thứ 7 trong 1 th&aacute;ng)</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Thời gian l&agrave;m việc: 8:00-17:00</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Địa điểm l&agrave;m việc: Vĩnh ph&uacute;c (c&oacute; xe đưa đ&oacute;n)/ H&agrave; Nội/ B&igrave;nh Dương (c&oacute; xe đưa đ&oacute;n)</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- Vị tr&iacute;: Nh&acirc;n vi&ecirc;n ch&iacute;nh thức/ Nh&acirc;n vi&ecirc;n Outsource</span><br style=\"box-sizing: border-box; color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\" /><span style=\"color: #333333; font-family: \'Open Sans\', Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\">- C&aacute;c chế độ bảo hiểm &amp; ph&uacute;c lợi kh&aacute;c: Bằng hoặc tốt hơn quy định của Ph&aacute;p luật</span></p>', 'Có kinh nghiệm quản lý nhân sự trong phòng.', 'Sức khỏe tốt', NULL, NULL, NULL, 6, '2021-03-29 03:21:00', '2021-03-29 10:21:00', '2021-03-29 06:21:00', '2021-03-29 07:21:00', 60, 1, 1, 44444, NULL, NULL, 1111, NULL, '2021-03-27 15:21:00', NULL, '2021-03-13 02:18:16', '2021-04-10 11:47:25', 'Nguyễn Văn Hiêp', 1, 1),
-(13, 1, 'Quản lý công việc Đất Xanh Care', '<h1 style=\"margin: 0px; padding: 10px 0px; font-size: large; font-family: \'trebuchet ms\', trebuchet, verdana; color: #000000;\">Frequently Asked Questions</h1>\r\n<dl style=\"margin: 0px; padding: 0px; color: #000000; font-family: tahoma, sans-serif; font-size: small;\">\r\n<dt style=\"margin: 0px; padding: 0px; color: #aa0000; font-weight: bold;\">What versions of jQuery is the Form Plugin compatible with?</dt>\r\n<dd style=\"margin: 0px 0px 20px; padding: 0px; color: #555555;\">The Form Plugin is compatible with jQuery v1.5 and later.</dd>\r\n<dt style=\"margin: 0px; padding: 0px; color: #aa0000; font-weight: bold;\">Does the Form Plugin have any dependencies on other plugins?</dt>\r\n<dd style=\"margin: 0px 0px 20px; padding: 0px; color: #555555;\">No.</dd>\r\n<dt style=\"margin: 0px; padding: 0px; color: #aa0000; font-weight: bold;\">Is the Form Plugin fast? Does it serialize forms accurately?</dt>\r\n<dd style=\"margin: 0px 0px 20px; padding: 0px; color: #555555;\">Yes! See our&nbsp;<a href=\"https://malsup.com/jquery/form/comp/\">comparison page</a>&nbsp;for a look at how the Form Plugin compares to other libraries (including Prototype and dojo).</dd>\r\n<dt style=\"margin: 0px; padding: 0px; color: #aa0000; font-weight: bold;\">What is the easiet way to use the Form Plugin?</dt>\r\n<dd style=\"margin: 0px 0px 20px; padding: 0px; color: #555555;\"><code class=\"inline\" style=\"margin: 0px; padding: 0px; font-size: 11.4075px; background-color: #ffffcc;\">ajaxForm</code>&nbsp;provides the simplest way to enable your HTML form to use AJAX. It\'s the one-stop-shopping method for preparing forms.</dd>\r\n<dt style=\"margin: 0px; padding: 0px; color: #aa0000; font-weight: bold;\">What is the difference between&nbsp;<code class=\"inline\" style=\"margin: 0px; padding: 0px; font-weight: normal; font-size: 11.4075px; background-color: #ffffcc;\">ajaxForm</code>&nbsp;and&nbsp;<code class=\"inline\" style=\"margin: 0px; padding: 0px; font-weight: normal; font-size: 11.4075px; background-color: #ffffcc;\">ajaxSubmit</code>?</dt>\r\n<dd style=\"margin: 0px 0px 20px; padding: 0px; color: #555555;\">There are two main differences between these methods:\r\n<ol style=\"margin: 0px; padding: 0px;\">\r\n<li style=\"margin: 0px; padding: 0px; list-style: none;\"><code class=\"inline\" style=\"margin: 0px; padding: 0px; font-size: 11.4075px; background-color: #ffffcc;\">ajaxSubmit</code>&nbsp;submits the form,&nbsp;<code class=\"inline\" style=\"margin: 0px; padding: 0px; font-size: 11.4075px; background-color: #ffffcc;\">ajaxForm</code>&nbsp;does not. When you invoke&nbsp;<code class=\"inline\" style=\"margin: 0px; padding: 0px; font-size: 11.4075px; background-color: #ffffcc;\">ajaxSubmit</code>&nbsp;it immediately serializes the form data and sends it to the server. When you invoke&nbsp;<code class=\"inline\" style=\"margin: 0px; padding: 0px; font-size: 11.4075px; background-color: #ffffcc;\">ajaxForm</code>&nbsp;it adds the necessary event listeners to the form so that it can detect when the form is submitted by the user. When this occurs&nbsp;<code class=\"inline\" style=\"margin: 0px; padding: 0px; font-size: 11.4075px; background-color: #ffffcc;\">ajaxSubmit</code>&nbsp;is called for you.</li>\r\n<li style=\"margin: 0px; padding: 0px; list-style: none;\">When using&nbsp;<code class=\"inline\" style=\"margin: 0px; padding: 0px; font-size: 11.4075px; background-color: #ffffcc;\">ajaxForm</code>&nbsp;the submitted data will include the name and value of the submitting element (or its click coordinates if the submitting element is an image)</li>\r\n</ol>\r\n</dd>\r\n</dl>', 'Thanh Xuân, Hà Nội', NULL, '03-7810-3289', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-04-14 01:16:00', '2021-04-14 08:16:00', NULL, NULL, NULL, 1, 1, 100000, NULL, NULL, 100, NULL, '2021-04-12 22:16:00', NULL, '2021-04-12 08:18:20', '2021-04-12 08:20:05', 'Nguyễn Văn Hiêp', 3, NULL);
+INSERT INTO `works` (`id`, `user_id`, `title`, `content`, `address`, `access`, `contact_tel`, `things_to_bring1`, `things_to_bring2`, `things_to_bring3`, `things_to_bring4`, `things_to_bring5`, `notes`, `condition1`, `condition2`, `condition3`, `condition4`, `condition5`, `status`, `worktime_start_at`, `worktime_end_at`, `resttime_start_at`, `resttime_end_at`, `resttime_minutes`, `deadline_type`, `recruitment_person_count`, `hourly_wage`, `ovetime_extra_percentages`, `night_extra_percentages`, `transportation_fee`, `working_conditions_pdf_url`, `recruitment_start_at`, `deleted_at`, `created_at`, `updated_at`, `contact_name`, `occupation_id`, `category_id`, `company_id`) VALUES
+(1, 1, 'Nhân viên CK', '<ul style=\"margin: 0px; padding: 0px 0px 0px 20px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: medium; line-height: inherit; font-family: \'Times New Roman\'; vertical-align: baseline; list-style-position: initial; list-style-image: initial; color: #000000;\">\r\n<li style=\"margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline;\">Ch&agrave;o hỏi v&agrave; phục vụ kh&aacute;ch h&agrave;ng th&acirc;n thiện, nhanh nhẹn, nhiệt t&igrave;nh;</li>\r\n<li style=\"margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline;\">T&iacute;nh tiền v&agrave; giới thiệu sản phẩm, chương tr&igrave;nh khuyến m&atilde;i cho kh&aacute;ch h&agrave;ng;</li>\r\n<li style=\"margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline;\">Vệ sinh h&agrave;ng h&oacute;a, quầy kệ, khu vực l&agrave;m việc tại cửa h&agrave;ng;</li>\r\n<li style=\"margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline;\">Sắp xếp, bổ sung, trưng b&agrave;y h&agrave;ng h&oacute;a theo đ&uacute;ng ti&ecirc;u chuẩn C&ocirc;ng ty;</li>\r\n<li style=\"margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline;\">C&aacute;c c&ocirc;ng việc kh&aacute;c theo sự hướng dẫn/y&ecirc;u cầu của Quản l&yacute;.</li>\r\n</ul>', 'Hà Nội', NULL, '03-7810-3289', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, '2021-07-04 09:07:00', '2021-07-04 15:07:00', '2021-07-04 12:00:00', '2021-07-04 12:30:00', 30, 6, 1, 18000, NULL, NULL, 50000, NULL, '2021-06-29 21:08:00', NULL, '2021-06-29 07:26:11', '2021-07-04 01:43:31', 'Nguyễn Văn Hiêp', 2, 3, 2),
+(2, 1, 'Laravel', NULL, 'Bùi Xương Trạch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-08-02 18:01:00', '2021-08-03 00:02:00', '2021-08-02 22:02:00', '2021-08-02 22:30:00', 28, 1, 1, 20000, NULL, NULL, 15000, NULL, '2021-07-02 18:02:00', NULL, '2021-07-02 04:42:08', '2021-07-02 04:42:08', NULL, 4, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -12593,19 +12882,22 @@ CREATE TABLE `work_applications` (
   `work_id` bigint(20) UNSIGNED NOT NULL,
   `worker_id` bigint(20) UNSIGNED NOT NULL,
   `status` int(11) NOT NULL,
-  `room_id` int(10) DEFAULT NULL,
+  `room_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `canceled_at` datetime DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `assigned_at` datetime DEFAULT NULL,
+  `confirmed_at` datetime DEFAULT NULL,
+  `confirm_yn` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `work_applications`
 --
 
-INSERT INTO `work_applications` (`id`, `work_id`, `worker_id`, `status`, `room_id`, `canceled_at`, `created_at`, `updated_at`) VALUES
-(5, 9, 1, 1, 5, NULL, '2021-04-17 13:21:53', '2021-04-17 13:21:53'),
-(6, 13, 5, 1, 6, NULL, '2021-04-17 21:22:52', '2021-04-17 21:22:52');
+INSERT INTO `work_applications` (`id`, `work_id`, `worker_id`, `status`, `room_id`, `canceled_at`, `created_at`, `updated_at`, `assigned_at`, `confirmed_at`, `confirm_yn`) VALUES
+(1, 1, 5, 4, '1', NULL, '2021-07-02 21:32:26', '2021-07-04 08:53:50', '2021-07-03 04:38:08', '2021-07-03 04:38:34', 'y'),
+(2, 2, 5, 2, '2', NULL, '2021-07-02 21:39:08', '2021-07-04 09:12:10', '2021-07-04 16:11:33', '2021-07-04 16:12:10', 'y');
 
 -- --------------------------------------------------------
 
@@ -12655,11 +12947,7 @@ CREATE TABLE `work_photos` (
 --
 
 INSERT INTO `work_photos` (`id`, `work_id`, `url`, `title`, `created_at`, `updated_at`) VALUES
-(7, 10, 'public/Work/March2021/3X7q4vqSmyKcMI8gUgifJqK3Jq7jReYavzs3XwAC.xlsx', 'Book2 (1).xlsx', '2021-03-14 02:58:23', '2021-03-14 02:58:23'),
-(8, 12, 'public/Work/March2021/PG52YINYARqWOOIhI3DLKMdjGSJlJp0nsnOyecxW.jpg', 'logo-truong.png', '2021-03-28 15:37:52', '2021-03-28 15:37:52'),
-(9, 12, 'public/Work/March2021/p9puH8vlpMhrH8dLE6jvZyNFkX7NAUqH6syUUOkl.pdf', 'PHAM-THI-THUONG-Thiet-ke-vien.pdf', '2021-03-28 15:37:52', '2021-03-28 15:37:52'),
-(10, 12, 'public/Work/March2021/TnJPlXMe1ohfVF93GaAh0X7k9uT1dKtO1a0X0bfH.jpg', 'tải xuống.png', '2021-03-28 15:37:52', '2021-03-28 15:37:52'),
-(11, 12, 'public/Work/April2021/aYbSLHX2FkOtdfUVs5WVKn18sYD83wguwLORA4rE.jpg', 'images.png', '2021-04-10 11:47:26', '2021-04-10 11:47:26');
+(1, 2, 'Works/July2021/wyeGylIXbqWeI4mGskvwwIlaM9oepmqaQWNdwzWW.docx', 'mau-hop-dong-cho-thue-nha-tro.docx', '2021-07-02 04:42:08', '2021-07-02 04:42:08');
 
 -- --------------------------------------------------------
 
@@ -12681,10 +12969,8 @@ CREATE TABLE `work_qualification` (
 --
 
 INSERT INTO `work_qualification` (`id`, `work_id`, `qualification_id`, `required_yn`, `created_at`, `updated_at`) VALUES
-(13, 10, 2, 'y', '2021-03-22 06:56:46', '2021-03-22 06:56:46'),
-(24, 12, 1, 'y', '2021-04-10 11:47:26', '2021-04-10 11:47:26'),
-(25, 12, 2, 'y', '2021-04-10 11:47:26', '2021-04-10 11:47:26'),
-(27, 13, 2, 'y', '2021-04-12 08:20:05', '2021-04-12 08:20:05');
+(4, 2, 1, 'y', '2021-07-02 04:42:08', '2021-07-02 04:42:08'),
+(6, 1, 2, 'y', '2021-07-04 01:43:32', '2021-07-04 01:43:32');
 
 -- --------------------------------------------------------
 
@@ -12694,42 +12980,55 @@ INSERT INTO `work_qualification` (`id`, `work_id`, `qualification_id`, `required
 
 CREATE TABLE `work_records` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `invoice_id` bigint(20) UNSIGNED DEFAULT NULL COMMENT '請求ID',
-  `worker_id` bigint(20) UNSIGNED NOT NULL COMMENT 'ワーカーID',
-  `home_id` bigint(20) UNSIGNED NOT NULL COMMENT '施設ID',
-  `work_id` bigint(20) UNSIGNED NOT NULL COMMENT '仕事ID',
-  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'タイトル',
-  `work_date` date DEFAULT NULL COMMENT '勤務日',
-  `scheduled_worktime_start_at` datetime DEFAULT NULL COMMENT '予定開始日時',
-  `scheduled_worktime_end_at` datetime DEFAULT NULL COMMENT '予定終了日時',
-  `worktime_start_at` datetime DEFAULT NULL COMMENT '勤務開始日時',
-  `worktime_end_at` datetime DEFAULT NULL COMMENT '勤務終了日時',
-  `scheduled_resttime_start_at` datetime DEFAULT NULL COMMENT '予定休憩開始日時',
-  `scheduled_resttime_end_at` datetime DEFAULT NULL COMMENT '予定休憩終了日時',
-  `resttime_start_at` datetime DEFAULT NULL COMMENT '予定休憩時間開始',
-  `resttime_end_at` datetime DEFAULT NULL COMMENT '予定休憩時間終了',
-  `resttime_minutes` int(11) DEFAULT NULL COMMENT '休憩時間',
-  `worker_family_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ワーカー姓',
-  `worker_last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ワーカー名',
-  `worker_family_name_kana` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ワーカーセイ',
-  `worker_last_name_kana` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ワーカーメイ',
-  `worker_sex` int(11) NOT NULL COMMENT 'ワーカ-性別',
-  `base_wage` int(11) NOT NULL COMMENT '基本報酬',
-  `ovetime_percentages` int(11) DEFAULT NULL COMMENT '法定時間外割増手当のパーセンテージ',
-  `nighttime_percentages` int(11) DEFAULT NULL COMMENT '深夜割増手当のパーセンテージ',
-  `ovetime_wage` int(11) DEFAULT NULL COMMENT '法定時間外割増手当金額',
-  `nighttime_wage` int(11) DEFAULT NULL COMMENT '深夜割増手当金額',
-  `transportation_fee` int(11) DEFAULT NULL COMMENT '交通費',
-  `total_wage` int(11) NOT NULL COMMENT 'ワーカーへの合計支給額',
-  `transfer_request_status` int(11) NOT NULL COMMENT '申請ステータス',
-  `transfer_requested_at` datetime DEFAULT NULL COMMENT '振込申請日時',
-  `transfered_at` datetime DEFAULT NULL COMMENT '報酬振込日時',
-  `commissoin_fee` int(11) NOT NULL COMMENT '手数料',
-  `commissoin_fee_tax` int(11) NOT NULL COMMENT '手数料税額',
-  `commissoin_fee_tax_rate` int(11) NOT NULL COMMENT '手数料税率',
+  `invoice_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `worker_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `work_id` bigint(20) UNSIGNED NOT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `work_date` date DEFAULT NULL,
+  `scheduled_worktime_start_at` datetime DEFAULT NULL,
+  `scheduled_worktime_end_at` datetime DEFAULT NULL,
+  `worktime_start_at` datetime DEFAULT NULL,
+  `worktime_end_at` datetime DEFAULT NULL,
+  `scheduled_resttime_start_at` datetime DEFAULT NULL,
+  `scheduled_resttime_end_at` datetime DEFAULT NULL,
+  `resttime_start_at` datetime DEFAULT NULL,
+  `resttime_end_at` datetime DEFAULT NULL,
+  `resttime_minutes` int(11) DEFAULT NULL,
+  `base_wage` int(11) DEFAULT NULL,
+  `ovetime_percentages` int(11) DEFAULT NULL,
+  `nighttime_percentages` int(11) DEFAULT NULL,
+  `ovetime_wage` int(11) DEFAULT NULL,
+  `nighttime_wage` int(11) DEFAULT NULL,
+  `transportation_fee` int(11) DEFAULT NULL,
+  `total_wage` int(11) DEFAULT NULL,
+  `transfer_request_status` int(11) DEFAULT NULL,
+  `transfer_requested_at` datetime DEFAULT NULL,
+  `transfered_at` datetime DEFAULT NULL,
+  `commission_fee` int(11) DEFAULT NULL,
+  `commission_fee_tax` int(11) DEFAULT NULL,
+  `commission_fee_tax_rate` int(11) DEFAULT NULL,
+  `fixed_yn` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fixed_at` datetime DEFAULT NULL,
+  `work_application_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `nighttime_worktime` double(3,1) DEFAULT NULL,
+  `overtime_worktime` double(3,1) DEFAULT NULL,
+  `base_worktime` double(3,1) DEFAULT NULL,
+  `hourly_wage` int(11) DEFAULT NULL,
+  `company_id` bigint(20) UNSIGNED NOT NULL,
+  `bank_commission_fee_tax` int(11) DEFAULT NULL,
+  `bank_commission_fee` int(11) DEFAULT NULL,
+  `withholding_fee` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `work_records`
+--
+
+INSERT INTO `work_records` (`id`, `invoice_id`, `worker_id`, `user_id`, `work_id`, `title`, `work_date`, `scheduled_worktime_start_at`, `scheduled_worktime_end_at`, `worktime_start_at`, `worktime_end_at`, `scheduled_resttime_start_at`, `scheduled_resttime_end_at`, `resttime_start_at`, `resttime_end_at`, `resttime_minutes`, `base_wage`, `ovetime_percentages`, `nighttime_percentages`, `ovetime_wage`, `nighttime_wage`, `transportation_fee`, `total_wage`, `transfer_request_status`, `transfer_requested_at`, `transfered_at`, `commission_fee`, `commission_fee_tax`, `commission_fee_tax_rate`, `fixed_yn`, `fixed_at`, `work_application_id`, `nighttime_worktime`, `overtime_worktime`, `base_worktime`, `hourly_wage`, `company_id`, `bank_commission_fee_tax`, `bank_commission_fee`, `withholding_fee`, `created_at`, `updated_at`) VALUES
+(1, NULL, 5, 1, 1, 'Nhân viên CK', '2021-07-04', '2021-07-04 09:07:00', '2021-07-04 15:07:00', '2021-07-04 09:07:00', '2021-07-04 15:07:00', '2021-07-04 12:00:00', '2021-07-04 12:30:00', NULL, NULL, 30, 99000, 25, NULL, NULL, NULL, 50000, 149000, 1, NULL, NULL, 22350, 2235, 10, 'n', NULL, 1, NULL, 0.0, 5.5, 18000, 2, NULL, NULL, NULL, '2021-07-04 08:53:50', '2021-07-04 08:53:50');
 
 -- --------------------------------------------------------
 
@@ -12750,10 +13049,8 @@ CREATE TABLE `work_skill` (
 --
 
 INSERT INTO `work_skill` (`id`, `work_id`, `skill_id`, `created_at`, `updated_at`) VALUES
-(31, 12, 1, '2021-04-10 11:47:26', '2021-04-10 11:47:26'),
-(32, 12, 2, '2021-04-10 11:47:26', '2021-04-10 11:47:26'),
-(35, 13, 2, '2021-04-12 08:20:05', '2021-04-12 08:20:05'),
-(36, 13, 3, '2021-04-12 08:20:05', '2021-04-12 08:20:05');
+(9, 1, 1, '2021-07-04 01:43:32', '2021-07-04 01:43:32'),
+(10, 1, 5, '2021-07-04 01:43:32', '2021-07-04 01:43:32');
 
 -- --------------------------------------------------------
 
@@ -12774,19 +13071,11 @@ CREATE TABLE `work_tag` (
 --
 
 INSERT INTO `work_tag` (`id`, `work_id`, `tag_id`, `created_at`, `updated_at`) VALUES
-(77, 10, 2, '2021-03-22 06:56:46', '2021-03-22 06:56:46'),
-(78, 10, 3, '2021-03-22 06:56:46', '2021-03-22 06:56:46'),
-(79, 10, 6, '2021-03-22 06:56:46', '2021-03-22 06:56:46'),
-(80, 10, 7, '2021-03-22 06:56:46', '2021-03-22 06:56:46'),
-(95, 11, 2, '2021-03-27 08:48:55', '2021-03-27 08:48:55'),
-(96, 11, 6, '2021-03-27 08:48:56', '2021-03-27 08:48:56'),
-(141, 12, 2, '2021-04-10 11:47:26', '2021-04-10 11:47:26'),
-(142, 12, 4, '2021-04-10 11:47:26', '2021-04-10 11:47:26'),
-(143, 12, 6, '2021-04-10 11:47:26', '2021-04-10 11:47:26'),
-(144, 12, 11, '2021-04-10 11:47:26', '2021-04-10 11:47:26'),
-(148, 13, 1, '2021-04-12 08:20:05', '2021-04-12 08:20:05'),
-(149, 13, 5, '2021-04-12 08:20:05', '2021-04-12 08:20:05'),
-(150, 13, 9, '2021-04-12 08:20:05', '2021-04-12 08:20:05');
+(13, 2, 2, '2021-07-02 04:42:08', '2021-07-02 04:42:08'),
+(18, 1, 1, '2021-07-04 01:43:31', '2021-07-04 01:43:31'),
+(19, 1, 6, '2021-07-04 01:43:32', '2021-07-04 01:43:32'),
+(20, 1, 7, '2021-07-04 01:43:32', '2021-07-04 01:43:32'),
+(21, 1, 9, '2021-07-04 01:43:32', '2021-07-04 01:43:32');
 
 --
 -- Indexes for dumped tables
@@ -12836,12 +13125,35 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `favorite_workers`
+--
+ALTER TABLE `favorite_workers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `favorite_workers_worker_id_foreign` (`worker_id`),
+  ADD KEY `favorite_workers_home_id_foreign` (`home_id`);
+
+--
 -- Indexes for table `favorite_works`
 --
 ALTER TABLE `favorite_works`
   ADD PRIMARY KEY (`id`),
   ADD KEY `favorite_works_worker_id_foreign` (`worker_id`),
   ADD KEY `favorite_works_work_id_foreign` (`work_id`);
+
+--
+-- Indexes for table `home_reviews`
+--
+ALTER TABLE `home_reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `home_reviews_worker_id_foreign` (`worker_id`),
+  ADD KEY `home_reviews_home_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
 
 --
 -- Indexes for table `menus`
@@ -12869,8 +13181,8 @@ ALTER TABLE `migrations`
 ALTER TABLE `modify_requests`
   ADD PRIMARY KEY (`id`),
   ADD KEY `modify_requests_worker_id_foreign` (`worker_id`),
-  ADD KEY `modify_requests_user_id_foreign` (`user_id`),
-  ADD KEY `modify_requests_work_id_foreign` (`work_id`);
+  ADD KEY `modify_requests_work_id_foreign` (`work_id`),
+  ADD KEY `modify_requests_home_id_foreign` (`home_id`) USING BTREE;
 
 --
 -- Indexes for table `pages`
@@ -12944,6 +13256,15 @@ ALTER TABLE `settings`
   ADD UNIQUE KEY `settings_key_unique` (`key`);
 
 --
+-- Indexes for table `timecards`
+--
+ALTER TABLE `timecards`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `timecards_worker_id_foreign` (`worker_id`),
+  ADD KEY `timecards_home_id_foreign` (`home_id`),
+  ADD KEY `timecards_work_id_foreign` (`work_id`);
+
+--
 -- Indexes for table `translations`
 --
 ALTER TABLE `translations`
@@ -13003,6 +13324,12 @@ ALTER TABLE `user_work_histories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_work_totals`
+--
+ALTER TABLE `user_work_totals`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `wards`
 --
 ALTER TABLE `wards`
@@ -13010,11 +13337,29 @@ ALTER TABLE `wards`
   ADD KEY `wards_district_id_foreign` (`district_id`);
 
 --
+-- Indexes for table `worker_reviews`
+--
+ALTER TABLE `worker_reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `worker_reviews_worker_id_foreign` (`worker_id`),
+  ADD KEY `worker_reviews_home_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `worker_skill`
+--
+ALTER TABLE `worker_skill`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `worker_skill_worker_id_foreign` (`worker_id`),
+  ADD KEY `worker_skill_skill_id_foreign` (`skill_id`),
+  ADD KEY `worker_skill_home_id_foreign` (`user_id`);
+
+--
 -- Indexes for table `works`
 --
 ALTER TABLE `works`
   ADD PRIMARY KEY (`id`),
   ADD KEY `works_home_id_foreign` (`user_id`);
+ALTER TABLE `works` ADD FULLTEXT KEY `search` (`title`,`content`);
 
 --
 -- Indexes for table `work_applications`
@@ -13061,7 +13406,7 @@ ALTER TABLE `work_qualification`
 ALTER TABLE `work_records`
   ADD PRIMARY KEY (`id`),
   ADD KEY `work_records_worker_id_foreign` (`worker_id`),
-  ADD KEY `work_records_home_id_foreign` (`home_id`),
+  ADD KEY `work_records_user_id_foreign` (`user_id`),
   ADD KEY `work_records_work_id_foreign` (`work_id`);
 
 --
@@ -13100,13 +13445,13 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `districts`
@@ -13121,9 +13466,27 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `favorite_workers`
+--
+ALTER TABLE `favorite_workers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `favorite_works`
 --
 ALTER TABLE `favorite_works`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `home_reviews`
+--
+ALTER TABLE `home_reviews`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -13136,19 +13499,19 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `modify_requests`
 --
 ALTER TABLE `modify_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -13160,7 +13523,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -13190,7 +13553,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `timecards`
+--
+ALTER TABLE `timecards`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `translations`
@@ -13202,43 +13571,49 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_certifications`
 --
 ALTER TABLE `user_certifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user_contacts`
 --
 ALTER TABLE `user_contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_educations`
 --
 ALTER TABLE `user_educations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user_languages`
 --
 ALTER TABLE `user_languages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user_skills`
 --
 ALTER TABLE `user_skills`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `user_work_histories`
 --
 ALTER TABLE `user_work_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `user_work_totals`
+--
+ALTER TABLE `user_work_totals`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wards`
@@ -13247,16 +13622,28 @@ ALTER TABLE `wards`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10615;
 
 --
+-- AUTO_INCREMENT for table `worker_reviews`
+--
+ALTER TABLE `worker_reviews`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `worker_skill`
+--
+ALTER TABLE `worker_skill`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `works`
 --
 ALTER TABLE `works`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `work_applications`
 --
 ALTER TABLE `work_applications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `work_category`
@@ -13274,31 +13661,31 @@ ALTER TABLE `work_occupation`
 -- AUTO_INCREMENT for table `work_photos`
 --
 ALTER TABLE `work_photos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `work_qualification`
 --
 ALTER TABLE `work_qualification`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `work_records`
 --
 ALTER TABLE `work_records`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `work_skill`
 --
 ALTER TABLE `work_skill`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `work_tag`
 --
 ALTER TABLE `work_tag`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
