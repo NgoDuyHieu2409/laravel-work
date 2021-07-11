@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
-use TCG\Voyager\Facades\Voyager;
 use App\Http\Services\BlockWorkerService;
 use App\Http\Services\FavoriteWorkerService;
 use Illuminate\Support\Facades\DB;

@@ -22,11 +22,15 @@ class ModifyRequestService
 
     public function getAll()
     {
-        $home_id = Auth::id();
+        $user = Auth::user();
         $modify_requests = ModifyRequest::with(['work', 'worker'])
-                    ->where('home_id', $home_id)
-                    ->where('approval_status', ModifyRequestStatus::NO_APPROVE)
-                    ->get();
+                    ->where('approval_status', ModifyRequestStatus::NO_APPROVE);
+        
+        if(!$user->hasRole('admin')){
+            $modify_requests = $modify_requests->where('home_id', $user->id); 
+        }
+        
+        $modify_requests = $modify_requests->get();
 
         foreach($modify_requests as $modify_request){
             if ($modify_request->work->worktime_start_at != $modify_request->scheduled_worktime_start_at) {

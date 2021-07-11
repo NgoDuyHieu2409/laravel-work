@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
-use App\Models\Company;
-use Illuminate\Support\Facades\DB;
+use TCG\Voyager\Facades\Voyager;
 
-class VoyagerUserController extends VoyagerBaseController
+class RoleController extends VoyagerBaseController
 {
     public function index(Request $request)
     {
@@ -58,9 +56,9 @@ class VoyagerUserController extends VoyagerBaseController
                     $query = $query->withTrashed();
                 }
             }
-        
+
             if(!$user->hasRole('admin')){
-                $query = $query->where('user_create', $user->id);
+                $query = $query->whereNotIn('id', [1]);
             }
 
             // If a column has a relationship associated with it, we do not want to show that field
@@ -186,7 +184,34 @@ class VoyagerUserController extends VoyagerBaseController
         ));
     }
 
-    public function create(Request $request)
+    // POST BR(E)AD
+    public function update(Request $request, $id)
+    {
+        $slug = $this->getSlug($request);
+
+        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+
+        // Check permission
+        $this->authorize('edit', app($dataType->model_name));
+
+        //Validate fields
+        $val = $this->validateBread($request->all(), $dataType->editRows, $dataType->name, $id)->validate();
+
+        $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
+        $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
+
+        $data->permissions()->sync($request->input('permissions', []));
+
+        return redirect()
+            ->route("voyager.{$dataType->slug}.index")
+            ->with([
+                'message'    => __('voyager::generic.successfully_updated')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+                'alert-type' => 'success',
+            ]);
+    }
+
+    // POST BRE(A)D
+    public function store(Request $request)
     {
         $slug = $this->getSlug($request);
 
@@ -195,173 +220,19 @@ class VoyagerUserController extends VoyagerBaseController
         // Check permission
         $this->authorize('add', app($dataType->model_name));
 
-        $dataTypeContent = (strlen($dataType->model_name) != 0)
-                            ? new $dataType->model_name()
-                            : false;
+        //Validate fields
+        $val = $this->validateBread($request->all(), $dataType->addRows)->validate();
 
-        foreach ($dataType->addRows as $key => $row) {
-            $dataType->addRows[$key]['col_width'] = $row->details->width ?? 100;
-        }
+        $data = new $dataType->model_name();
+        $this->insertUpdateData($request, $slug, $dataType->addRows, $data);
 
-        // If a column has a relationship associated with it, we do not want to show that field
-        $this->removeRelationshipField($dataType, 'add');
+        $data->permissions()->sync($request->input('permissions', []));
 
-        // Check if BREAD is Translatable
-        $isModelTranslatable = is_bread_translatable($dataTypeContent);
-
-        // Eagerload Relations
-        $this->eagerLoadRelations($dataTypeContent, $dataType, 'add', $isModelTranslatable);
-
-        $companies = Company::pluck('name', 'id');
-
-        $view = 'voyager::bread.edit-add';
-
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
-        }
-
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'companies'));
-    }
-
-    public function edit(Request $request, $id)
-    {
-        $slug = $this->getSlug($request);
-        $user = Auth::user();
-
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-
-        if (strlen($dataType->model_name) != 0) {
-            $model = app($dataType->model_name);
-
-            // Use withTrashed() if model uses SoftDeletes and if toggle is selected
-            if ($model && in_array(SoftDeletes::class, class_uses_recursive($model))) {
-                $model = $model->withTrashed();
-            }
-            if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
-                $model = $model->{$dataType->scope}();
-            }
-            $dataTypeContent = call_user_func([$model, 'findOrFail'], $id);
-        } else {
-            // If Model doest exist, get data from table name
-            $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
-        }
-
-        if(!$user->hasRole('admin')){
-            if($dataTypeContent->user_create != $user->id){
-                abort(403);
-            } 
-        }
-
-        foreach ($dataType->editRows as $key => $row) {
-            $dataType->editRows[$key]['col_width'] = isset($row->details->width) ? $row->details->width : 100;
-        }
-
-        // If a column has a relationship associated with it, we do not want to show that field
-        $this->removeRelationshipField($dataType, 'edit');
-
-        // Check permission
-        $this->authorize('edit', $dataTypeContent);
-
-        // Check if BREAD is Translatable
-        $isModelTranslatable = is_bread_translatable($dataTypeContent);
-
-        // Eagerload Relations
-        $this->eagerLoadRelations($dataTypeContent, $dataType, 'edit', $isModelTranslatable);
-
-        $companies = Company::pluck('name', 'id');
-
-        $view = 'voyager::bread.edit-add';
-
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
-        }
-
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'companies'));
-    }
-
-    public function show(Request $request, $id)
-    {
-        $slug = $this->getSlug($request);
-        $user = Auth::user();
-
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-
-        $isSoftDeleted = false;
-
-        if (strlen($dataType->model_name) != 0) {
-            $model = app($dataType->model_name);
-            $query = $model->query();
-
-            // Use withTrashed() if model uses SoftDeletes and if toggle is selected
-            if ($model && in_array(SoftDeletes::class, class_uses_recursive($model))) {
-                $query = $query->withTrashed();
-            }
-            if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
-                $query = $query->{$dataType->scope}();
-            }
-            $dataTypeContent = call_user_func([$query, 'findOrFail'], $id);
-            if ($dataTypeContent->deleted_at) {
-                $isSoftDeleted = true;
-            }
-        } else {
-            // If Model doest exist, get data from table name
-            $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
-        }
-
-        if(!$user->hasRole('admin')){
-            if($dataTypeContent->user_create != $user->id){
-                abort(403);
-            } 
-        }
-
-        // Replace relationships' keys for labels and create READ links if a slug is provided.
-        $dataTypeContent = $this->resolveRelations($dataTypeContent, $dataType, true);
-
-        // If a column has a relationship associated with it, we do not want to show that field
-        $this->removeRelationshipField($dataType, 'read');
-
-        // Check permission
-        $this->authorize('read', $dataTypeContent);
-
-        // Check if BREAD is Translatable
-        $isModelTranslatable = is_bread_translatable($dataTypeContent);
-
-        // Eagerload Relations
-        $this->eagerLoadRelations($dataTypeContent, $dataType, 'read', $isModelTranslatable);
-
-        $view = 'voyager::bread.read';
-
-        if (view()->exists("voyager::$slug.read")) {
-            $view = "voyager::$slug.read";
-        }
-
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
-    }
-
-
-    public function profile(Request $request)
-    {
-        $route = '';
-        $dataType = Voyager::model('DataType')->where('model_name', Auth::guard(app('VoyagerGuard'))->getProvider()->getModel())->first();
-        if (!$dataType && app('VoyagerGuard') == 'web') {
-            $route = route('voyager.users.edit', Auth::user()->getKey());
-        } elseif ($dataType) {
-            $route = route('voyager.'.$dataType->slug.'.edit', Auth::user()->getKey());
-        }
-
-        return Voyager::view('voyager::profile', compact('route'));
-    }
-
-    // POST BR(E)AD
-    public function update(Request $request, $id)
-    {
-        if (Auth::user()->getKey() == $id) {
-            $request->merge([
-                'role_id'                              => Auth::user()->role_id,
-                'user_belongstomany_role_relationship' => Auth::user()->roles->pluck('id')->toArray(),
+        return redirect()
+            ->route("voyager.{$dataType->slug}.index")
+            ->with([
+                'message'    => __('voyager::generic.successfully_added_new')." {$dataType->getTranslatedAttribute('display_name_singular')}",
+                'alert-type' => 'success',
             ]);
-        }
-
-        return parent::update($request, $id);
     }
 }

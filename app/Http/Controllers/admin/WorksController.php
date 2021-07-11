@@ -41,6 +41,7 @@ class WorksController extends VoyagerBaseController
         // GET THE SLUG, ex. 'posts', 'pages', etc.
         $slug = $this->getSlug($request);
         $user_id = Auth::id();
+        $user = Auth::user();
 
         // GET THE DataType based on the slug
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
@@ -90,7 +91,9 @@ class WorksController extends VoyagerBaseController
                     $query = $query->withTrashed();
                 }
             }
-            $query = $query->where('user_id', $user_id);
+            if(!$user->hasRole('admin')){
+                $query = $query->where('user_id', $user_id);
+            }
 
             // If a column has a relationship associated with it, we do not want to show that field
             $this->removeRelationshipField($dataType, 'browse');
@@ -233,6 +236,7 @@ class WorksController extends VoyagerBaseController
     public function edit(Request $request, $id)
     {
         $slug = $this->getSlug($request);
+        $user = Auth::user();
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
 
@@ -251,6 +255,12 @@ class WorksController extends VoyagerBaseController
         } else {
             // If Model doest exist, get data from table name
             $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
+        }
+
+        if(!$user->hasRole('admin')){
+            if($dataTypeContent->user_id != $user->id){
+                abort(403);
+            } 
         }
 
         foreach ($dataType->editRows as $key => $row) {
@@ -287,6 +297,7 @@ class WorksController extends VoyagerBaseController
     public function show(Request $request, $id)
     {
         $slug = $this->getSlug($request);
+        $user = Auth::user();
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
 
@@ -309,6 +320,12 @@ class WorksController extends VoyagerBaseController
         } else {
             // If Model doest exist, get data from table name
             $dataTypeContent = DB::table($dataType->name)->where('id', $id)->first();
+        }
+        
+        if(!$user->hasRole('admin')){
+            if($dataTypeContent->user_id != $user->id){
+                abort(403);
+            } 
         }
 
         // Replace relationships' keys for labels and create READ links if a slug is provided.
