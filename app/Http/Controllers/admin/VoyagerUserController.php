@@ -247,7 +247,7 @@ class VoyagerUserController extends VoyagerBaseController
         }
 
         if(!$user->hasRole('admin')){
-            if($dataTypeContent->user_create != $user->id){
+            if($dataTypeContent->user_create != $user->id && $dataTypeContent->id != $user->id){
                 abort(403);
             } 
         }
@@ -359,6 +359,7 @@ class VoyagerUserController extends VoyagerBaseController
             $request->merge([
                 'role_id'                              => Auth::user()->role_id,
                 'user_belongstomany_role_relationship' => Auth::user()->roles->pluck('id')->toArray(),
+                'user'
             ]);
         }
 

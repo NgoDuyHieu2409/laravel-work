@@ -209,8 +209,8 @@ return [
         'https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js',
         'https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js',
         'https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js',
-        'js/messages/index_message.js',
-        'js/messages/send_message.js',
+        '/js/messages/index_message.js',
+        '/js/messages/send_message.js',
     ],
 
     'googlemaps' => [

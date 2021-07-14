@@ -10,11 +10,15 @@ use TCG\Voyager\Facades\Voyager;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Services\WorkerService;
 use App\Http\Services\WorkApplicationService;
+use App\Models\WorkerSkill;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\AppUtility;
 
 class WorkApplicationController extends VoyagerBaseController
 {
+    use AppUtility;
+
     protected $workerService;
     protected $workApplicationService;
 
@@ -227,6 +231,11 @@ class WorkApplicationController extends VoyagerBaseController
         
         $worker_reviews = $this->workerService->getWorkerReview($dataTypeContent->worker_id);
         $languages = config('constant.language_skills');
+        $skills = array_chunk($this->getItemStringToArray(setting('admin.skills')), 4, true);
+        
+        $workerSkill = WorkerSkill::where('worker_id', $dataTypeContent->worker_id)->get()->groupBy('skill_id');
+        $skillStar = $this->changeToPercentageStar($workerSkill);
+
 
         $view = 'voyager::bread.read';
 
@@ -234,7 +243,9 @@ class WorkApplicationController extends VoyagerBaseController
             $view = "voyager::$slug.read";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted', 'worker', 'worker_reviews', 'languages'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted', 'worker', 'worker_reviews', 'languages',
+            'skills', 'skillStar'
+        ));
     }
 
     public function updateApproval(Request $request)
@@ -254,5 +265,20 @@ class WorkApplicationController extends VoyagerBaseController
                 'alert-type' => 'errors',
             ]);
         }
+    }
+
+    public function changeToPercentageStar($criterias)
+    {
+        $total = 0;
+        foreach($criterias as $skill => $stars){
+            $numberStar = 0;
+            $total= $stars->count();
+            foreach($stars as $value){
+                $numberStar += $value['star'];
+            }
+            $criterias[$skill . '_crit'] = number_format(($numberStar / $total ), 1);
+        }
+
+        return $criterias;
     }
 }

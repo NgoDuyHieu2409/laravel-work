@@ -16,9 +16,8 @@ use App\Models\HomeReview;
 use App\Models\ModifyRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use App\Jobs\SendNotificationEmail;
-use App\Mail\NotificationEmail;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
 
 class HomeController extends Controller
 {
@@ -84,7 +83,9 @@ class HomeController extends Controller
 
         $worker_id = Auth::id();
 
-        $workIds = WorkApplication::where('worker_id', $worker_id)->pluck('work_id');
+        $workIds = WorkApplication::where('worker_id', $worker_id)
+            ->whereNotIn('status', [3])
+            ->pluck('work_id');
 
         $works = Work::where($filter)->whereNotIN('id', $workIds);
 
@@ -103,6 +104,7 @@ class HomeController extends Controller
         foreach ($works->items() as $key => $work) {
             $work->work_type =  $work->occupation_id ? $this->getValueItemToArray(setting('admin.occupations'), $work->occupation_id) : null;
             $work->is_favorite = in_array($work->id, $favoriteWork);
+            $work->format_title = Str::limit($work->title, 40);
         }
 
         $workTags = $this->getItemStringToArray(setting('admin.tags'));
@@ -155,7 +157,10 @@ class HomeController extends Controller
         try {
             DB::beginTransaction();
             $worker_id = Auth::id();
-            $job = WorkApplication::where('work_id', $request->work_id)->where('worker_id', $worker_id)->first();
+            $job = WorkApplication::where('work_id', $request->work_id)
+                ->where('worker_id', $worker_id)
+                ->whereNotIn('status', [3])
+                ->first();
             if ($job) {
                 return response()->json([
                     'status' => false,
@@ -321,6 +326,9 @@ class HomeController extends Controller
             $application->confirm_yn = config('const.WorkApplications.CONFIRM_STATUS.YES');
             $application->confirmed_at = Carbon::now();
             $application->save();
+
+            // Update work application status to cancel
+            $this->removeWorkApply($work);
 
             DB::commit();
             return response()->json([
@@ -522,5 +530,20 @@ class HomeController extends Controller
         }
 
         return view('homes.works.application')->with(compact('works', 'outstandingWorks', 'workTags', 'workSkills', 'request'));
+    }
+
+    public function removeWorkApply($workApply)
+    {
+        $worker = Auth::user();
+        $workStart = $workApply->worktime_start_at;
+        $workEnd = $workApply->worktime_end_at;
+
+        $workIDs = Work::whereBetween('worktime_start_at', [$workStart, $workEnd])->pluck('id')->toArray();
+        $application = WorkApplication::whereIn('work_id', $workIDs)
+                ->where('worker_id', $worker->id)
+                ->where('status', WorkApplicationStatus::APPLYING)
+                ->update(['status' => WorkApplicationStatus::CANCELED]);
+
+        return $application;
     }
 }

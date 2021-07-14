@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\WorkRecord;
 use App\Models\WorkerReview;
 use App\Models\WorkerSkill;
+use App\Models\WorkSkill;
 use Carbon\Carbon;
 
 class WorkerReviewService
@@ -78,9 +79,9 @@ class WorkerReviewService
     /**
      * Undocumented function
      *
-     * @param [int] $work_id  //仕事ID
-     * @param [int] $worker_id  //ワーカーID
-     * @param [array] $skills   //スキルID
+     * @param [int] $work_id 
+     * @param [int] $worker_id 
+     * @param [array] $skills
      * @return void
      */
     public function createCurentSkill($work_id, $worker_id, $skills)
@@ -89,13 +90,14 @@ class WorkerReviewService
             $skills = (array) $skills;
         }
 
-        foreach($skills as $value){
+        foreach($skills as $id => $value){
             $skill = new WorkerSkill();
             $skill->fill([
                 'worker_id' => $worker_id,
-                'skill_id' => $value,
+                'skill_id' => $id,
                 'user_id' => Auth::id(),
                 'work_id' => $work_id,
+                'star' => $value,
             ])->save();
         }
     }
@@ -200,6 +202,7 @@ class WorkerReviewService
             ->where('user_id', $user_id)
             ->with('worker')
             ->get();
+            // ->paginate(2);
 
         return $comments;
     }

@@ -128,14 +128,13 @@
                             <div class="col-12 col-sm-12">
                                 <div class="info-box">
                                     <span class="info-box-icon border-r-2 border-red-500 pl-2 pr-2" style="width: 15%;">
-                                        <img src="{{ Storage::url($work->company->logo ?? '')}}" alt="">
+                                        <img src="{{ Storage::url($work->company->logo ?? '')}}" alt="logo">
                                     </span>
                                     <div class="info-box-content">
                                         <div class="row ml-1 mb-2">
                                             <div class="col-12 col-sm-9">
                                                 <span class="info-box-text text-left text-uppercase text-bold">
-                                                    <a
-                                                        href="{{ route('work.show', ['id' => $work->id]) }}">{{ $work->title }}</a>
+                                                    <a href="{{ route('work.show', ['id' => $work->id]) }}" title="{{ $work->title}}">{{ $work->format_title }}</a>
                                                 </span>
                                             </div>
                                             <div class="col-12 col-sm-3">

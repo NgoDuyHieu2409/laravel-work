@@ -22,9 +22,9 @@ class WorkReview {
                 var data = {
                     _token: $('input[name="_token"]').val(),
                     work_id : work_id,
-                    good_yn1 : $(form + ' input[name="good_yn1"]').val(),
-                    good_yn2 : $(form + ' input[name="good_yn2"]').val(),
-                    good_yn3 : $(form + ' input[name="good_yn3"]').val(),
+                    good_yn1 : $(form + ' input[name="good_yn1"]:checked').val(),
+                    good_yn2 : $(form + ' input[name="good_yn2"]:checked').val(),
+                    good_yn3 : $(form + ' input[name="good_yn3"]:checked').val(),
                     comment : $(form + ' textarea[name="comment"]').val(),
                 };
 

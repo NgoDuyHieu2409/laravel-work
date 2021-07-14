@@ -51,7 +51,7 @@
                                     <hr class="hr-custom">
 
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-sm-12 ul-list-item">
                                             <label>Nội Dung Công Việc</label>
                                             {!! $work->content !!}
                                         </div>

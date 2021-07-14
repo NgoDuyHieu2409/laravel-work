@@ -15,8 +15,8 @@
                         <table class="table table-hover mb-3 border-bottom w-100 js-geenie-table">
                             <thead>
                                 <tr>
-                                    <th>Working hours</th>
-                                    <th>Business title</th>
+                                    <th>Thời gian làm việc</th>
+                                    <th>Tên công việc</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,8 +50,8 @@
                         <table class="table table-hover border-bottom">
                             <thead>
                                 <tr>
-                                    <th>Work title</th>
-                                    <th>Good ratio</th>
+                                    <th>Tiêu chí</th>
+                                    <th>Tỉ lệ đánh giá tốt</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -96,23 +96,41 @@
                     <h5 class="card-title">Danh sách nhận xét cho công ty / cửa hàng của bạn</h5>
                 </div>
                 <div class="card-body">
-                    @foreach ($worker_comment as $item)
-                    <div class="card">
-                        <div class="card-header p-2">
-                            <div class="widget-user-header">
-                                @php
-                                $url = isset($item->worker->profile_photo_path) ? Storage::url($item->worker->profile_photo_path) : Voyager::image($item->worker->avatar);
-                                @endphp
-                                <div class="widget-user-image">
-                                    <img class="img-circle elevation-2" src="{{ $url }}"  width="42" height="42" alt="User Avatar">
-                                </div>
-                                <h5 class="widget-user-username">{{ $item->worker->name}}</h5>
-                                <h6 class="widget-user-desc text-muted">{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</h6>
-                            </div>
-                            <div class="mt-4 mb-3">{{ $item->comment }}</div>
-                        </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-3 border-bottom w-100 js-geenie-table">
+                            <colgroup>
+                                <col width="30%">
+                                <col width="70%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Thông tin</th>
+                                    <th>Ý kiến đánh giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($worker_comment as $item)
+                                <tr>
+                                    <td>
+                                        <div class="widget-user-header">
+                                            @php
+                                            $url = isset($item->worker->profile_photo_path) ? Storage::url($item->worker->profile_photo_path) : Voyager::image($item->worker->avatar);
+                                            @endphp
+                                            <div class="widget-user-image">
+                                                <img class="img-circle elevation-2" src="{{ $url }}"  width="42" height="42" alt="User Avatar">
+                                            </div>
+                                            <h5 class="widget-user-username">{{ $item->worker->name}}</h5>
+                                            <h6 class="widget-user-desc text-muted">{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</h6>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ $item->comment }}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    @endforeach
                 </div>
             </div>
         </div>

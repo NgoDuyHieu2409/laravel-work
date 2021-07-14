@@ -258,31 +258,69 @@
     <div class="row">
         <div class="col-md-12">
             <div class="collapse" id="collapse-link-collapsed">
+            <div class="card">
+                    <div class="card-header header-elements-inline">
+                        <h5 class="card-title">Đánh giá kỹ năng</h5>
+                    </div>
+
+                    <div class="card-body pb-0">
+                        @foreach($skills as $data_skills)
+                            <ul style="display: flex;">
+                                @foreach($data_skills as $k => $v)
+                                @php
+                                    $starKey = $k."_crit";
+                                @endphp
+                                <li style="margin-right: auto;">
+                                    <label class="custom-control-label" for="skill_{{ $k }}">{{$v}}</label>
+                                    <input name="workers[{{ $worker->id }}][skill][{{$k}}]" disabled
+                                        class="star_rating_skill rating-loading" data-min="0"
+                                        data-max="5" data-step="0.5" data-size="xs" value="{{ $skillStar[$starKey] }}">
+                                </li>
+                                @endforeach
+                            </ul>
+                        @endforeach
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-header header-elements-inline">
                         <h5 class="card-title">Danh sách nhận xét khác</h5>
                     </div>
 
                     <div class="card-body">
-                        @foreach ($worker_reviews as $work_name => $worker_reivew)
-                        <h4>{{ $work_name }}</h4>
-
-                        @foreach ($worker_reivew as $item)
-                        <div class="card">
-                            <div class="card-header p-2">
-                                <div class="widget-user-header">
-                                    <div class="widget-user-image">
-                                        <img class="img-circle elevation-2" src="{{ $item->photo_url }}" width="42"
-                                            height="42" alt="User Avatar">
-                                    </div>
-                                    <h5 class="widget-user-username">{{ $item->home_name}}</h5>
-                                    <h6 class="widget-user-desc text-muted">{{ $item->format_time}}</h6>
-                                </div>
-                                <div class="mt-4 mb-3">{{ $item->comment }}</div>
-                            </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-3 border-bottom w-100 js-geenie-table">
+                                <colgroup>
+                                    <col width="30%">
+                                    <col width="70%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>Người đánh giá</th>
+                                        <th>Ý kiến đánh giá</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        @foreach ($worker_reviews as $work_name => $worker_reivew)
+                                        <tr><td colspan="2">{{ $work_name }}</td></tr>
+                                        <tr>
+                                        @foreach ($worker_reivew as $item)
+                                        <td>
+                                            <div class="widget-user-header">
+                                                <div class="widget-user-image">
+                                                    <img class="img-circle elevation-2" src="{{ $item->photo_url }}" width="42"
+                                                        height="42" alt="User Avatar">
+                                                </div>
+                                                <h5 class="widget-user-username">{{ $item->home_name}}</h5>
+                                                <h6 class="widget-user-desc text-muted">{{ $item->format_time}}</h6>
+                                            </div>
+                                        </td>
+                                        <td>{{ $item->comment }}</td>
+                                        @endforeach
+                                        </tr>
+                                        @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        @endforeach
-                        @endforeach
                     </div>
                 </div>
             </div>
@@ -291,5 +329,19 @@
 </div>
 @stop
 
+
+@section('css')
+<link href="{{ asset('css/star-rating.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/star-theme.css') }}" rel="stylesheet" type="text/css">
+
+@stop
+
 @section('javascript')
+<script src="{{ asset('js/star-rating.js') }}"></script>
+
+<script>
+$(function() {
+    $(".star_rating_skill").rating();
+});
+</script>
 @stop

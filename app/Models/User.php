@@ -34,7 +34,7 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
-        // 'company_id',
+        'user_create',
         // 'total_workcount',
         // 'total_worktime',
     ];
@@ -68,7 +68,7 @@ class User extends \TCG\Voyager\Models\User
     protected $appends = [
         'profile_photo_url',
     ];
-
+    
     public function contact()
     {
         return $this->hasOne(UserContact::class);

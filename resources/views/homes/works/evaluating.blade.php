@@ -135,16 +135,13 @@
                                                                     <td>Giờ làm việc của bạn có đáp ứng lịch trình của bạn không?</td>
                                                                     <td>
                                                                         <div class="form-group clearfix mb-0">
-                                                                            <div class="icheck-primary d-inline mr-2">
-                                                                                <input type="radio" id="good_yn1-1-{{$work->id}}" name="good_yn1"
-                                                                                    value="y" @if(!$work->home_review || $work->home_review->good_yn1 == 'y') checked @endif>
-                                                                                <label for="good_yn1-1-{{$work->id}}">Có</label>
-                                                                            </div>
-                                                                            <div class="icheck-primary d-inline">
-                                                                                <input type="radio" id="good_yn1-2-{{$work->id}}" name="good_yn1"
-                                                                                    value="n" @if($work->home_review && $work->home_review->good_yn1 == 'n') checked @endif>
-                                                                                <label for="good_yn1-2-{{$work->id}}">Không</label>
-                                                                            </div>
+                                                                            <input type="radio" id="good_yn1-1-{{$work->id}}" name="good_yn1"
+                                                                                value="y" @if(!$work->home_review || $work->home_review->good_yn1 == 'y') checked @endif>
+                                                                            <label for="good_yn1-1-{{$work->id}}">Có</label>
+                                                                        
+                                                                            <input type="radio" id="good_yn1-2-{{$work->id}}" name="good_yn1"
+                                                                                value="n" @if($work->home_review && $work->home_review->good_yn1 == 'n') checked @endif>
+                                                                            <label for="good_yn1-2-{{$work->id}}">Không</label>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -153,16 +150,12 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="form-group clearfix mb-0">
-                                                                            <div class="icheck-primary d-inline mr-2">
-                                                                                <input type="radio" id="good_yn2-1-{{$work->id}}" name="good_yn2"
-                                                                                value="y" @if(!$work->home_review || $work->home_review->good_yn2 == 'y') checked @endif>
-                                                                                <label for="good_yn2-1-{{$work->id}}">Có</label>
-                                                                            </div>
-                                                                            <div class="icheck-primary d-inline">
-                                                                                <input type="radio" id="good_yn2-2-{{$work->id}}" name="good_yn2"
-                                                                                    value="n" @if($work->home_review && $work->home_review->good_yn2 == 'n') checked @endif>
-                                                                                <label for="good_yn2-2-{{$work->id}}">Không</label>
-                                                                            </div>
+                                                                            <input type="radio" id="good_yn2-1-{{$work->id}}" name="good_yn2"
+                                                                            value="y" @if(!$work->home_review || $work->home_review->good_yn2 == 'y') checked @endif>
+                                                                            <label for="good_yn2-1-{{$work->id}}">Có</label>
+                                                                            <input type="radio" id="good_yn2-2-{{$work->id}}" name="good_yn2"
+                                                                                value="n" @if($work->home_review && $work->home_review->good_yn2 == 'n') checked @endif>
+                                                                            <label for="good_yn2-2-{{$work->id}}">Không</label>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -170,16 +163,12 @@
                                                                     <td>Bạn có muốn làm việc ở đây một lần nữa không?</td>
                                                                     <td>
                                                                         <div class="form-group clearfix mb-0">
-                                                                            <div class="icheck-primary d-inline mr-2">
-                                                                                <input type="radio" id="good_yn3-1-{{$work->id}}" name="good_yn3"
-                                                                                    value="y" @if(!$work->home_review || $work->home_review->good_yn3 == 'y') checked @endif>
-                                                                                <label for="good_yn3-1-{{$work->id}}">Có</label>
-                                                                            </div>
-                                                                            <div class="icheck-primary d-inline">
-                                                                                <input type="radio" id="good_yn3-2-{{$work->id}}" name="good_yn3"
-                                                                                    value="n" @if($work->home_review && $work->home_review->good_yn3 == 'n') checked @endif>
-                                                                                <label for="good_yn3-2-{{$work->id}}">Không</label>
-                                                                            </div>
+                                                                            <input type="radio" id="good_yn3-1-{{$work->id}}" name="good_yn3"
+                                                                                value="y" @if(!$work->home_review || $work->home_review->good_yn3 == 'y') checked @endif>
+                                                                            <label for="good_yn3-1-{{$work->id}}">Có</label>
+                                                                            <input type="radio" id="good_yn3-2-{{$work->id}}" name="good_yn3"
+                                                                                value="n" @if($work->home_review && $work->home_review->good_yn3 == 'n') checked @endif>
+                                                                            <label for="good_yn3-2-{{$work->id}}">Không</label>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
